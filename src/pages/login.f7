@@ -1,0 +1,84 @@
+<template>
+    <div class="view view-main view-init">
+        <div class="page" data-name="about">
+            <div class="navbar">
+                <div class="navbar-bg"></div>
+                <div class="navbar-inner sliding">
+                    <div class="title">Login to Spotify</div>
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="block-title">About My App</div>
+                <div class="block block-strong">
+                    <p>Fugiat perspiciatis excepturi, soluta quod non ullam deleniti. Nobis sint nemo consequuntur,
+                        fugiat. Eius perferendis animi autem incidunt vel quod tenetur nostrum, voluptate omnis quasi
+                        quidem illum consequuntur, a, quisquam.</p>
+                    <p>Laudantium neque magnam vitae nemo quam commodi, in cum dolore obcaecati laborum, excepturi
+                        harum, optio qui, consequuntur? Obcaecati dolor sequi nesciunt culpa quia perspiciatis,
+                        reiciendis ex debitis, ut tenetur alias.</p>
+                    <button @click="${loginToSpotify}"
+                        class="col button button-large button-raised button-fill color-green"><i
+                            class="icon spotify-icon"></i>Login with Spotify</button>
+                    <p><label class="checkbox"><input type="checkbox" /><i class="icon-checkbox"></i></label> Don't show
+                        this again.</p>
+                </div>
+                <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50"
+                    class="swiper-container swiper-init demo-swiper">
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div class="card card-outline">
+                            <div class="card-header">Card header</div>
+                            <div class="card-content card-content-padding">Card with header and footer. Card headers are used to display
+                              card titles and footers for additional information or just for custom actions.</div>
+                            
+                          </div></div>
+                        <div class="swiper-slide"><div class="card card-outline">
+                            <div class="card-header">Card header</div>
+                            <div class="card-content card-content-padding">Card with header and footer. Card headers are used to display
+                              card titles and footers for additional information or just for custom actions.</div>
+                            
+                          </div></div>
+                        <div class="swiper-slide"><div class="card ">
+                            <div class="card-header">Card header</div>
+                            <div class="card-content card-content-padding">Card with header and footer. Card headers are used to display
+                              card titles and footers for additional information or just for custom actions.</div>
+                            
+                          </div></div>
+                        <div class="swiper-slide"><div class="card ">
+                            <div class="card-header">Card header</div>
+                            <div class="card-content card-content-padding">Card with header and footer. Card headers are used to display
+                              card titles and footers for additional information or just for custom actions.</div>
+                            
+                          </div></div>
+                        <div class="swiper-slide">Slide 5</div>
+                        <div class="swiper-slide">Slide 6</div>
+                        <div class="swiper-slide">Slide 7</div>
+                        <div class="swiper-slide">Slide 8</div>
+                        <div class="swiper-slide">Slide 9</div>
+                        <div class="swiper-slide">Slide 10</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<style scoped>
+    .spotify-icon {
+        height: 20px;
+        width: 20px;
+        background-image: url(../assets/icons/spotify.svg);
+        margin-right: 5px;
+    }
+</style>
+<script>
+    export default (props, { $on, $f7, $update, $store }) => {
+        $on('pageInit', (e, page) => {
+            console.log();
+        });
+
+        const loginToSpotify = () => {
+            $store.getters.loginMethode;
+        }
+        return $render;
+    }
+</script>
