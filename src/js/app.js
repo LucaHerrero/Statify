@@ -8,6 +8,7 @@ import 'framework7/framework7-bundle.css';
 import '../css/icons.css';
 import '../css/app.css';
 
+import SpotifyWebApi from 'spotify-web-api-js';
 
 // Import Routes
 import routes from './routes.js';
@@ -21,11 +22,12 @@ import Authorization from './Authorization';
 let tokenMap;
 let test = new Authorization(app);
 let App;
-
+let tokenRequestSuccessful = false;
 if (localStorage.getItem('tokenMap') != null) {
   tokenMap = JSON.parse(localStorage.getItem('tokenMap'));
   if (test.isTokenValid(tokenMap)) {
     App = mainAppView;
+    tokenRequestSuccessful = true;
   } else {
     if (window.location.hash == null || window.location.hash == "") {
       App = loginView;
@@ -33,17 +35,26 @@ if (localStorage.getItem('tokenMap') != null) {
       tokenMap = test.parseUrlHash();
       localStorage.setItem('tokenMap', JSON.stringify(tokenMap))
       App = mainAppView
+      tokenRequestSuccessful = true;
     }
   }
 } else if (window.location.hash == null || window.location.hash == "") {
   App = loginView;
+  console.log("test")
 } else {
   tokenMap = test.parseUrlHash();
   localStorage.setItem('tokenMap', JSON.stringify(tokenMap))
   App = mainAppView
+  tokenRequestSuccessful = true;
 }
 
+let spotify = new SpotifyWebApi();
+console.log(tokenMap)
+if (tokenRequestSuccessful) {
+  spotify.setAccessToken(tokenMap.access_token);
+}
 
+store.dispatch("addSpotifyApi", spotify);
 store.dispatch("addLoginMethod", test.login);
 var app = new Framework7({
   name: 'Statify', // App name

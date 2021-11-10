@@ -27,6 +27,9 @@ const store = createStore({
     },
     loginMethode({state}) {
       state.loginMethode();
+    },
+    spotifyApi({state}) {
+      return state.spotifyapi;
     }
   },
   actions: {
@@ -36,6 +39,10 @@ const store = createStore({
 
     addLoginMethod({state}, method) {
       state.loginMethode = method
+    },
+
+    addSpotifyApi({state}, obj) {
+      state.spotifyapi = obj
     }
   },
 })
