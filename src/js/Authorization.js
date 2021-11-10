@@ -4,7 +4,6 @@ class Authorization {
   constructor(app, width) {
     this.app = app;
     this.width = width;
-    console.log(width)
   }
 
   login = () => {
@@ -66,15 +65,11 @@ class Authorization {
 
       let dateNow = new Date();
 
-      console.log(tokenMap);
-      console.log(dateNow.getTime())
-      console.log(tokenValidUntil)
-
       if (dateNow.getTime() < tokenValidUntil) {
         //Token valid
         return true;
       } else {
-        console.log("inValid")
+        return false;
       }
     } catch {
       return false;
