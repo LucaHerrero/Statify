@@ -114,7 +114,7 @@
             console.error(err);
             $f7.dialog.alert('An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.', 'Sorry 😔', function () {
               localStorage.removeItem('tokenMap')
-              window.location.href = window.location.origin;
+              window.location.href = window.location.origin + window.location.pathname;
             });
           }
         );
