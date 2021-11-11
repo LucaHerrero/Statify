@@ -155,7 +155,6 @@
       password = e.target.value;
       $update();
     }
-    $f7.dialog.alert("TEST")
     const alertLoginData = () => {
       $f7.dialog.alert('Username: ' + username + '<br/>Password: ' + password, () => {
         $f7.loginScreen.close();

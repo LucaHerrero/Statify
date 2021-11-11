@@ -54,6 +54,17 @@ if (tokenRequestSuccessful) {
   spotify.setAccessToken(tokenMap.access_token);
 }
 
+spotify
+  .getMe() // note that we don't pass a user id
+  .then(
+    function (data) {
+      console.log('User playlists', data);
+    },
+    function (err) {
+      console.error(err);
+    }
+  );
+
 store.dispatch("addSpotifyApi", spotify);
 store.dispatch("addLoginMethod", test.login);
 var app = new Framework7({
@@ -66,9 +77,4 @@ var app = new Framework7({
   store: store,
   // App routes
   routes: routes,
-
-  props: {
-    user: "test",
-  }
-
 });
