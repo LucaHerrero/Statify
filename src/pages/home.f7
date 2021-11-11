@@ -18,7 +18,7 @@
           </a>
         </div>
         <div class="title-large">
-          <div class="title-large-text">Stativ</div>
+          <div class="title-large-text">Hello ${userInformations.display_name}</div>
         </div>
       </div>
     </div>
@@ -26,9 +26,11 @@
     <!-- Scrollable page content-->
     <div class="page-content">
       <div class="block block-strong">
-        <p>This is an example of tabs-layout application. The main point of such tabbed layout is that each tab contains independent view with its own routing and navigation.</p>
+        <p>This is an example of tabs-layout application. The main point of such tabbed layout is that each tab contains
+          independent view with its own routing and navigation.</p>
 
-        <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar like this tab.</p>
+        <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar
+          like this tab.</p>
       </div>
       <div class="block-title">Navigation</div>
       <div class="list">
@@ -57,7 +59,8 @@
             <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">Popup</a>
           </div>
           <div class="col-50">
-            <a href="#" class="button button-raised button-fill login-screen-open" data-login-screen="#my-login-screen">Login Screen</a>
+            <a href="#" class="button button-raised button-fill login-screen-open"
+              data-login-screen="#my-login-screen">Login Screen</a>
           </div>
         </div>
       </div>
@@ -91,12 +94,30 @@
   </div>
 </template>
 <script>
-export default (props, { $on, $f7, $update})  => {
-  $on('pageInit', (e, page) => {
-      console.log('pageInit', page);
-      
+  export default (props, { $on, $f7, $update, $store }) => {
+    let userInformations = {};
+    const spotify = $store.getters.spotifyApi.value;
+   
+    $on('pageInit', (e, page) => {
+      spotify
+        .getMe() // note that we don't pass a user id
+        .then(
+          function (data) {
+            userInformations = data;
+            console.log(userInformations)
+            $update();
+          },
+          function (err) {
+            console.error(err);
+            $f7.dialog.alert('An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.', 'Sorry 😔', function () {
+              localStorage.removeItem('tokenMap')
+              window.location.href = window.location.origin;
+            });
+          }
+        );
+
     });
 
-  return $render;
-}
+    return $render;
+  }
 </script>
