@@ -2,8 +2,6 @@
 import path from 'path';
 import framework7 from 'rollup-plugin-framework7';
 
-
-
 const SRC_DIR = path.resolve(__dirname, './src');
 const PUBLIC_DIR = path.resolve(__dirname, './public');
 const BUILD_DIR = path.resolve(__dirname, './dist',);
@@ -11,7 +9,6 @@ const BUILD_DIR = path.resolve(__dirname, './dist',);
 export default {
   plugins: [
     framework7({ emitCss: false }),
-
   ],
   root: SRC_DIR,
   base: '',

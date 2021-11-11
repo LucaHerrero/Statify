@@ -1,5 +1,6 @@
 {
   "files.associations": {
     "*.f7": "html"
-  }
+  },
+  "npm-scripts.showStartNotification": false
 }

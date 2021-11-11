@@ -96,15 +96,18 @@
 <script>
   export default (props, { $on, $f7, $update, $store }) => {
     let userInformations = {};
+    let skeletonClass = "skeleton-text skeleton-effect-wave";
     const spotify = $store.getters.spotifyApi.value;
-   
+
     $on('pageInit', (e, page) => {
       spotify
         .getMe() // note that we don't pass a user id
         .then(
           function (data) {
             userInformations = data;
+            skeletonClass = '';
             console.log(userInformations)
+            console.log(userInformations.followers.total)
             $update();
           },
           function (err) {

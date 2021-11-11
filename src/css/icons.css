@@ -1,12 +1,6 @@
 /* Material Icons Font (for MD theme) */
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'),
-    url(../fonts/material-icons.woff2) format('woff2'),
-    url(../fonts/material-icons.woff) format('woff');
-}
+@import 'material-icons/iconfont/material-icons.css';
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;

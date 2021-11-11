@@ -23,6 +23,7 @@ let tokenMap;
 let test = new Authorization(app);
 let App;
 let tokenRequestSuccessful = false;
+
 if (localStorage.getItem('tokenMap') != null) {
   tokenMap = JSON.parse(localStorage.getItem('tokenMap'));
   if (test.isTokenValid(tokenMap)) {

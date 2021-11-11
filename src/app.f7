@@ -52,8 +52,8 @@
           </a>
           <a href="#view-settings" class="tab-link">
             <i class="icon f7-icons if-not-md">gear</i>
-            <i class="icon material-icons if-md">settings</i>
-            <span class="tabbar-label">Settings</span>
+            <i class="icon material-icons-outlined if-md">account_circle</i>
+            <span class="tabbar-label">Profile</span>
           </a>
         </div>
       </div>
