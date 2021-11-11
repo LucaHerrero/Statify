@@ -24,7 +24,7 @@ let test = new Authorization(app);
 let App;
 let tokenRequestSuccessful = false;
 
-if (localStorage.getItem('tokenMap') != null) {
+if (localStorage.getItem('tokenMap') != null && localStorage.getItem('tokenMap') != "null") {
   tokenMap = JSON.parse(localStorage.getItem('tokenMap'));
   if (test.isTokenValid(tokenMap)) {
     App = mainAppView;
@@ -41,16 +41,20 @@ if (localStorage.getItem('tokenMap') != null) {
   }
 } else if (window.location.hash == null || window.location.hash == "") {
   App = loginView;
-  console.log("test")
 } else {
   tokenMap = test.parseUrlHash();
-  localStorage.setItem('tokenMap', JSON.stringify(tokenMap))
-  App = mainAppView
-  tokenRequestSuccessful = true;
+  if (tokenMap != null) {
+    localStorage.setItem('tokenMap', JSON.stringify(tokenMap))
+    App = mainAppView
+    tokenRequestSuccessful = true;
+  } else {
+    App = loginView
+    tokenRequestSuccessful = false;
+  }
 }
 
 let spotify = new SpotifyWebApi();
-console.log(tokenMap)
+
 if (tokenRequestSuccessful) {
   spotify.setAccessToken(tokenMap.access_token);
 }
@@ -69,4 +73,10 @@ var app = new Framework7({
   store: store,
   // App routes
   routes: routes,
+  on: {
+    pageInit: function () {
+      console.log('Page initialized');
+      console.log(app.view)
+    }
+  }
 });

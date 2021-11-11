@@ -106,8 +106,7 @@
           function (data) {
             userInformations = data;
             skeletonClass = '';
-            console.log(userInformations)
-            console.log(userInformations.followers.total)
+            
             $update();
           },
           function (err) {
