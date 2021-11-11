@@ -1,0 +1,186 @@
+<template>
+    <div class="page" data-name="catalog">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="title">Serach</div>
+                <div class="subnavbar">
+                    <form class="searchbar">
+                        <div class="searchbar-inner">
+                            <div class="searchbar-input-wrap">
+                                <input type="search" placeholder="Search" />
+                                <i class="searchbar-icon"></i>
+                                <span class="input-clear-button"></span>
+                            </div>
+                            <span class="searchbar-disable-button if-not-aurora">Cancel</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block chip-block">
+                <div data-space-between="10" data-slides-per-view="auto" class="swiper-container swiper-init">
+                    <div class="swiper-wrapper">
+                        ${Object.keys(chips).map((item) => $h`
+                        <div class="swiper-slide chip-slide">
+                            <div class="chip ${chips[item].active ? '' : 'chip-outline'}" @click="${changeChip}">
+                                <div class="chip-label">${chips[item].name}</div>
+                            </div>
+                        </div>
+                        `)}
+                    </div>
+                </div>
+            </div>
+
+            <div class="block result-block">
+                <p>TEST</p>
+            </div>
+
+
+            <div class="block-title">Songs</div>
+            <div class="list media-list">
+                <ul>
+                    ${contentTracksView.map((item) => $h`
+                    <li>
+                        <a href="#" class="item-link item-content">
+                            <div class="item-media"><img
+                                    src="${item.album.images[2].url}" width="45" /></div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">${item.name}</div>
+                                </div>
+                                <div class="item-subtitle">${item.artists.map((item) => $h`${item.name} `)}</div>
+                            </div>
+                        </a>
+                    </li>
+                    `)}
+                </ul>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+</template>
+<style scoped>
+    .chip-block {
+        margin: 10px 0px;
+    }
+
+    .chip-slide {
+        width: auto;
+    }
+
+    .result-block {
+        margin-top: 0;
+    }
+</style>
+<script>
+    export default (props, { $f7, $on, $update, $store }) => {
+        const spotify = $store.getters.spotifyApi.value;
+        let chips = {
+            all: {
+                active: true,
+                name: 'All'
+            },
+            artists: {
+                active: false,
+                name: 'Artists'
+            },
+            albums: {
+                active: false,
+                name: 'Albums'
+            },
+            tracks: {
+                active: false,
+                name: 'Songs'
+            },
+            playlists: {
+                active: false,
+                name: 'Playlists'
+            }
+        }
+        let contentSpotify = {};
+        let contentListView = {};
+        let contentTracksView = [];
+        let contentLoading = false;
+
+        const changeChip = (e) => {
+            let clickedChip = e.path[0].innerText;
+
+            for (let key in chips) {
+                chips[key].active = false;
+            }
+            for (let key in chips) {
+                if (clickedChip == chips[key].name)
+                    chips[key].active = true;
+
+            }
+            $update();
+        }
+
+        $on('pageInit', () => {
+            // create searchbar
+            var searchbar = $f7.searchbar.create({
+                el: '.searchbar',
+                customSearch: true,
+                on: {
+                    search(sb, query, previousQuery) {
+                        if (query != "")
+                            getSpotifySearch(query);
+                    }
+                }
+            });
+
+            $f7.swiper.create('.chip-swiper', {
+                speed: 400,
+                spaceBetween: 10,
+                loop: false,
+                slidesPerView: 'auto',
+                observer: true
+            });
+        })
+
+        const updateListView = () => {
+            contentTracksView = [];
+            console.log(contentSpotify)
+            for (let key in chips) {
+                if (chips[key].active) {
+                    if (contentSpotify.hasOwnProperty(key)) {
+                        contentListView[key] = contentSpotify[key];
+                        console.log(contentListView)
+                        $update();
+                        return;
+                    }
+                }
+            }
+            contentTracksView = contentSpotify.tracks.items;
+            console.log(contentListView);
+            $update();
+        }
+
+        const getSpotifySearch = (serachText) => {
+            contentLoading = true;
+            spotify
+                .search(serachText, ["album", "artist", "playlist", "track"])
+                .then(
+                    function (data) {
+                        contentLoading = false;
+                        contentSpotify = data;
+                        updateListView();
+                    },
+                    function (err) {
+                        console.error(err);
+                        contentLoading = false;
+                    }
+                );
+        }
+
+        return $render;
+    }
+
+</script>

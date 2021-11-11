@@ -5,6 +5,7 @@ import FormPage from '../pages/form.f7';
 import CatalogPage from '../pages/mainView/catalog.f7';
 import ProductPage from '../pages/product.f7';
 import ProfilePage from '../pages/mainView/profile.f7';
+import SearchPage from '../pages/mainView/search.f7'
 
 import DynamicRoutePage from '../pages/dynamic-route.f7';
 import RequestAndLoad from '../pages/request-and-load.f7';
@@ -24,6 +25,10 @@ var routes = [
     component: FormPage,
   },
   {
+    path: '/search/',
+    component: SearchPage,
+  },
+  {
     path: '/catalog/',
     component: CatalogPage,
   },
@@ -32,7 +37,7 @@ var routes = [
     component: ProductPage,
   },
   {
-    path: '/settings/',
+    path: '/profile/',
     component: ProfilePage,
   },
 

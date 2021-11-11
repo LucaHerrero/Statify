@@ -50,9 +50,12 @@
             <i class="icon material-icons if-md">view_list</i>
             <span class="tabbar-label">Catalog</span>
           </a>
-          <a href="#view-settings" class="tab-link">
-            <i class="icon f7-icons if-not-md">gear</i>
-            <i class="icon material-icons-outlined if-md">account_circle</i>
+          <a href="#view-search" class="tab-link">
+            <i class="icon material-icons-outlined">search</i>
+            <span class="tabbar-label">Profile</span>
+          </a>
+          <a href="#view-profile" class="tab-link">
+            <i class="icon material-icons-outlined">people</i>
             <span class="tabbar-label">Profile</span>
           </a>
         </div>
@@ -68,8 +71,13 @@
         <!-- Catalog page will be loaded here dynamically from /catalog/ route -->
       </div>
 
+      <!-- Search View -->
+      <div id="view-search" class="view view-init tab" data-name="search" data-url="/search/">
+        <!-- Catalog page will be loaded here dynamically from /catalog/ route -->
+      </div>
+
       <!-- Settings View -->
-      <div id="view-settings" class="view view-init tab" data-name="settings" data-url="/settings/">
+      <div id="view-profile" class="view view-init tab" data-name="profile" data-url="/profile/">
         <!-- Settings page will be loaded here dynamically from /settings/ route -->
       </div>
     </div>
