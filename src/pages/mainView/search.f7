@@ -86,7 +86,7 @@
                             ${contentSpotify.artists.items.map((item) => $h`
                             <li>
                                 <a href="#" class="item-link item-content">
-                                    <div class="item-media"><img src="${item.images[2].url}" width="45" /></div>
+                                    <div class="item-media"><img src="${item.images[0].url}" width="45" /></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
                                             <div class="item-title">${item.name}</div>
@@ -194,7 +194,13 @@
         }
 
         const changeChip = (e) => {
-            let clickedChip = e.path[0].innerText;
+            let clickedChip;
+            if (e.path == undefined){
+                clickedChip = e.srcElement.innerText;
+            } else {
+                clickedChip = e.path[0].innerText;
+            }
+
 
             for (let key in filter) {
                 filter[key].active = false;
@@ -253,6 +259,7 @@
                         contentLoading = false;
                         contentSpotify = data;
 
+                        console.log(data)
                         $update()
                     },
                     function (err) {
