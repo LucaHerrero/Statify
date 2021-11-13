@@ -22,30 +22,27 @@
             <div class="block chip-block">
                 <div data-space-between="10" data-slides-per-view="auto" class="swiper-container swiper-init">
                     <div class="swiper-wrapper">
-                        ${Object.keys(chips).map((item) => $h`
+                        ${Object.keys(filter).map((item) => $h`
                         <div class="swiper-slide chip-slide">
-                            <div class="chip ${chips[item].active ? '' : 'chip-outline'}" @click="${changeChip}">
-                                <div class="chip-label">${chips[item].name}</div>
-                            </div>
+                            <button
+                                class="button button-round ${filter[item].active ? 'button-fill' : 'button-outline'}"
+                                @click="${changeChip}">${filter[item].name}</button>
                         </div>
                         `)}
                     </div>
                 </div>
             </div>
 
-            <div class="block result-block">
-                <p>TEST</p>
-            </div>
 
 
+            ${contentSpotify.tracks != undefined ? $h`
             <div class="block-title">Songs</div>
             <div class="list media-list">
                 <ul>
-                    ${contentTracksView.map((item) => $h`
+                    ${contentSpotify.tracks.items.map((item) => $h`
                     <li>
                         <a href="#" class="item-link item-content">
-                            <div class="item-media"><img
-                                    src="${item.album.images[2].url}" width="45" /></div>
+                            <div class="item-media"><img src="${item.album.images[2].url}" width="45" /></div>
                             <div class="item-inner">
                                 <div class="item-title-row">
                                     <div class="item-title">${item.name}</div>
@@ -57,10 +54,73 @@
                     `)}
                 </ul>
             </div>
+            ` : $h ``}
+
+            
+
+            ${contentSpotify.albums != undefined ? $h`
+                <div class="block-title">Albums</div>
+                <div class="list media-list">
+                    <ul>
+                        ${contentSpotify.albums.items.map((item) => $h`
+                        <li>
+                            <a href="#" class="item-link item-content">
+                                <div class="item-media"><img src="${item.images[2].url}" width="45" /></div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">${item.name}</div>
+                                    </div>
+                                    <div class="item-subtitle">${item.artists.map((item) => $h`${item.name} `)}</div>
+                                </div>
+                            </a>
+                        </li>
+                        `)}
+                    </ul>
+                </div>
+                ` : $h ``}
+
+                ${contentSpotify.artists != undefined ? $h`
+                    <div class="block-title">Artists</div>
+                    <div class="list media-list">
+                        <ul>
+                            ${contentSpotify.artists.items.map((item) => $h`
+                            <li>
+                                <a href="#" class="item-link item-content">
+                                    <div class="item-media"><img src="${item.images[2].url}" width="45" /></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">${item.name}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            `)}
+                        </ul>
+                    </div>
+                    ` : $h ``}
 
 
+                    ${contentSpotify.playlists != undefined ? $h`
+                        <div class="block-title">Playlists</div>
+                        <div class="list media-list">
+                            <ul>
+                                ${contentSpotify.playlists.items.map((item) => $h`
+                                <li>
+                                    <a href="#" class="item-link item-content">
+                                        <div class="item-media"><img src="${item.images[0].url}" width="45" /></div>
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">${item.name}</div>
+                                            </div>
+                                            <div class="item-subtitle">${item.owner.display_name}</div>
 
-
+                                        </div>
+                                    </a>
+                                </li>
+                                `)}
+                            </ul>
+                        </div>
+                        ` : $h ``}
 
 
         </div>
@@ -78,60 +138,22 @@
     .result-block {
         margin-top: 0;
     }
+
+    .button-round {
+        text-transform: capitalize;
+    }
 </style>
 <script>
     export default (props, { $f7, $on, $update, $store }) => {
-        const spotify = $store.getters.spotifyApi.value;
-        let chips = {
-            all: {
-                active: true,
-                name: 'All'
-            },
-            artists: {
-                active: false,
-                name: 'Artists'
-            },
-            albums: {
-                active: false,
-                name: 'Albums'
-            },
-            tracks: {
-                active: false,
-                name: 'Songs'
-            },
-            playlists: {
-                active: false,
-                name: 'Playlists'
-            }
-        }
-        let contentSpotify = {};
-        let contentListView = {};
-        let contentTracksView = [];
-        let contentLoading = false;
-
-        const changeChip = (e) => {
-            let clickedChip = e.path[0].innerText;
-
-            for (let key in chips) {
-                chips[key].active = false;
-            }
-            for (let key in chips) {
-                if (clickedChip == chips[key].name)
-                    chips[key].active = true;
-
-            }
-            $update();
-        }
-
+        let searchbar;
         $on('pageInit', () => {
-            // create searchbar
-            var searchbar = $f7.searchbar.create({
+            searchbar = $f7.searchbar.create({
                 el: '.searchbar',
                 customSearch: true,
                 on: {
                     search(sb, query, previousQuery) {
                         if (query != "")
-                            getSpotifySearch(query);
+                            loadContent();
                     }
                 }
             });
@@ -145,33 +167,93 @@
             });
         })
 
-        const updateListView = () => {
-            contentTracksView = [];
-            console.log(contentSpotify)
-            for (let key in chips) {
-                if (chips[key].active) {
-                    if (contentSpotify.hasOwnProperty(key)) {
-                        contentListView[key] = contentSpotify[key];
-                        console.log(contentListView)
-                        $update();
-                        return;
-                    }
+        let contentSpotify = {};
+        let contentLoading = false;
+        const spotify = $store.getters.spotifyApi.value;
+        let filter = {
+            all: {
+                active: true,
+                name: 'All'
+            },
+            artists: {
+                active: true,
+                name: 'Artists'
+            },
+            albums: {
+                active: true,
+                name: 'Albums'
+            },
+            tracks: {
+                active: true,
+                name: 'Songs'
+            },
+            playlists: {
+                active: true,
+                name: 'Playlists'
+            }
+        }
+
+        const changeChip = (e) => {
+            let clickedChip = e.path[0].innerText;
+
+            for (let key in filter) {
+                filter[key].active = false;
+            }
+
+            for (let key in filter) {
+                if (clickedChip == 'All') {
+                    filter[key].active = true;
+                }
+                if (clickedChip == filter[key].name) {
+                    filter[key].active = true;
                 }
             }
-            contentTracksView = contentSpotify.tracks.items;
-            console.log(contentListView);
+
+            if (searchbar.query != "")
+                loadContent(clickedChip);
+
             $update();
         }
 
-        const getSpotifySearch = (serachText) => {
+        const loadContent = (filterName) => {
+            let searchQuery = searchbar.query;
+
+            if (filter.all.active) {
+                getAllSearch(searchQuery, ["album", "artist", "playlist", "track"], { limit: 3 });
+                return;
+            }
+
+            if (filter.tracks.active) {
+                getAllSearch(searchQuery, ["track"], { limit: 20 });
+                return;
+            }
+
+            if (filter.albums.active) {
+                getAllSearch(searchQuery, ["album"], { limit: 20 });
+                return;
+            }
+
+            if (filter.artists.active) {
+                getAllSearch(searchQuery, ["artist"], { limit: 20 });
+                return;
+            }
+
+            if (filter.playlists.active) {
+                getAllSearch(searchQuery, ["playlist"], { limit: 20 });
+                return;
+            }
+        }
+
+        const getAllSearch = (searchText, filter, options) => {
             contentLoading = true;
             spotify
-                .search(serachText, ["album", "artist", "playlist", "track"])
+                .search(searchText, filter, options)
                 .then(
                     function (data) {
                         contentLoading = false;
                         contentSpotify = data;
-                        updateListView();
+
+                        $update()
                     },
                     function (err) {
                         console.error(err);
@@ -179,7 +261,7 @@
                     }
                 );
         }
-
+       
         return $render;
     }
 
