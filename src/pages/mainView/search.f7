@@ -40,7 +40,7 @@
 
             ${contentSpotify.tracks != undefined ? $h`
             <div class="block-title">Songs</div>
-            <div class="list media-list">
+            <div class="list media-list margin-bottom-half">
                 <ul>
                     ${contentSpotify.tracks.items.map((item) => $h`
                     <li>
@@ -63,9 +63,14 @@
                     `)}
                 </ul>
             </div>
+            <div class="block no-margin-top text-align-center">
+                <button
+                    class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}" @click=${loadMore}>
+                    <span class="preloader"></span>
+                    <span>Load more</span>
+                </button>
+            </div>
             ` : $h ``}
-
-
 
             ${contentSpotify.albums != undefined ? $h`
             <div class="block-title">Albums</div>
@@ -120,7 +125,6 @@
             </div>
             ` : $h ``}
 
-
             ${contentSpotify.playlists != undefined ? $h`
             <div class="block-title">Playlists</div>
             <div class="list media-list">
@@ -151,11 +155,15 @@
             </div>
             ` : $h ``}
 
-
         </div>
     </div>
 </template>
 <style scoped>
+    .button-load-more {
+        width: initial;
+        display: inline-block;
+    }
+
     .chip-block {
         margin: 10px 0px;
     }
@@ -169,7 +177,7 @@
     }
 
     .button-round {
-        text-transform: capitalize;
+        text-transform: inherit;
     }
 
     .track-cover {
@@ -321,6 +329,18 @@
                         contentLoading = false;
                     }
                 );
+        }
+
+
+        let loadMoreVar = false;
+
+        const loadMore = () => {
+            loadMoreVar = true;
+            $update();
+            setTimeout(() => {
+                loadMoreVar = false;
+                $update();
+            }, 3000);
         }
 
         return $render;
