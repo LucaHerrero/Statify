@@ -33,7 +33,11 @@
                 </div>
             </div>
 
-
+            ${contentLoading == true ? $h`
+            <div class="block text-align-center">
+                <div class="preloader color-multi"></div>
+            </div>
+            ` : $h ``}
 
             ${contentSpotify.tracks != undefined ? $h`
             <div class="block-title">Songs</div>
@@ -42,7 +46,13 @@
                     ${contentSpotify.tracks.items.map((item) => $h`
                     <li>
                         <a href="#" class="item-link item-content">
-                            <div class="item-media"><img src="${item.album.images[2].url}" width="45" /></div>
+                            <div class="item-media">
+                                ${item.album.images.length > 0 ? $h`
+                                    <img src="${item.album.images[item.album.images.length -1].url}" width="45" />
+                                ` : $h`
+                                    <img src="./assets/icons/audiotrack_black_48dp.svg" width="45" />
+                                `}
+                            </div>
                             <div class="item-inner">
                                 <div class="item-title-row">
                                     <div class="item-title">${item.name}</div>
@@ -56,71 +66,91 @@
             </div>
             ` : $h ``}
 
-            
+
 
             ${contentSpotify.albums != undefined ? $h`
-                <div class="block-title">Albums</div>
-                <div class="list media-list">
-                    <ul>
-                        ${contentSpotify.albums.items.map((item) => $h`
-                        <li>
-                            <a href="#" class="item-link item-content">
-                                <div class="item-media"><img src="${item.images[2].url}" width="45" /></div>
-                                <div class="item-inner">
-                                    <div class="item-title-row">
-                                        <div class="item-title">${item.name}</div>
-                                    </div>
-                                    <div class="item-subtitle">${item.artists.map((item) => $h`${item.name} `)}</div>
+            <div class="block-title">Albums</div>
+            <div class="list media-list">
+                <ul>
+                    ${contentSpotify.albums.items.map((item) => $h`
+                    <li>
+                        <a href="#" class="item-link item-content">
+                            <div class="item-media">
+                                ${item.images.length > 0 ? $h`
+                                    <img src="${item.images[item.images.length -1].url}" width="45" />
+                                ` : $h`
+                                    <img src="./assets/icons/library_music_black_48dp.svg" width="45" />
+                                `}
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">${item.name}</div>
                                 </div>
-                            </a>
-                        </li>
-                        `)}
-                    </ul>
-                </div>
-                ` : $h ``}
+                                <div class="item-subtitle">${item.artists.map((item) => $h`${item.name} `)}</div>
+                            </div>
+                        </a>
+                    </li>
+                    `)}
+                </ul>
+            </div>
+            ` : $h ``}
 
-                ${contentSpotify.artists != undefined ? $h`
-                    <div class="block-title">Artists</div>
-                    <div class="list media-list">
-                        <ul>
-                            ${contentSpotify.artists.items.map((item) => $h`
-                            <li>
-                                <a href="#" class="item-link item-content">
-                                    <div class="item-media"><img src="${item.images[0].url}" width="45" /></div>
-                                    <div class="item-inner">
-                                        <div class="item-title-row">
-                                            <div class="item-title">${item.name}</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            `)}
-                        </ul>
-                    </div>
+            ${contentSpotify.artists != undefined ? $h`
+            <div class="block-title">Artists</div>
+            <div class="list media-list">
+                <ul>
+                    ${contentSpotify.artists.items.map((item) => $h`
+                    <li>
+                        <a href="#" class="item-link item-content">
+                            <div class="item-media">
+                                ${item.images.length > 0 ? $h`
+                                    <img src="${item.images[item.images.length -1].url}" width="45" />
+                                ` : $h`
+                                    <img src="./assets/icons/face_black_48dp.svg" width="45" />
+                                `}
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">${item.name}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    `)}
+                </ul>
+            </div>
+            ` : $h ``}
+
+
+            ${contentSpotify.playlists != undefined ? $h`
+            <div class="block-title">Playlists</div>
+            <div class="list media-list">
+                <ul>
+                    ${contentSpotify.playlists.items.map((item) => $h`
+                    ${item != undefined ? $h`
+                    <li>
+                        <a href="#" class="item-link item-content">
+                            <div class="item-media">
+                                ${item.images.length > 0 ? $h`
+                                    <img src="${item.images[item.images.length -1].url}" width="45" />
+                                ` : $h`
+                                    <img src="./assets/icons/queue_music_black_48dp.svg" width="45" />
+                                `}
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">${item.name}</div>
+                                </div>
+                                <div class="item-subtitle">${item.owner.display_name}</div>
+
+                            </div>
+                        </a>
+                    </li>
                     ` : $h ``}
-
-
-                    ${contentSpotify.playlists != undefined ? $h`
-                        <div class="block-title">Playlists</div>
-                        <div class="list media-list">
-                            <ul>
-                                ${contentSpotify.playlists.items.map((item) => $h`
-                                <li>
-                                    <a href="#" class="item-link item-content">
-                                        <div class="item-media"><img src="${item.images[0].url}" width="45" /></div>
-                                        <div class="item-inner">
-                                            <div class="item-title-row">
-                                                <div class="item-title">${item.name}</div>
-                                            </div>
-                                            <div class="item-subtitle">${item.owner.display_name}</div>
-
-                                        </div>
-                                    </a>
-                                </li>
-                                `)}
-                            </ul>
-                        </div>
-                        ` : $h ``}
+                    `)}
+                </ul>
+            </div>
+            ` : $h ``}
 
 
         </div>
@@ -154,6 +184,10 @@
                     search(sb, query, previousQuery) {
                         if (query != "")
                             loadContent();
+                    },
+                    clear() {
+                        contentSpotify = {}
+                        $update();
                     }
                 }
             });
@@ -195,7 +229,7 @@
 
         const changeChip = (e) => {
             let clickedChip;
-            if (e.path == undefined){
+            if (e.path == undefined) {
                 clickedChip = e.srcElement.innerText;
             } else {
                 clickedChip = e.path[0].innerText;
@@ -252,6 +286,7 @@
 
         const getAllSearch = (searchText, filter, options) => {
             contentLoading = true;
+            $update();
             spotify
                 .search(searchText, filter, options)
                 .then(
@@ -268,7 +303,7 @@
                     }
                 );
         }
-       
+
         return $render;
     }
 
