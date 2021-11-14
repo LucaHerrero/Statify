@@ -3,7 +3,7 @@
         <div class="navbar">
             <div class="navbar-bg"></div>
             <div class="navbar-inner sliding">
-                <div class="title">Serach</div>
+                <div class="title">Search</div>
                 <div class="subnavbar">
                     <form class="searchbar">
                         <div class="searchbar-inner">
@@ -12,7 +12,6 @@
                                 <i class="searchbar-icon"></i>
                                 <span class="input-clear-button"></span>
                             </div>
-                            <span class="searchbar-disable-button if-not-aurora">Cancel</span>
                         </div>
                     </form>
                 </div>
@@ -48,9 +47,9 @@
                         <a href="#" class="item-link item-content">
                             <div class="item-media">
                                 ${item.album.images.length > 0 ? $h`
-                                    <img src="${item.album.images[item.album.images.length -1].url}" width="45" />
+                                <img src="${item.album.images[item.album.images.length -1].url}" class="track-cover" />
                                 ` : $h`
-                                    <img src="./assets/icons/audiotrack_black_48dp.svg" width="45" />
+                                <img src="./assets/icons/audiotrack_black_48dp.svg" width="45" />
                                 `}
                             </div>
                             <div class="item-inner">
@@ -77,9 +76,9 @@
                         <a href="#" class="item-link item-content">
                             <div class="item-media">
                                 ${item.images.length > 0 ? $h`
-                                    <img src="${item.images[item.images.length -1].url}" width="45" />
+                                <img src="${item.images[item.images.length -1].url}" class="album-cover" />
                                 ` : $h`
-                                    <img src="./assets/icons/library_music_black_48dp.svg" width="45" />
+                                <img src="./assets/icons/library_music_black_48dp.svg" width="45" />
                                 `}
                             </div>
                             <div class="item-inner">
@@ -104,9 +103,9 @@
                         <a href="#" class="item-link item-content">
                             <div class="item-media">
                                 ${item.images.length > 0 ? $h`
-                                    <img src="${item.images[item.images.length -1].url}" width="45" />
+                                <img src="${item.images[item.images.length -1].url}" class="artist-cover" />
                                 ` : $h`
-                                    <img src="./assets/icons/face_black_48dp.svg" width="45" />
+                                <img src="./assets/icons/face_black_48dp.svg" width="45" />
                                 `}
                             </div>
                             <div class="item-inner">
@@ -132,9 +131,9 @@
                         <a href="#" class="item-link item-content">
                             <div class="item-media">
                                 ${item.images.length > 0 ? $h`
-                                    <img src="${item.images[item.images.length -1].url}" width="45" />
+                                <img src="${item.images[item.images.length -1].url}" class="playlist-cover" />
                                 ` : $h`
-                                    <img src="./assets/icons/queue_music_black_48dp.svg" width="45" />
+                                <img src="./assets/icons/queue_music_black_48dp.svg" width="45" />
                                 `}
                             </div>
                             <div class="item-inner">
@@ -171,6 +170,26 @@
 
     .button-round {
         text-transform: capitalize;
+    }
+
+    .track-cover {
+        background-image: url('./assets/icons/audiotrack_black_48dp.svg');
+        width: 45px;
+    }
+
+    .album-cover {
+        background-image: url('./assets/icons/library_music_black_48dp.svg');
+        width: 45px;
+    }
+
+    .artist-cover {
+        background-image: url('./assets/icons/face_black_48dp.svg');
+        width: 45px;
+    }
+
+    .playlist-cover {
+        background-image: url('./assets/icons/queue_music_black_48dp.svg');
+        width: 45px;
     }
 </style>
 <script>
