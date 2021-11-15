@@ -63,18 +63,21 @@
                     `)}
                 </ul>
             </div>
+            ${contentSpotify.tracks.items.length > 2 ? $h`
             <div class="block no-margin-top text-align-center">
                 <button
-                    class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}" @click=${loadMore}>
+                    class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}"
+                    @click=${()=> loadMore('tracks')}>
                     <span class="preloader"></span>
                     <span>Load more</span>
                 </button>
             </div>
+            ` : $h ` `}
             ` : $h ``}
 
             ${contentSpotify.albums != undefined ? $h`
             <div class="block-title">Albums</div>
-            <div class="list media-list">
+            <div class="list media-list margin-bottom-half">
                 <ul>
                     ${contentSpotify.albums.items.map((item) => $h`
                     <li>
@@ -97,11 +100,21 @@
                     `)}
                 </ul>
             </div>
+            ${contentSpotify.albums.items.length > 2 ? $h`
+                <div class="block no-margin-top text-align-center">
+                    <button
+                        class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}"
+                        @click=${()=> loadMore('albums')}>
+                        <span class="preloader"></span>
+                        <span>Load more</span>
+                    </button>
+                </div>
+                ` : $h ` `}
             ` : $h ``}
 
             ${contentSpotify.artists != undefined ? $h`
             <div class="block-title">Artists</div>
-            <div class="list media-list">
+            <div class="list media-list margin-bottom-half">
                 <ul>
                     ${contentSpotify.artists.items.map((item) => $h`
                     <li>
@@ -123,14 +136,23 @@
                     `)}
                 </ul>
             </div>
+            ${contentSpotify.artists.items.length > 2 ? $h`
+                <div class="block no-margin-top text-align-center">
+                    <button
+                        class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}"
+                        @click=${()=> loadMore('artists')}>
+                        <span class="preloader"></span>
+                        <span>Load more</span>
+                    </button>
+                </div>
+                ` : $h ` `}
             ` : $h ``}
 
             ${contentSpotify.playlists != undefined ? $h`
             <div class="block-title">Playlists</div>
-            <div class="list media-list">
+            <div class="list media-list margin-bottom-half">
                 <ul>
                     ${contentSpotify.playlists.items.map((item) => $h`
-                    ${item != undefined ? $h`
                     <li>
                         <a href="#" class="item-link item-content">
                             <div class="item-media">
@@ -149,10 +171,19 @@
                             </div>
                         </a>
                     </li>
-                    ` : $h ``}
                     `)}
                 </ul>
             </div>
+            ${contentSpotify.playlists.items.length > 2 && $h`
+                <div class="block no-margin-top text-align-center">
+                    <button
+                        class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}"
+                        @click=${()=> loadMore('playlists')}>
+                        <span class="preloader"></span>
+                        <span>Load more</span>
+                    </button>
+                </div>
+                `}
             ` : $h ``}
 
         </div>
@@ -201,7 +232,7 @@
     }
 </style>
 <script>
-    export default (props, { $f7, $on, $update, $store }) => {
+    export default (props, { $, $f7, $on, $update, $store }) => {
         let searchbar;
         $on('pageInit', () => {
             searchbar = $f7.searchbar.create({
@@ -230,7 +261,14 @@
 
         let contentSpotify = {};
         let contentLoading = false;
+
         const spotify = $store.getters.spotifyApi.value;
+        let spotifyApiCategories = {
+            tracks: 'track',
+            artists: 'artist',
+            albums: 'album',
+            playlists: 'playlist'
+        }
         let filter = {
             all: {
                 active: true,
@@ -246,7 +284,7 @@
             },
             tracks: {
                 active: true,
-                name: 'Songs'
+                name: 'Songs',
             },
             playlists: {
                 active: true,
@@ -311,13 +349,17 @@
             }
         }
 
-        const getAllSearch = (searchText, filter, options) => {
-            contentLoading = true;
+        const getAllSearch = (searchText, filter, options, loadMore) => {
+            if (!loadMore)
+                contentLoading = true;
             $update();
             spotify
                 .search(searchText, filter, options)
                 .then(
                     function (data) {
+                        if (loadMore)
+                            return loadMoreToObj(data);
+
                         contentLoading = false;
                         contentSpotify = data;
 
@@ -332,15 +374,49 @@
         }
 
 
-        let loadMoreVar = false;
+        const loadMoreToObj = (data) => {
+            if (data.playlists) {
+                let combinedArray = contentSpotify.playlists.items.concat(data.playlists.items);
+                contentSpotify.playlists.items = combinedArray;
 
-        const loadMore = () => {
-            loadMoreVar = true;
-            $update();
-            setTimeout(() => {
                 loadMoreVar = false;
                 $update();
-            }, 3000);
+            }
+
+            if (data.tracks) {
+                let combinedArray = contentSpotify.tracks.items.concat(data.tracks.items);
+                contentSpotify.tracks.items = combinedArray;
+
+                loadMoreVar = false;
+                $update();
+            }
+
+            if (data.albums) {
+                let combinedArray = contentSpotify.albums.items.concat(data.albums.items);
+                contentSpotify.albums.items = combinedArray;
+
+                loadMoreVar = false;
+                $update();
+            }
+
+            if (data.artists) {
+                let combinedArray = contentSpotify.artists.items.concat(data.artists.items);
+                contentSpotify.artists.items = combinedArray;
+
+                loadMoreVar = false;
+                $update();
+            }
+        }
+
+        let loadMoreVar = false;
+
+        const loadMore = (group) => {
+            loadMoreVar = true;
+            $update();
+
+            let currentLoadedItemsCount = contentSpotify[group].items.length;
+            console.log(currentLoadedItemsCount)
+            getAllSearch(searchbar.query, [spotifyApiCategories[group]], { limit: 20, offset: currentLoadedItemsCount }, true);
         }
 
         return $render;
