@@ -214,21 +214,29 @@
     .track-cover {
         background-image: url('./assets/icons/audiotrack_black_48dp.svg');
         width: 45px;
+        height: 45px;
+        object-fit: cover;
     }
 
     .album-cover {
         background-image: url('./assets/icons/library_music_black_48dp.svg');
         width: 45px;
+        height: 45px;
+        object-fit: cover;
     }
 
     .artist-cover {
         background-image: url('./assets/icons/face_black_48dp.svg');
         width: 45px;
+        height: 45px;
+        object-fit: cover;
     }
 
     .playlist-cover {
         background-image: url('./assets/icons/queue_music_black_48dp.svg');
         width: 45px;
+        height: 45px;
+        object-fit: cover;
     }
 </style>
 <script>
@@ -411,6 +419,9 @@
         let loadMoreVar = false;
 
         const loadMore = (group) => {
+            if (loadMoreVar)
+                return;
+
             loadMoreVar = true;
             $update();
 
