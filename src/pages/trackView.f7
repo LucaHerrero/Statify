@@ -35,28 +35,30 @@
         let playButton = "Play";
         console.log(track);
 
-        if (track.preview_url) {
+        const createPlayer = () => {
             player = new Audio(track.preview_url);
-            //start loading
             player.addEventListener('loadstart', function () {
                 previewLoading = true;
                 $update();
             });
             player.addEventListener('canplaythrough', function () {
                 previewLoading = false;
+                player.play();
                 $update();
             });
             player.addEventListener('ended', function () {
                 playButton = "Play";
                 $update();
             });
-
-            //Stop Music when page is about to leave
             $on('pageBeforeOut', (e, page) => {
                 player.pause();
             });
         }
+        
         const playTrack = () => {
+            if (!player)
+                createPlayer();
+                
             if (!previewLoading) {
                 if (player.paused) {
                     playButton = "Pause";
