@@ -50,15 +50,13 @@
                 playButton = "Play";
                 $update();
             });
-            $on('pageBeforeOut', (e, page) => {
-                player.pause();
-            });
+
         }
-        
+
         const playTrack = () => {
             if (!player)
                 createPlayer();
-                
+
             if (!previewLoading) {
                 if (player.paused) {
                     playButton = "Pause";
@@ -70,10 +68,12 @@
                     player.pause();
                 }
             }
-
         }
 
-
+        $on('pageBeforeOut', (e, page) => {
+            if (player)
+                player.pause();
+        });
         return $render;
     };
 </script>
