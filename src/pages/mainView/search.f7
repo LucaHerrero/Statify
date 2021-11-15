@@ -44,7 +44,7 @@
                 <ul>
                     ${contentSpotify.tracks.items.map((item) => $h`
                     <li>
-                        <a href="#" class="item-link item-content">
+                        <a href="/track/${item.id}/" class="item-link item-content">
                             <div class="item-media">
                                 ${item.album.images.length > 0 ? $h`
                                 <img src="${item.album.images[item.album.images.length -1].url}" class="track-cover" />

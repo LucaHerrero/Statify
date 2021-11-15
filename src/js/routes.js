@@ -11,10 +11,50 @@ import DynamicRoutePage from '../pages/dynamic-route.f7';
 import RequestAndLoad from '../pages/request-and-load.f7';
 import NotFoundPage from '../pages/404.f7';
 
+import TrackPage from '../pages/trackView.f7';
+
 var routes = [
   {
     path: '/',
     component: HomePage,
+  },
+  {
+    path: '/track/:trackId/',
+    async: function ({ router, to, resolve }) {
+      var app = router.app;
+      var store = app.store;
+      var trackId = to.params.trackId;
+      var spotify = store.getters.spotifyApi.value;
+
+      app.preloader.show();
+
+      spotify
+        .getTrack(trackId)
+        .then(
+          function (data) {
+            app.preloader.hide();
+            
+            resolve(
+              {
+                component: TrackPage,
+              },
+              {
+                props: {
+                  track: data,
+                }
+              }
+            );
+          },
+          function (err) {
+            console.log(err)
+            app.preloader.hide();
+
+            app.dialog.alert('An error occurred when loading the data.', 'Sorry 😔', function () {
+              router.back();
+            });
+          }
+        );
+    },
   },
   {
     path: '/about/',
@@ -50,7 +90,7 @@ var routes = [
     async: function ({ router, to, resolve }) {
       // App instance
       var app = router.app;
-
+      console.log(app.store)
       // Show Preloader
       app.preloader.show();
 

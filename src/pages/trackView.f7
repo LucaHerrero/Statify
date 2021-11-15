@@ -1,0 +1,77 @@
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">${track.name}</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block block-strong">
+                ${track.preview_url && $h`
+                <button
+                    class="button button-large button-fill button-preloader ${previewLoading ? 'button-loading' : ''}"
+                    @click=${playTrack}>
+                    <span class="preloader"></span>
+                    <span>${playButton}</span>
+                </button>
+                `}
+                <p>Requested content not found.</p>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default (props, { $update, $on }) => {
+        let previewLoading = false;
+        const track = props.track;
+        let player;
+        let playButton = "Play";
+        console.log(track);
+
+        if (track.preview_url) {
+            player = new Audio(track.preview_url);
+            //start loading
+            player.addEventListener('loadstart', function () {
+                previewLoading = true;
+                $update();
+            });
+            player.addEventListener('canplaythrough', function () {
+                previewLoading = false;
+                $update();
+            });
+            player.addEventListener('ended', function () {
+                playButton = "Play";
+                $update();
+            });
+
+            //Stop Music when page is about to leave
+            $on('pageBeforeOut', (e, page) => {
+                player.pause();
+            });
+        }
+        const playTrack = () => {
+            if (!previewLoading) {
+                if (player.paused) {
+                    playButton = "Pause";
+                    $update();
+                    player.play();
+                } else {
+                    playButton = "Play";
+                    $update();
+                    player.pause();
+                }
+            }
+
+        }
+
+
+        return $render;
+    };
+</script>

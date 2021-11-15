@@ -75,8 +75,7 @@ var app = new Framework7({
   routes: routes,
   on: {
     pageInit: function () {
-      console.log('Page initialized');
-      console.log(app.view)
+
     }
   }
 });
