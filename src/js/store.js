@@ -19,7 +19,7 @@ const store = createStore({
         title: 'Apple iPhone X',
         description: 'Expedita sequi perferendis quod illum pariatur aliquam, alias laboriosam! Vero blanditiis placeat, mollitia necessitatibus reprehenderit. Labore dolores amet quos, accusamus earum asperiores officiis assumenda optio architecto quia neque, quae eum.'
       },
-    ]
+    ],
   },
   getters: {
     products({ state }) {
@@ -45,5 +45,6 @@ const store = createStore({
       state.spotifyapi = obj
     }
   },
-})
+});
+
 export default store;

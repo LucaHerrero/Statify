@@ -10,6 +10,11 @@
                     </a>
                 </div>
                 <div class="title">${track.name}</div>
+                <div class="right">
+                    <a href="#" class="link icon-only" @click="${showAvaibleMarkets}">
+                        <i class="icon material-icons">language</i>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="page-content">
@@ -27,8 +32,24 @@
         </div>
     </div>
 </template>
+<style scoped>
+    .marketItem{
+        width: min-content;
+    }
+
+    .marketRow > div {
+        width: fit-content !important;
+        margin: 5px !important;
+    }
+
+    .sheet-modal-inner {
+        overflow-y: scroll !important;
+    }
+</style>
 <script>
-    export default (props, { $update, $on }) => {
+    import { countryCodeEmoji } from 'country-code-emoji';
+
+    export default (props, { $f7, $update, $on }) => {
         let previewLoading = false;
         const track = props.track;
         let player;
@@ -50,6 +71,41 @@
                 playButton = "Play";
                 $update();
             });
+        }
+
+        const showAvaibleMarkets = () => {
+            const emojis = track.available_markets.map(countryCodeEmoji);
+            const text = track.available_markets;
+            let fullText = '';
+
+            for (let i = 0; i < text.length; i++) {
+                fullText = `${fullText}<div class="col"><div class="marketItem">${emojis[i]} ${text[i]}</div></div>`;
+            }
+
+            var dynamicSheet = $f7.sheet.create({
+                content: `
+          <div class="sheet-modal">
+            <div class="toolbar">
+              <div class="toolbar-inner">
+                <div class="left"></div>
+                <div class="right">
+                  <a class="link sheet-close">Done</a>
+                </div>
+              </div>
+            </div>
+            <div class="sheet-modal-inner">
+              <div class="block">
+                <div class="row marketRow">
+          ${fullText}
+
+        </div>
+              </div>
+            </div>
+          </div>
+        `
+            });
+
+            dynamicSheet.open();
 
         }
 
@@ -74,6 +130,7 @@
             if (player)
                 player.pause();
         });
+
         return $render;
     };
 </script>

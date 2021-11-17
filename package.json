@@ -2,8 +2,8 @@
   "name": "stativ",
   "private": true,
   "version": "1.0.0",
-  "description": "Stativ",
-  "repository": "",
+  "description": "Statify",
+  "repository": "https://github.com/LucaHerrero/Statify.git",
   "license": "UNLICENSED",
   "scripts": {
     "start": "npm run dev",
@@ -20,6 +20,7 @@
     "Samsung >= 5"
   ],
   "dependencies": {
+    "country-code-emoji": "^2.3.0",
     "dom7": "^3.0.0",
     "framework7": "^6.3.8",
     "framework7-icons": "^5.0.5",
