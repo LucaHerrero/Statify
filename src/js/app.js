@@ -73,3 +73,11 @@ var app = new Framework7({
     }
   }
 });
+
+
+function reportWindowSize() {
+  console.log(window.innerHeight);
+  console.log(window.innerWidth);
+}
+
+window.onresize = reportWindowSize;
