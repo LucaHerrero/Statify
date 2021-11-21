@@ -18,9 +18,10 @@
             </div>
         </div>
         <div class="page-content">
-            ${album.images.length > 0 ? $h`
+            ${album.images.length > 1 ? $h`
             <div class="previewImageBlock">
-                <img src="${album.images[0].url}" width="100%" />
+                <img src="${album.images[1].url}" width="200px" class="imageBlur" />
+                <img src="${album.images[1].url}" width="200px" class="imageNoBlur" />
             </div>
             ` : $h`
             `}
@@ -61,8 +62,6 @@
 
     .previewImageBlock>img {
         display: block;
-        width: 100vw;
-        height: 100vw;
         object-fit: cover;
         object-position: center;
     }
@@ -73,6 +72,25 @@
         z-index: 1;
         height: 1000px;
         margin-top: 0;
+    }
+
+    .imageBlur {
+        -webkit-filter: blur(20px);
+        -moz-filter: blur(20px);
+        -o-filter: blur(20px);
+        -ms-filter: blur(20px);
+        filter: blur(20px);
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 30px;
+    }
+
+    .imageNoBlur {
+        padding: 30px;
+        position: inherit;
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>
 <script>
@@ -88,27 +106,6 @@
         let player;
         let playButton = "Play";
         console.log(track);
-        let imageEl = '';
-
-        const loadImage = () => {
-            let spacer = $('#spacer');
-            let trackPreviewImage = $('#trackPreviewImage');
-            let out = ``;
-
-            if (album.images.length > 0) {
-                let imageUrl = album.images[album.images.length - 1].url;
-                let height = album.images[album.images.length - 1].height;
-                out = `
-                <div style="height: ${height}"></div>
-                <img src="${imageUrl}" />
-            `;
-
-
-            }
-
-            return out;
-        }
-
 
         const createPlayer = () => {
             player = new Audio(track.preview_url);
