@@ -11,6 +11,11 @@
                 </div>
                 <div class="title">Add ${trackArray.length} ${trackArray.length > 1 ? 'tracks' : 'track'} to playlist
                 </div>
+                <div class="right">
+                    <a href="#" class="link icon-only" @click="${selectAll}">
+                      <i class="icon material-icons-round">${viewData.select ? 'select_all' : 'deselect'}</i>
+                    </a>
+                  </div>
             </div>
         </div>
         <div class="fab-backdrop"></div>
@@ -78,7 +83,8 @@
             playlistsLoading: true,
             playlists: [],
             saveLoading: false,
-            saveCount: 0
+            saveCount: 0,
+            select: true
         }
 
         console.log(props.items)
@@ -87,6 +93,17 @@
                 $f7router.back();
             });
 
+        }
+
+        const selectAll = () => {
+            let checkedArray = $('[name="playlistSelection"]');
+
+            for (let i = 0; i < checkedArray.length; i++) {
+                const element = checkedArray[i];
+                $(element).prop('checked', viewData.select);
+            }
+            viewData.select = !(viewData.select);
+            $update();
         }
 
         const loadPlaylists = () => {
