@@ -25,21 +25,151 @@
             </div>
             ` : $h`
             `}
-            <div class="block block-strong contentBlock">
-                ${track.preview_url && $h`
-                <button
-                    class="button button-large button-fill button-preloader ${previewLoading ? 'button-loading' : ''}"
-                    @click=${playTrack}>
-                    <span class="preloader"></span>
-                    <span>${playButton}</span>
-                </button>
-                `}
-                <p>Requested content not found.</p>
+            <div class="contentBlock">
+                ${viewData.showProgressbar && $h`
+                <span class="progressbar" id="trackprogressbar"></span>`}
+
+
+                <div class="block block-strong no-margin-top row">
+                    ${track.preview_url && $h`
+                    <button
+                        class="col button button-large button-fill button-round button-preloader playButton ${previewLoading ? 'button-loading' : ''}"
+                        @click=${playTrack}>
+                        <span class="preloader"></span>
+                        <span></span>
+                        <span class="material-icons-round optionButtonIcon">
+                            ${playButton}
+                        </span>
+                    </button>
+                    <button class="col button button-large button-round optionsButtons button-preloader ${viewData.trackIsSavedLoading ? 'button-loading' : ''}" @click=${addRemoveTrack} >
+                        <span class="preloader"></span>
+                        <span></span>
+                        <span class="material-icons-round optionButtonIcon">
+                            ${viewData.trackIsSaved ? 'favorite' : 'favorite_border'}
+                        </span>
+                    </button>
+                    
+                    `}
+
+                </div>
+
+                <div class="block-title">Album</div>
+                <div class="list media-list">
+                    <ul>
+                        <li>
+                            <a href="#" class="item-link item-content">
+                                <div class="item-media">
+                                    ${album.images.length > 1 ? $h`
+                                    <img src="${album.images[1].url}" width="70" />
+                                    ` : $h`
+                                    <img src="./assets/icons/library_music_black_48dp.svg" width="70" />
+                                    `}
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">${album.name}</div>
+                                    </div>
+                                    <div class="item-subtitle">
+                                        ${album.artists.map((item) => $h`
+                                        ${item.name} `)}
+                                    </div>
+                                    <div class="item-text">${album.release_date.substring(0, 4)} · ${album.total_tracks}
+                                        Tracks</div>
+                                </div>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+                ${track.artists != undefined ? $h`
+                <div class="block-title">Artists</div>
+                <div class="list media-list margin-bottom-half">
+                    <ul>
+                        ${track.artists.map((item) => $h`
+                        <li>
+                            <a href="/artist/${item.id}" class="item-link item-content">
+                                <div class="item-media">
+                                    <i class="icon material-icons-round">face</i>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">${item.name}</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        `)}
+                    </ul>
+                </div>
+
+                ` : $h ``}
+
+
+                <div class="block-title">Infos</div>
+                <div class="list">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="material-icons-round">
+                                        av_timer
+                                    </i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">Duration time</div>
+                                    <div class="item-after">${viewData.duration}</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="${track.external_urls.spotify}" class="item-link item-content external">
+                                <div class="item-media">
+                                    <i class="icon material-icons-round">launch
+                                    </i>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">Open in Spotify</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-f7"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">Jenna Smith</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <style scoped>
+    .spotify-icon {
+        height: 24px;
+        width: 24px;
+        background-image: url(./assets/icons/spotify.svg);
+        margin-right: 5px;
+        color: var(--f7-text-color)
+    }
+
+    .playButton {
+        width: fit-content !important;
+    }
+
+    .optionsButtons {
+        width: fit-content !important;
+    }
+
+    .optionButtonIcon {
+        margin-left: 0 !important;
+        margin-right: 4px;
+    }
+
     .marketItem {
         width: min-content;
     }
@@ -96,7 +226,8 @@
 <script>
     import { countryCodeEmoji } from 'country-code-emoji';
 
-    export default (props, { $, $f7, $update, $on }) => {
+    export default (props, { $, $f7, $update, $on, $store }) => {
+        const spotify = $store.getters.spotifyApi.value;
         let previewLoading = false;
         var regExRegion = /^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;
         let region = regExRegion.exec(navigator.language)[5];
@@ -104,8 +235,68 @@
         const track = props.track;
         const album = track.album;
         let player;
-        let playButton = "Play";
+        let playButton = "play_arrow";
+        let viewData = {
+            trackIsSavedLoading: true
+        };
         console.log(track);
+
+        $on('pageInit', (e, page) => {
+            const msToTime = (duration) => {
+                var milliseconds = parseInt((duration % 1000) / 100),
+                    seconds = Math.floor((duration / 1000) % 60),
+                    minutes = Math.floor((duration / (1000 * 60))),
+
+                    minutes = (minutes < 10) ? "0" + minutes : minutes;
+                seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+                return minutes + ":" + seconds;
+            }
+
+            viewData.duration = msToTime(track.duration_ms);
+            $update();
+        });
+
+        //Load if Tracks is in User Library
+        spotify
+            .containsMySavedTracks([track.id]) // note that we don't pass a user id
+            .then(
+                function (data) {
+                    viewData.trackIsSavedLoading = false;
+                    viewData.trackIsSaved = data[0];
+                    $update();
+                }
+                
+            );
+
+
+
+        const addRemoveTrack = () => {
+            viewData.trackIsSavedLoading = true;
+            let addRemoveFunc;
+
+            if (viewData.trackIsSaved) {
+                addRemoveFunc = spotify.removeFromMySavedTracks
+            } else {
+                addRemoveFunc = spotify.addToMySavedTracks
+            }
+            addRemoveFunc([track.id]) // note that we don't pass a user id
+            .then(
+                function (data) {
+                    viewData.trackIsSavedLoading = false;
+                    viewData.trackIsSaved = !(viewData.trackIsSaved);
+                    console.log(viewData)
+                    $update();
+                },
+                function(err) {
+                    console.log(err)
+                    viewData.trackIsSavedLoading = false;
+                    $update()
+                }
+                
+            );
+
+        }
 
         const createPlayer = () => {
             player = new Audio(track.preview_url);
@@ -119,7 +310,13 @@
                 $update();
             });
             player.addEventListener('ended', function () {
-                playButton = "Play";
+                playButton = "play_arrow";
+                viewData.showProgressbar = false;
+                $update();
+            });
+            player.addEventListener('timeupdate', function () {
+                let trackProgress = player.currentTime / player.duration * 100
+                $f7.progressbar.set('.progressbar', trackProgress);
                 $update();
             });
         }
@@ -173,11 +370,14 @@
 
             if (!previewLoading) {
                 if (player.paused) {
-                    playButton = "Pause";
+                    playButton = "pause";
+                    viewData.showProgressbar = true;
                     $update();
                     player.play();
                 } else {
-                    playButton = "Play";
+                    playButton = "play_arrow";
+                    viewData.showProgressbar = false;
+
                     $update();
                     player.pause();
                 }
