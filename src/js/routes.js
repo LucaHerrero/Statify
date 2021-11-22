@@ -7,6 +7,8 @@ import ProductPage from '../pages/product.f7';
 import ProfilePage from '../pages/mainView/profile.f7';
 import SearchPage from '../pages/mainView/search.f7'
 
+
+import addPlaylist from '../pages/add/playlist.f7'
 import DynamicRoutePage from '../pages/dynamic-route.f7';
 import RequestAndLoad from '../pages/request-and-load.f7';
 import NotFoundPage from '../pages/404.f7';
@@ -59,6 +61,11 @@ var routes = [
   {
     path: '/about/',
     component: AboutPage,
+  },
+
+  {
+    path: '/add/playlist',
+    component: addPlaylist,
   },
   {
     path: '/form/',

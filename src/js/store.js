@@ -30,11 +30,18 @@ const store = createStore({
     },
     spotifyApi({state}) {
       return state.spotifyapi;
+    },
+    userId({state}) {
+      return state.userId;
     }
   },
   actions: {
     addProduct({ state }, product) {
       state.products = [...state.products, product];
+    },
+
+    setUserId({ state }, userId) {
+      state.userId = userId;
     },
 
     addLoginMethod({state}, method) {

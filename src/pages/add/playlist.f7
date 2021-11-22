@@ -1,0 +1,180 @@
+<template>
+    <div class="page" data-name="about">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">Add ${trackArray.length} ${trackArray.length > 1 ? 'tracks' : 'track'} to playlist
+                </div>
+            </div>
+        </div>
+        <div class="fab-backdrop"></div>
+        <div class="fab fab-right-bottom">
+            <a href="#" @click="${saveToPlaylist}">
+                ${!(viewData.saveLoading) ? $h`
+
+                <i class="icon material-icons-round">done</i>
+                ` : $h `
+                <div class="text-align-center">
+                    <div class="preloader"></div>
+                </div>
+
+                `}
+            </a>
+        </div>
+        <div class="page-content">
+            <div class="block block-strong inset">
+                <p>Select the playlists on which the tracks are to be saved.</p>
+            </div>
+            <div class="block-title">${viewData.playlists.length > 1 ? 'Playlists' : 'Playlist'}</div>
+            <div class="list media-list">
+                <ul>
+                    ${viewData.playlists != undefined ? $h`
+                    <div class="list media-list margin-top-half">
+                        <ul class="no-padding-left">
+                            ${viewData.playlists.map((item) => $h`
+                            <li>
+                                <label class="item-checkbox item-content">
+                                    <input type="checkbox" name="playlistSelection" value="${item.id}" />
+                                    <i class="icon icon-checkbox"></i>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">${item.name}</div>
+                                            <div class="item-after">${item.tracks.total} Tracks</div>
+                                        </div>
+                                        <div class="item-subtitle">${item.owner.display_name}</div>
+                                        <div class="item-text">${item.description}</div>
+                                    </div>
+                                </label>
+                            </li>
+                            `)}
+                        </ul>
+                    </div>
+
+                    ` : $h `
+                    <div class="block block-strong">
+                        <div class="block-inner text-align-center">
+                            <div class="preloader"></div>
+                        </div>
+                    </div>
+                    `}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default (props, { $, $f7router, $f7, $store, $on, $update }) => {
+        const spotify = $store.getters.spotifyApi.value;
+        const trackArray = props.items;
+        const userId = $store.getters.userId.value
+        let viewData = {
+            playlistsLoading: true,
+            playlists: [],
+            saveLoading: false,
+            saveCount: 0
+        }
+
+        console.log(props.items)
+        if (!props.items || props.items.length < 1) {
+            $f7.dialog.alert('An error is happend, 0 tracks found to add to your playlist.', 'Sorry 😔', function () {
+                $f7router.back();
+            });
+
+        }
+
+        const loadPlaylists = () => {
+            viewData.playlists = []
+            $update();
+            spotify
+                .getUserPlaylists() // note that we don't pass a user id
+                .then(
+                    function (data) {
+                        console.log(data)
+                        viewData.playlists = getOnlyEditablePlaylist(data, userId)
+                        console.log(viewData.playlists)
+                        $update();
+                    },
+                    function (err) {
+                        console.error(err);
+                        $f7.dialog.alert('An error occurred when loading the data, you go back to the previous page.', 'Sorry 😔', function () {
+                            $f7router.back();
+                        });
+                    }
+                );
+        }
+        $on('pageInit', (e, page) => {
+            loadPlaylists();
+
+        });
+
+        const saveToPlaylist = () => {
+            viewData.saveLoading = true;
+            let checkedArray = $('[name="playlistSelection"]:checked');
+            let trackUriArray = [];
+            if (checkedArray.length == 0) {
+                $f7.toast.create({
+                    text: 'No items selected 🤨.',
+                    closeTimeout: 3000,
+                }).open();
+            }
+
+            for (let i = 0; i < trackArray.length; i++) {
+                trackUriArray.push(trackArray[i].uri);
+
+            }
+
+
+
+            for (let i = 0; i < checkedArray.length; i++) {
+                const playlistId = checkedArray[i].value;
+
+                spotify
+                    .addTracksToPlaylist(playlistId, trackUriArray) // note that we don't pass a user id
+                    .then(
+                        function (data) {
+                            viewData.saveCount = viewData.saveCount + 1;
+                            if (viewData.saveCount == checkedArray.length) {
+                                viewData.saveLoading = false;
+                                viewData.saveCount = 0;
+                                loadPlaylists();
+                            }
+                            $update();
+                        },
+                        function (err) {
+                            console.error(err);
+                            $f7.dialog.alert('An error occurred when loading the data, you go back to the previous page.', 'Sorry 😔', function () {
+                                $f7router.back();
+                            });
+                        }
+                    );
+            }
+        }
+
+        const getOnlyEditablePlaylist = (data, userId) => {
+            let playlists = data.items;
+            let out = [];
+
+            for (let i = 0; i < playlists.length; i++) {
+                if (playlists[i].collaborative) {
+                    out.push(playlists[i])
+                    continue;
+                }
+
+                if (playlists[i].owner.id == userId) {
+                    out.push(playlists[i])
+                    continue;
+                }
+            }
+            return out
+        }
+
+        return $render;
+    };
+</script>

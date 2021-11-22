@@ -106,7 +106,7 @@
           function (data) {
             userInformations = data;
             skeletonClass = '';
-            
+            $store.dispatch("setUserId", data.id);
             $update();
           },
           function (err) {
