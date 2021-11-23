@@ -8,7 +8,7 @@ class Authorization {
 
     login = () => {
         const apiUrl = 'https://accounts.spotify.com/authorize';
-        const clientID = '9641a6396aff4a858438393e8475b816';
+        const clientID = 'c34980adc6984ebd9418e19f418f10dd';
         const {host, protocol, pathname} = window.location;
         const redirectUri = `${protocol}//${host}${pathname}`;
         const scope = [

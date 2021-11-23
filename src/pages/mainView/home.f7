@@ -58,6 +58,33 @@
             </div>
 
 
+            <div class="block-title">Your top Artists</div>
+            <div data-space-between="50" class="swiper-container topArtists">
+                <div class="swiper-wrapper">
+                    ${viewData.myTopArtists != undefined && viewData.myTopArtists.total > 0 && $h`
+                    ${viewData.myTopArtists.items.map((item) => $h`
+
+                    <div class="swiper-slide">
+                        <a href="/artist/${item.id}/">
+                            ${item.images.length > 1 ? $h`
+                            <img class="elevation-3 round" src="${item.images[1].url}"/>
+                            ` : $h`
+                            <img class="elevation-3" src="./assets/icons/audiotrack_black_48dp.svg" width="100"/>
+                            `}
+                            <div class="title text-align-center">${item.name}</div>
+                            <div class="artist text-align-center">${item.followers.total.toLocaleString()} Followers
+                            </div>
+                        </a>
+                    </div>
+                    `)}
+                    `}
+                </div>
+            </div>
+
+
+
+
+
             <div class="list">
                 <ul>
                     <li>
@@ -120,34 +147,43 @@
     </div>
 </template>
 <style scoped>
-    .topTracks > div > div.swiper-slide {
-        width: fit-content;
+    .swiper-container > div > div.swiper-slide {
+        width: 150px;
     }
 
-    .topTracks > div > div.swiper-slide:first-child {
+    .swiper-container > div > div.swiper-slide:first-child {
         margin-left: 10px;
     }
 
-    .topTracks > div > div.swiper-slide:last-child {
+    .swiper-container > div > div.swiper-slide:last-child {
         margin-right: 10px;
     }
 
-    .topTracks > div > div.swiper-slide > a > img {
+    .swiper-container > div > div.swiper-slide > a > img {
         width: 150px;
+        height: 150px;
         border-radius: 5%;
+        object-fit: cover;
+
     }
-    .topTracks > div > div.swiper-slide > a > * {
+
+    .swiper-container > div > div.swiper-slide > a {
         width: 150px;
         text-overflow: ellipsis;
         overflow-y: hidden;
     }
-    .topTracks > div > div.swiper-slide > a > div.title {
+
+    .swiper-container > div > div.swiper-slide > a > div.title {
         color: var(--f7-block-title-large-text-color);
         font-weight: 500;
     }
-    .topTracks > div > div.swiper-slide > a > div.artist {
+
+    .swiper-container > div > div.swiper-slide > a > div.artist {
         color: var(--f7-block-title-large-text-color);
         opacity: 0.5;
+    }
+    .round {
+        border-radius: 50% !important;
     }
 </style>
 <script>
@@ -194,6 +230,34 @@
                             slidesPerView: 'auto'
                         });
 
+
+                    },
+                    function (err) {
+                        console.error(err);
+                        $f7.dialog.alert('An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.', 'Sorry 😔', function () {
+                            localStorage.removeItem('tokenMap')
+                            window.location.href = window.location.origin + window.location.pathname;
+                        });
+                    }
+                );
+
+
+            spotify
+                .getMyTopArtists() // note that we don't pass a user id
+                .then(
+                    function (data) {
+                        console.log('getArtist', data)
+                        viewData.myTopArtists = data;
+                        console.log(data)
+                        $update();
+                        let slider = $f7.swiper.create('.topArtists', {
+                            speed: 200,
+                            spaceBetween: 15,
+                            freeMode: true,
+                            loopedSlides: data.items.length,
+                            observer: true,
+                            slidesPerView: 'auto'
+                        });
 
                     },
                     function (err) {
