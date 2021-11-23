@@ -139,6 +139,9 @@
                     i--;
                 }
             }
+
+            if (trackArray.length == 0)
+                $f7router.back();
             $update();
         }
 
