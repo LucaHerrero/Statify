@@ -9,7 +9,7 @@
                         <span class="if-not-md">Back</span>
                     </a>
                 </div>
-                <div class="title">${track.name}</div>
+                <div class="title">${album.name}</div>
                 <div class="right">
                     <a href="#" class="link icon-only" @click="${showAvaibleMarkets}">
                         <i class="icon material-icons">language</i>
@@ -20,28 +20,18 @@
         <div class="page-content">
             ${album.images.length > 1 ? $h`
             <div class="previewImageBlock">
-                <img src="${album.images[1].url}" width="200px" class="imageBlur" />
-                <img src="${album.images[1].url}" width="200px" class="imageNoBlur" />
+                <img src="${album.images[1].url}" width="200px" class="imageBlur"/>
+                <img src="${album.images[1].url}" width="200px" class="imageNoBlur"/>
             </div>
             ` : $h`
             `}
             <div class="contentBlock">
                 ${viewData.showProgressbar && $h`
-                <span class="progressbar" id="trackprogressbar"></span>`}
+                <span class="progressbar" id="trackprogressbar"></span>
+                `}
 
 
                 <div class="block block-strong no-margin-top optionsBlock">
-                    ${track.preview_url && $h`
-                    <button
-                        class=" button button-large button-fill button-round button-preloader optionsButtons ${previewLoading ? 'button-loading' : ''}"
-                        @click=${playTrack}>
-                        <span class="preloader"></span>
-                        <span></span>
-                        <span class="material-icons-round optionButtonIcon">
-                            ${playButton}
-                        </span>
-                    </button>
-                    `}
                     <div style="margin-left: auto; display: flex;">
                         <a class=" button button-large button-round optionsButtons" @click="${addToPlaylist}">
                             <span class="material-icons-round optionButtonIcon">
@@ -49,71 +39,63 @@
                             </span>
                         </a>
                         <button
-                            class=" button button-large button-round optionsButtons button-preloader ${viewData.trackIsSavedLoading ? 'button-loading' : ''}"
-                            @click=${addRemoveTrack}>
+                                class=" button button-large button-round optionsButtons button-preloader ${viewData.albumIsSavedLoading ? 'button-loading' : ''}"
+                                @click=${addRemoveAlbum}>
                             <span class="preloader"></span>
                             <span></span>
                             <span class="material-icons-round optionButtonIcon">
-                                ${viewData.trackIsSaved ? 'favorite' : 'favorite_border'}
+                                ${viewData.albumIsSaved ? 'favorite' : 'favorite_border'}
                             </span>
                         </button>
-
                     </div>
-
-
                 </div>
+                <!-- Beginn Pagecontent -->
 
-                <div class="block-title">Album</div>
+                ${album.tracks != undefined ? $h`
+                <div class="block-title">Songs</div>
                 <div class="list media-list">
                     <ul>
-                        <li>
-                            <a href="/album/${album.id}/" class="item-link item-content">
-                                <div class="item-media">
-                                    ${album.images.length > 1 ? $h`
-                                    <img src="${album.images[1].url}" width="70" />
-                                    ` : $h`
-                                    <img src="./assets/icons/library_music_black_48dp.svg" width="70" />
-                                    `}
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title-row">
-                                        <div class="item-title">${album.name}</div>
+                        ${album.tracks.items.map((item) => $h`
+                        <li class="swipeout">
+                            <div class="swipeout-content">
+                                <a href="/track/${item.id}/" class="item-link item-content">
+                                    <div class="item-media">
+                                        ${album.images.length > 0 ? $h`
+                                        <img src="${album.images[album.images.length -1].url}" class="track-cover"/>
+                                        ` : $h`
+                                        <img src="./assets/icons/audiotrack_black_48dp.svg" width="45"/>
+                                        `}
                                     </div>
-                                    <div class="item-subtitle">
-                                        ${album.artists.map((item) => $h`
-                                        ${item.name} `)}
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">${item.name}</div>
+                                            <div class="item-after">
+
+                                                ${item.isSaved ? $h`<span class="material-icons-round trackHeart">favorite</span>` : $h ``}
+                                            </div>
+                                        </div>
+                                        <div class="item-subtitle">${item.artists.map((item) => $h`${item.name} `)}
+                                        </div>
                                     </div>
-                                    <div class="item-text">${album.release_date.substring(0, 4)} · ${album.total_tracks}
-                                        Tracks</div>
-                                </div>
-                            </a>
-                        </li>
+                                </a>
+                            </div>
+                            <div class="swipeout-actions-left">
+                                <a href="#" class="swipeout-overswipe" @click="${() => addRemoveTrack(item)}">
+                                    <span class="material-icons-round optionButtonIcon">
+                                ${item.isSaved ? 'favorite' : 'favorite_border'}
+                            </span></a>
+                            </div>
+                            <div class="swipeout-actions-right">
+                                <a href="#" class="swipeout-overswipe" @click="${() => addToPlaylistTrack(item)}"><span
+                                        class="material-icons-round optionButtonIcon">
+                                playlist_add
+                            </span></a>
 
-
-                    </ul>
-                </div>
-
-                ${track.artists != undefined ? $h`
-                <div class="block-title">Artists</div>
-                <div class="list media-list margin-bottom-half">
-                    <ul>
-                        ${track.artists.map((item) => $h`
-                        <li>
-                            <a href="/artist/${item.id}" class="item-link item-content">
-                                <div class="item-media">
-                                    <i class="icon material-icons-round">face</i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title-row">
-                                        <div class="item-title">${item.name}</div>
-                                    </div>
-                                </div>
-                            </a>
+                            </div>
                         </li>
                         `)}
                     </ul>
                 </div>
-
                 ` : $h ``}
 
 
@@ -123,8 +105,8 @@
                         <li>
                             <div class="item-content">
                                 <div class="item-media"><i class="material-icons-round">
-                                        av_timer
-                                    </i></div>
+                                    av_timer
+                                </i></div>
                                 <div class="item-inner">
                                     <div class="item-title">Duration time</div>
                                     <div class="item-after">${viewData.duration}</div>
@@ -132,7 +114,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="${track.external_urls.spotify}" class="item-link item-content external">
+                            <a href="${album.external_urls.spotify}" class="item-link item-content external">
                                 <div class="item-media">
                                     <i class="icon material-icons-round">launch
                                     </i>
@@ -146,25 +128,19 @@
                         </li>
                     </ul>
                 </div>
+                <!-- End of Pagecontent -->
             </div>
         </div>
     </div>
 </template>
 <style scoped>
+    .trackHeart {
+        font-size: 15px;
+        margin-right: -5px;
+    }
+
     .optionsBlock {
         display: flex;
-    }
-
-    .spotify-icon {
-        height: 24px;
-        width: 24px;
-        background-image: url(./assets/icons/spotify.svg);
-        margin-right: 5px;
-        color: var(--f7-text-color)
-    }
-
-    .playButton {
-        width: fit-content !important;
     }
 
     .optionsButtons {
@@ -180,7 +156,7 @@
         width: min-content;
     }
 
-    .marketRow>div {
+    .marketRow > div {
         width: fit-content !important;
         margin: 5px !important;
     }
@@ -196,7 +172,14 @@
         z-index: 0;
     }
 
-    .previewImageBlock>img {
+    .track-cover {
+        background-image: url('./assets/icons/audiotrack_black_48dp.svg');
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+    }
+
+    .previewImageBlock > img {
         display: block;
         object-fit: cover;
         object-position: center;
@@ -206,8 +189,8 @@
         background: var(--f7-page-bg-color);
         position: relative;
         z-index: 1;
-        height: 1000px;
         margin-top: 0;
+        height: fit-content;
     }
 
     .imageBlur {
@@ -230,22 +213,65 @@
     }
 </style>
 <script>
-    import { countryCodeEmoji } from 'country-code-emoji';
+    import {countryCodeEmoji} from 'country-code-emoji';
 
-    export default (props, { $, $f7, $update, $on, $store, $f7router }) => {
+    export default (props, {$, $f7, $update, $on, $store, $f7router}) => {
         const spotify = $store.getters.spotifyApi.value;
         let previewLoading = false;
         var regExRegion = /^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;
         let region = regExRegion.exec(navigator.language)[5];
         console.log(region)
-        const track = props.track;
-        const album = track.album;
+        let album = props.album;
+        console.log(album)
         let player;
         let playButton = "play_arrow";
         let viewData = {
+            albumIsSavedLoading: true,
             trackIsSavedLoading: true
         };
-        console.log(track);
+
+        const addToPlaylistTrack = (item) => {
+            $f7router.navigate('/add/playlist/', {
+                props: {
+                    items: [item]
+                }
+            })
+        }
+        const checkTracksSaved = () => {
+            viewData.trackIsSavedLoading = true
+            let trackIds = []
+            for (let i = 0; i < album.tracks.items.length; i++) {
+                let track = album.tracks.items[i];
+                trackIds.push(track.id)
+            }
+            viewData.albumIsSavedLoading = true;
+            spotify
+                .containsMySavedAlbums([album.id]) // note that we don't pass a user id
+                .then(
+                    function (data) {
+                        viewData.albumIsSavedLoading = false;
+                        album.isSaved = data[0]
+                        console.log(album)
+                        $update();
+                    }
+                );
+            spotify
+                .containsMySavedTracks(trackIds) // note that we don't pass a user id
+                .then(
+                    function (data) {
+                        viewData.trackIsSavedLoading = false;
+                        for (let i = 0; i < album.tracks.items.length; i++) {
+                            let track = album.tracks.items[i];
+                            track.isSaved = data[i]
+                        }
+                        console.log(album.tracks)
+                        $update();
+                    }
+                );
+
+
+        }
+        checkTracksSaved()
 
         $on('pageInit', (e, page) => {
             const msToTime = (duration) => {
@@ -259,46 +285,51 @@
                 return minutes + ":" + seconds;
             }
 
-            viewData.duration = msToTime(track.duration_ms);
+            let allDuration = 0;
+            for (let i = 0; i < album.tracks.items.length; i++) {
+                let element = album.tracks.items[i];
+                let durationItem = element.duration_ms;
+
+                allDuration = allDuration + durationItem;
+            }
+            viewData.duration = msToTime(allDuration);
             $update();
         });
 
-        //Load if Tracks is in User Library
+        //Load if album is in User Library
         spotify
-            .containsMySavedTracks([track.id]) // note that we don't pass a user id
+            .containsMySavedAlbums([album.id]) // note that we don't pass a user id
             .then(
                 function (data) {
-                    viewData.trackIsSavedLoading = false;
-                    viewData.trackIsSaved = data[0];
+                    viewData.albumIsSavedLoading = false;
+                    viewData.albumIsSaved = data[0];
                     $update();
                 }
-
             );
 
         const addToPlaylist = () => {
             $f7router.navigate('/add/playlist/', {
                 props: {
-                    items: [track]
+                    items: album.tracks.items
                 }
             })
         }
 
-        const addRemoveTrack = () => {
-            viewData.trackIsSavedLoading = true;
+        const addRemoveAlbum = () => {
+            viewData.albumIsSavedLoading = true;
             $update();
             let addRemoveFunc;
 
             if (viewData.trackIsSaved) {
-                addRemoveFunc = spotify.removeFromMySavedTracks
+                addRemoveFunc = spotify.removeFromMySavedAlbums
             } else {
-                addRemoveFunc = spotify.addToMySavedTracks
+                addRemoveFunc = spotify.addToMySavedAlbums
             }
-            addRemoveFunc([track.id]) // note that we don't pass a user id
+            addRemoveFunc([album.id]) // note that we don't pass a user id
                 .then(
                     function (data) {
-                        viewData.trackIsSavedLoading = false;
-                        viewData.trackIsSaved = !(viewData.trackIsSaved);
-                        console.log(viewData)
+                        viewData.albumIsSavedLoading = false;
+                        viewData.albumIsSaved = !(viewData.albumIsSaved);
                         $update();
                     },
                     function (err) {
@@ -309,6 +340,31 @@
 
                 );
 
+        }
+        const addRemoveTrack = (item) => {
+            viewData.trackIsSavedLoading = true;
+            $update();
+            let addRemoveFunc;
+
+            if (viewData.albumIsSaved) {
+                addRemoveFunc = spotify.removeFromMySavedTracks
+            } else {
+                addRemoveFunc = spotify.addToMySavedTracks
+            }
+            addRemoveFunc([item.id]) // note that we don't pass a user id
+                .then(
+                    function (data) {
+                        viewData.albumIsSavedLoading = false;
+                        checkTracksSaved()
+                        $update();
+                    },
+                    function (err) {
+                        console.log(err)
+                        viewData.albumIsSavedLoading = false;
+                        checkTracksSaved()
+                        $update()
+                    }
+                );
         }
 
         const createPlayer = () => {
@@ -348,7 +404,7 @@
                 fullText = `${fullText}<div class="col"><div class="marketItem">${emojis[i]} ${text[i]}</div></div>`;
             }
 
-            var dynamicSheet = $f7.sheet.create({
+            let dynamicSheet = $f7.sheet.create({
                 content: `
           <div class="sheet-modal">
             <div class="toolbar">

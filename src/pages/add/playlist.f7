@@ -36,6 +36,42 @@
             <div class="block block-strong inset">
                 <p>Select the playlists on which the tracks are to be saved.</p>
             </div>
+            <div class="list accordion-list accordion-opposite">
+                <ul>
+                    <li class="accordion-item">
+                        <a href="" class="item-link item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Tracks</div>
+                            </div>
+                        </a>
+                        <div class="accordion-item-content">
+
+                            <div class="list media-list margin-top-half">
+                                <ul class="no-padding-left">
+                                    ${trackArray.map((item) => $h`
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-media">
+
+                                                <img src="./assets/icons/library_music_black_48dp.svg" width="35" />
+
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title-row">
+                                                    <div class="item-title">${item.name}</div>
+                                                    <div class="item-after"><i class="icon material-icons-round" @click="${() => removeItem(item)}">cancel</i></div>
+                                                </div>
+                                                <div class="item-subtitle">${item.artists.map((item) => $h`${item.name} `)}</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    `)}
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
             <div class="block-title">${viewData.playlists.length > 1 ? 'Playlists' : 'Playlist'}</div>
             <div class="list media-list">
                 <ul>
@@ -77,7 +113,7 @@
 <script>
     export default (props, { $, $f7router, $f7, $store, $on, $update }) => {
         const spotify = $store.getters.spotifyApi.value;
-        const trackArray = props.items;
+        let trackArray = props.items;
         const userId = $store.getters.userId.value
         let viewData = {
             playlistsLoading: true,
@@ -93,6 +129,17 @@
                 $f7router.back();
             });
 
+        }
+
+        const removeItem = (item) => {
+            for( var i = 0; i < trackArray.length; i++){
+
+                if ( trackArray[i] === item) {
+                    trackArray.splice(i, 1);
+                    i--;
+                }
+            }
+            $update();
         }
 
         const selectAll = () => {
@@ -159,6 +206,7 @@
                             viewData.saveCount = viewData.saveCount + 1;
                             if (viewData.saveCount == checkedArray.length) {
                                 viewData.saveLoading = false;
+                                viewData.select = true;
                                 viewData.saveCount = 0;
                                 loadPlaylists();
                             }
