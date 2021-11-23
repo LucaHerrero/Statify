@@ -200,7 +200,7 @@
     }
 
     .chip-slide {
-        width: auto;
+        width: auto !important;
     }
 
     .result-block {
