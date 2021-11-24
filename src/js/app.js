@@ -64,7 +64,10 @@ var app = new Framework7({
   el: '#app',
   component: App,
   tokenMap: tokenMap,
-
+  view: {
+    browserHistory: true,
+  browserHistorySeparator: '',
+  },
   store: store,
 
   routes: routes,
