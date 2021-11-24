@@ -29,24 +29,22 @@
                 <p>This is an example of tabs-layout application. The main point of such tabbed layout is that each tab
                     contains
                     independent view with its own routing and navigation.</p>
-
-                <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without
-                    navbar
-                    like this tab.</p>
             </div>
 
-
+            ${viewData.myTopTracks != undefined && viewData.myTopTracks.total > 0 && $h`
             <div class="block-title">Your top Tracks</div>
-            <div data-space-between="50" class="swiper-container topTracks">
+            `}
+            <div data-space-between="15" data-slides-per-view="auto" data-free-mode="true" data-observe-slide-children="true" data-observe-slide-parent="true" data-observer="true"
+                class="swiper-container swiper-init topTracks">
                 <div class="swiper-wrapper">
                     ${viewData.myTopTracks != undefined && viewData.myTopTracks.total > 0 && $h`
                     ${viewData.myTopTracks.items.map((item) => $h`
                     <div class="swiper-slide">
                         <a href="/track/${item.id}/">
                             ${item.album.images.length > 1 ? $h`
-                            <img class="elevation-3" src="${item.album.images[1].url}"/>
+                            <img class="elevation-3" src="${item.album.images[1].url}" />
                             ` : $h`
-                            <img class="elevation-3" src="./assets/icons/audiotrack_black_48dp.svg" width="100"/>
+                            <img class="elevation-3" src="./assets/icons/audiotrack_black_48dp.svg" width="100" />
                             `}
                             <div class="title">${item.name}</div>
                             <div class="artist">${item.artists.map((item) => $h`${item.name} `)}</div>
@@ -57,9 +55,11 @@
                 </div>
             </div>
 
-
+            ${viewData.myTopArtists != undefined && viewData.myTopArtists.total > 0 && $h`
             <div class="block-title">Your top Artists</div>
-            <div data-space-between="50" class="swiper-container topArtists">
+            `}
+            <div data-space-between="15" data-slides-per-view="auto" data-free-mode="true" data-observer="true"
+                data-observe-slide-children="true" class="swiper-container swiper-init topTracks">
                 <div class="swiper-wrapper">
                     ${viewData.myTopArtists != undefined && viewData.myTopArtists.total > 0 && $h`
                     ${viewData.myTopArtists.items.map((item) => $h`
@@ -67,9 +67,9 @@
                     <div class="swiper-slide">
                         <a href="/artist/${item.id}/">
                             ${item.images.length > 1 ? $h`
-                            <img class="elevation-3 round" src="${item.images[1].url}"/>
+                            <img class="elevation-3 round" src="${item.images[1].url}" />
                             ` : $h`
-                            <img class="elevation-3" src="./assets/icons/audiotrack_black_48dp.svg" width="100"/>
+                            <img class="elevation-3" src="./assets/icons/audiotrack_black_48dp.svg" width="100" />
                             `}
                             <div class="title text-align-center">${item.name}</div>
                             <div class="artist text-align-center">${item.followers.total.toLocaleString()} Followers
@@ -85,81 +85,30 @@
 
 
 
-            <div class="list">
-                <ul>
-                    <li>
-                        <a href="/about/" class="item-content item-link">
-                            <div class="item-inner">
-                                <div class="item-title">About</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/form/" class="item-content item-link">
-                            <div class="item-inner">
-                                <div class="item-title">Form</div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
 
-            <div class="block-title">Modals</div>
-            <div class="block block-strong">
-                <div class="row">
-                    <div class="col-50">
-                        <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">Popup</a>
-                    </div>
-                    <div class="col-50">
-                        <a href="#" class="button button-raised button-fill login-screen-open"
-                           data-login-screen="#my-login-screen">Login Screen</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="block-title">Panels</div>
-            <div class="block block-strong">
-                <div class="row">
-                    <div class="col-50">
-                        <a href="#" class="button button-raised button-fill panel-open" data-panel="left">Left Panel</a>
-                    </div>
-                    <div class="col-50">
-                        <a href="#" class="button button-raised button-fill panel-open" data-panel="right">Right
-                            Panel</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="list links-list">
-                <ul>
-                    <li>
-                        <a href="/dynamic-route/blog/45/post/125/?foo=bar#about">Dynamic (Component) Route</a>
-                    </li>
-                    <li>
-                        <a href="/load-something-that-doesnt-exist/">Default Route (404)</a>
-                    </li>
-                    <li>
-                        <a href="/request-and-load/user/123456/">Request Data & Load</a>
-                    </li>
-                </ul>
-            </div>
+
+
+
+
         </div>
     </div>
 </template>
 <style scoped>
-    .swiper-container > div > div.swiper-slide {
+    .swiper-container>div>div.swiper-slide {
         width: 150px;
     }
 
-    .swiper-container > div > div.swiper-slide:first-child {
+    .swiper-container>div>div.swiper-slide:first-child {
         margin-left: 10px;
     }
 
-    .swiper-container > div > div.swiper-slide:last-child {
+    .swiper-container>div>div.swiper-slide:last-child {
         margin-right: 10px;
     }
 
-    .swiper-container > div > div.swiper-slide > a > img {
+    .swiper-container>div>div.swiper-slide>a>img {
         width: 150px;
         height: 150px;
         border-radius: 5%;
@@ -167,33 +116,34 @@
 
     }
 
-    .swiper-container > div > div.swiper-slide > a {
+    .swiper-container>div>div.swiper-slide>a {
         width: 150px;
         text-overflow: ellipsis;
         overflow-y: hidden;
     }
 
-    .swiper-container > div > div.swiper-slide > a > div.title {
+    .swiper-container>div>div.swiper-slide>a>div.title {
         color: var(--f7-block-title-large-text-color);
         font-weight: 500;
     }
 
-    .swiper-container > div > div.swiper-slide > a > div.artist {
+    .swiper-container>div>div.swiper-slide>a>div.artist {
         color: var(--f7-block-title-large-text-color);
         opacity: 0.5;
     }
+
     .round {
         border-radius: 50% !important;
     }
 </style>
 <script>
-    export default (props, {$on, $f7, $update, $store}) => {
+    export default (props, { $on, $f7, $update, $store }) => {
         let userInformations = {};
         let skeletonClass = "skeleton-text skeleton-effect-wave";
         const spotify = $store.getters.spotifyApi.value;
         let viewData = {};
 
-        $on('pageInit', (e, page) => {
+        
             spotify
                 .getMe() // note that we don't pass a user id
                 .then(
@@ -212,25 +162,30 @@
                     }
                 );
 
-
-            console.log(spotify)
+            spotify
+                .getMyTopArtists() // note that we don't pass a user id
+                .then(
+                    function (data) {
+                        viewData.myTopArtists = data;
+                        console.log('myTopArtists', data)
+                        $update();
+                    },
+                    function (err) {
+                        console.error(err);
+                        $f7.dialog.alert('An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.', 'Sorry 😔', function () {
+                            localStorage.removeItem('tokenMap')
+                            window.location.href = window.location.origin + window.location.pathname;
+                        });
+                    }
+                );
             spotify
                 .getMyTopTracks() // note that we don't pass a user id
                 .then(
                     function (data) {
                         viewData.myTopTracks = data;
-                        console.log(data)
+                        console.log('myTopTracks', data)
+
                         $update();
-                        let slider = $f7.swiper.create('.topTracks', {
-                            speed: 200,
-                            spaceBetween: 15,
-                            freeMode: true,
-                            loopedSlides: data.items.length,
-                            observer: true,
-                            slidesPerView: 'auto'
-                        });
-
-
                     },
                     function (err) {
                         console.error(err);
@@ -242,33 +197,8 @@
                 );
 
 
-            spotify
-                .getMyTopArtists() // note that we don't pass a user id
-                .then(
-                    function (data) {
-                        console.log('getArtist', data)
-                        viewData.myTopArtists = data;
-                        console.log(data)
-                        $update();
-                        let slider = $f7.swiper.create('.topArtists', {
-                            speed: 200,
-                            spaceBetween: 15,
-                            freeMode: true,
-                            loopedSlides: data.items.length,
-                            observer: true,
-                            slidesPerView: 'auto'
-                        });
 
-                    },
-                    function (err) {
-                        console.error(err);
-                        $f7.dialog.alert('An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.', 'Sorry 😔', function () {
-                            localStorage.removeItem('tokenMap')
-                            window.location.href = window.location.origin + window.location.pathname;
-                        });
-                    }
-                );
-        });
+        
         return $render;
     }
 </script>
