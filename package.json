@@ -2,7 +2,6 @@
   "name": "stativ",
   "private": true,
   "version": "1.0.0",
-  "main": "./workers-site/index.js",
   "description": "Statify",
   "repository": "https://github.com/LucaHerrero/Statify.git",
   "license": "UNLICENSED",
