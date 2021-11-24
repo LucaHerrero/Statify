@@ -1,0 +1,12 @@
+name = "statify"
+type = "javascript"
+account_id = '84aa4117f9e23406b8917b55f22f5004'
+usage_model = ''
+compatibility_flags = []
+workers_dev = true
+site = {bucket = "./dist",entry-point = "workers-site"}
+compatibility_date = "2021-11-24"
+[build]
+command = "npm install && npm run build"
+[build.upload]
+format = "service-worker"

@@ -60,9 +60,6 @@
 
 </style>
 <script>
-    import {
-        request
-    } from 'framework7';
     export default (props, { $, $el, $on, $f7, $update, $store }) => {
         let faq_infos = [];
 
@@ -70,7 +67,7 @@
         });
 
         let request_count = 0;
-        request({
+        $f7.request({
             url: './assets/data/login_faq.json',
             async: true,
             error: function (error) {
