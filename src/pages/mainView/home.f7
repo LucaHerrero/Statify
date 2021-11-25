@@ -104,7 +104,7 @@
                                 <img class="elevation-3" src="./assets/icons/audiotrack_black_48dp.svg" width="100" />
                                 `}
                                 <div class="title">${item.name}</div>
-                                <div class="artist">${item.track.artists.map((item) => $h`${item.name} `)}</div>
+                                <div class="artist">${item.track.artists.map((item) => $h`${item.track.name} `)}</div>
                             </a>
                         </div>
                         `)}
