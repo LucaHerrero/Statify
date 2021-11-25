@@ -1,0 +1,13 @@
+{
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "name": "Stativ - Statistic your Spotify",
+    "orientation": "portrait",
+    "scope": "/",
+    "short_name": "Stativ",
+    "start_url": "/",
+    "theme_color": "#ffffff",
+    "categories": [],
+    "screenshots": [],
+    "shortcuts": []
+  }
