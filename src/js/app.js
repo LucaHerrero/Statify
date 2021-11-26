@@ -25,6 +25,8 @@ if (localStorage.getItem('tokenMap') != null && localStorage.getItem('tokenMap')
   if (authorization.isTokenValid(tokenMap)) {
     App = mainAppView;
     tokenRequestSuccessful = true;
+    if (window.location.hash)
+      window.location.href = window.location.origin + window.location.pathname;
   } else {
     if (window.location.hash == null || window.location.hash == "") {
       App = loginView;
@@ -43,6 +45,8 @@ if (localStorage.getItem('tokenMap') != null && localStorage.getItem('tokenMap')
     localStorage.setItem('tokenMap', JSON.stringify(tokenMap))
     App = mainAppView
     tokenRequestSuccessful = true;
+    if (window.location.hash)
+      window.location.href = window.location.origin + window.location.pathname;
   } else {
     App = loginView
     tokenRequestSuccessful = false;
@@ -68,8 +72,7 @@ var app = new Framework7({
 
   routes: routes,
   on: {
-    pageInit: function () {
-    }
+    pageInit: function () {}
   }
 });
 
@@ -84,7 +87,7 @@ window.onresize = reportWindowSize;
 // Detects if device is on iOS 
 const isIos = () => {
   const userAgent = window.navigator.userAgent.toLowerCase();
-  return /iphone|ipad|ipod/.test( userAgent );
+  return /iphone|ipad|ipod/.test(userAgent);
 }
 // Detects if device is in standalone mode
 const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
@@ -92,5 +95,7 @@ const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.n
 // Checks if should display install popup notification:
 if (isIos() && !isInStandaloneMode()) {
   console.log(12)
-  this.setState({ showInstallMessage: true });
+  this.setState({
+    showInstallMessage: true
+  });
 }

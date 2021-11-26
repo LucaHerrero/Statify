@@ -72,6 +72,10 @@
                     </li>
                 </ul>
             </div>
+            <div class="block">
+                <button class="col button button-fill button-round"><i class="icon material-icons-round">add</i>Round</button>
+
+            </div>
             <div class="block-title">${viewData.playlists.length > 1 ? 'Playlists' : 'Playlist'}</div>
             <div class="list media-list">
                 <ul>
