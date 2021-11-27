@@ -2,5 +2,8 @@
   "files.associations": {
     "*.f7": "html"
   },
-  "npm-scripts.showStartNotification": false
+  "npm-scripts.showStartNotification": false,
+  "cSpell.enableFiletypes": [
+    "jsx-tags"
+  ]
 }
