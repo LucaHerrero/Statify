@@ -52,11 +52,11 @@
           </a>
           <a href="#view-search" class="tab-link">
             <i class="icon material-icons-outlined">search</i>
-            <span class="tabbar-label">Profile</span>
+            <span class="tabbar-label">Search</span>
           </a>
           <a href="#view-profile" class="tab-link">
             <i class="icon material-icons-outlined">people</i>
-            <span class="tabbar-label">Profile</span>
+            <span class="tabbar-label">Search</span>
           </a>
         </div>
       </div>
