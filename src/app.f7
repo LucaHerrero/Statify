@@ -50,7 +50,7 @@
             <i class="icon material-icons if-md">view_list</i>
             <span class="tabbar-label">Catalog</span>
           </a>
-          <a href="#view-search" class="tab-link">
+          <a href="#view-" class="tab-link">
             <i class="icon material-icons-outlined">search</i>
             <span class="tabbar-label">Search</span>
           </a>
