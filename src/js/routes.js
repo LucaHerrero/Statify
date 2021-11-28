@@ -8,6 +8,9 @@ import ProfilePage from '../pages/mainView/profile.f7';
 import SearchPage from '../pages/mainView/search.f7'
 
 import AlbumPage from '../pages/album.f7';
+import ArtistPage from '../pages/artistView.f7';
+
+
 import addPlaylist from '../pages/add/playlist.f7'
 import DynamicRoutePage from '../pages/dynamic-route.f7';
 import NotFoundPage from '../pages/404.f7';
@@ -76,6 +79,44 @@ var routes = [
             resolve(
               {
                 component: AlbumPage,
+              },
+              {
+                props: {
+                  album: data,
+                }
+              }
+            );
+          },
+          function (err) {
+            console.log(err)
+            app.preloader.hide();
+
+            app.dialog.alert('An error occurred when loading the data.', 'Sorry 😔', function () {
+              router.back();
+            });
+          }
+        );
+    },
+  },
+  {
+    path: '/artist/:artistId/',
+    async: function ({ router, to, resolve }) {
+      var app = router.app;
+      var store = app.store;
+      var artistId = to.params.artistId;
+      var spotify = store.getters.spotifyApi.value;
+
+      app.preloader.show();
+
+      spotify
+        .getArtist(artistId)
+        .then(
+          function (data) {
+            app.preloader.hide();
+            console.log(data)
+            resolve(
+              {
+                component: ArtistPage,
               },
               {
                 props: {
