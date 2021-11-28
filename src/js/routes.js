@@ -120,7 +120,7 @@ var routes = [
               },
               {
                 props: {
-                  album: data,
+                  artist: data,
                 }
               }
             );

@@ -1,33 +1,78 @@
 <template>
-    <div class="page" data-name="about">
-      <div class="navbar">
-        <div class="navbar-bg"></div>
-        <div class="navbar-inner sliding">
-          <div class="left">
-            <a href="#" class="link back">
-              <i class="icon icon-back"></i>
-              <span class="if-not-md">Back</span>
-            </a>
-          </div>
-          <div class="title">About</div>
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="if-not-md">Back</span>
+          </a>
         </div>
-      </div>
-      <div class="page-content">
-        <div class="block-title">About My App</div>
-        <div class="block block-strong">
-          <p>Fugiat perspiciatis excepturi, soluta quod non ullam deleniti. Nobis sint nemo consequuntur, fugiat. Eius perferendis animi autem incidunt vel quod tenetur nostrum, voluptate omnis quasi quidem illum consequuntur, a, quisquam.</p>
-          <p>Laudantium neque magnam vitae nemo quam commodi, in cum dolore obcaecati laborum, excepturi harum, optio qui, consequuntur? Obcaecati dolor sequi nesciunt culpa quia perspiciatis, reiciendis ex debitis, ut tenetur alias.</p>
-        </div>
-        <div class="block">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni molestiae laudantium dignissimos est nobis delectus nemo ea alias voluptatum architecto, amet similique, saepe iste consectetur in repellat ut minus quibusdam!</p>
-          <p>Molestias et distinctio porro nesciunt ratione similique, magni doloribus, rerum nobis, aliquam quae reiciendis quasi modi. Nam a recusandae, fugiat in ea voluptates fuga eius, velit corrupti reprehenderit dignissimos consequatur!</p>
-          <p>Blanditiis, cumque quo adipisci. Molestiae, dolores dolorum quos doloremque ipsa ullam eligendi commodi deserunt doloribus inventore magni? Ea mollitia veniam nostrum nihil, iusto doloribus a at! Ea molestiae ullam delectus!</p>
-        </div>
+        <div class="title">${artist.name}</div>
       </div>
     </div>
-    </template>
-    <script>
-    export default () => {
-      return $render;
-    };
-    </script>
+    <div class="page-content">
+      ${artist.images.length > 1 ? $h`
+      <div class="previewImageBlock">
+        <img src="${artist.images[1].url}" width="200px" class="imageBlur" />
+        <img src="${artist.images[1].url}" width="200px" class="imageNoBlur" />
+      </div>
+      ` : $h`
+      `}
+      <div class="contentBlock">
+
+      </div>
+    </div>
+  </div>
+</template>
+<style scoped>
+  .imageBlur {
+        -webkit-filter: blur(20px);
+        -moz-filter: blur(20px);
+        -o-filter: blur(20px);
+        -ms-filter: blur(20px);
+        filter: blur(20px);
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 30px;
+    }
+
+    .imageNoBlur {
+        padding: 30px;
+        position: inherit;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contentBlock {
+        background: var(--f7-page-bg-color);
+        position: relative;
+        z-index: 1;
+        height: 1000px;
+        margin-top: 0;
+    }
+
+    .previewImageBlock {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 0;
+    }
+
+    .previewImageBlock>img {
+        display: block;
+        object-fit: cover;
+        object-position: center;
+    }
+</style>
+<script>
+  export default (props) => {
+    console.log('artistView', props)
+
+    const artist = props.artist;
+
+    return $render;
+  };
+</script>
