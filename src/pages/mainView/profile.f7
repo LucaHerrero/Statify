@@ -255,6 +255,7 @@
         </ul>
       </div>
       <div class="block">
+        <button class="button button-round color-blue" @click="${logoutFunc}">Logout</button>
         <button class="button button-round color-red" @click="${logoutFunc}">Logout</button>
       </div>
     </div>
