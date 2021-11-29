@@ -255,14 +255,14 @@
         </ul>
       </div>
       <div class="block">
-        <button class="button button-round color-blue" @click="${logoutFunc}">Logout</button>
+        <button class="button button-round color-blue" @click="${darkMode}">Turn on darkmode</button>
         <button class="button button-round color-red" @click="${logoutFunc}">Logout</button>
       </div>
     </div>
   </div>
 </template>
 <script>
-  export default (props, { $f7 }) => {
+  export default (props, { $, $f7 }) => {
 
     const logoutFunc = () => {
       $f7.dialog.confirm('Do you really want to log out?', 'Logout', function () {
@@ -270,6 +270,10 @@
         window.location.href = window.location.origin + window.location.pathname;
       });
 
+    }
+
+    const darkMode = () => {
+      $('body').addClass('theme-dark')
     }
 
     return $render;
