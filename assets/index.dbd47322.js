@@ -122,7 +122,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
 
         </div>
     </div>
-`}}P.id="db727daf5d";P.style=`
+`}}P.id="89b328d1db";P.style=`
     .swiper-container>div>div.swiper-slide {
         width: 150px;
     }
@@ -189,7 +189,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
     </div>
   </div>
 </div>
-`}}j.id="338a6896df";function U(){return function(s){s.$;var c=s.$h;return s.$root,s.$f7,s.$f7route,s.$f7router,s.$theme,s.$update,s.$store,c`
+`}}j.id="815339d218";function U(){return function(s){s.$;var c=s.$h;return s.$root,s.$f7,s.$f7route,s.$f7router,s.$theme,s.$update,s.$store,c`
 <div class="page" data-name="form">
   <div class="navbar">
     <div class="navbar-bg"></div>
@@ -448,7 +448,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
     </div>
   </div>
 </div>
-`}}U.id="808d25ba90";function H(s,{$store:c}){const d=c.getters.products,t=()=>{c.dispatch("addProduct",{id:"4",title:"Apple iPhone 12",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis."})};return function(o){o.$;var p=o.$h;return o.$root,o.$f7,o.$f7route,o.$f7router,o.$theme,o.$update,o.$store,p`
+`}}U.id="6e456275e2";function H(s,{$store:c}){const d=c.getters.products,t=()=>{c.dispatch("addProduct",{id:"4",title:"Apple iPhone 12",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis."})};return function(o){o.$;var p=o.$h;return o.$root,o.$f7,o.$f7route,o.$f7router,o.$theme,o.$update,o.$store,p`
   <div class="page" data-name="catalog">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -471,7 +471,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
       `}
     </div>
   </div>
-`}}H.id="65b491640f";function V(s,{$f7route:c,$store:d}){const t=d.getters.products,o=c.params.id;let p;return t.value.forEach(u=>{u.id===o&&(p=u)}),function(u){u.$;var a=u.$h;return u.$root,u.$f7,u.$f7route,u.$f7router,u.$theme,u.$update,u.$store,a`
+`}}H.id="154489a41c";function V(s,{$f7route:c,$store:d}){const t=d.getters.products,o=c.params.id;let p;return t.value.forEach(u=>{u.id===o&&(p=u)}),function(u){u.$;var a=u.$h;return u.$root,u.$f7,u.$f7route,u.$f7router,u.$theme,u.$update,u.$store,a`
   <div class="page" data-name="product">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -492,7 +492,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
       </div>
     </div>
   </div>
-`}}V.id="bf0fde34b9";function J(s,{$f7:c}){const d=()=>{c.dialog.confirm("Do you really want to log out?","Logout",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})};return function(t){t.$;var o=t.$h;return t.$root,t.$f7,t.$f7route,t.$f7router,t.$theme,t.$update,t.$store,o`
+`}}V.id="c37d7df4f5";function J(s,{$f7:c}){const d=()=>{c.dialog.confirm("Do you really want to log out?","Logout",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})};return function(t){t.$;var o=t.$h;return t.$root,t.$f7,t.$f7route,t.$f7router,t.$theme,t.$update,t.$store,o`
   <div class="page" data-name="settings">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -753,7 +753,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
       </div>
     </div>
   </div>
-`}}J.id="57202704c1";function R(s,{$:c,$f7:d,$on:t,$update:o,$store:p}){let u;t("pageInit",()=>{u=d.searchbar.create({el:".searchbar",customSearch:!0,on:{search(l,i,r){i!=""&&k()},clear(){a={},o()}}}),d.swiper.create(".chip-swiper",{speed:400,spaceBetween:10,loop:!1,slidesPerView:"auto",observer:!0})});let a={},v=!1;const m=p.getters.spotifyApi.value;let n={tracks:"track",artists:"artist",albums:"album",playlists:"playlist"},e={all:{active:!0,name:"All"},artists:{active:!0,name:"Artists"},albums:{active:!0,name:"Albums"},tracks:{active:!0,name:"Songs"},playlists:{active:!0,name:"Playlists"}};const f=l=>{let i;l.path==null?i=l.srcElement.innerText:i=l.path[0].innerText;for(let r in e)e[r].active=!1;for(let r in e)i=="All"&&(e[r].active=!0),i==e[r].name&&(e[r].active=!0);u.query!=""&&k(),o()},k=l=>{let i=u.query;if(e.all.active){_(i,["album","artist","playlist","track"],{limit:3});return}if(e.tracks.active){_(i,["track"],{limit:20});return}if(e.albums.active){_(i,["album"],{limit:20});return}if(e.artists.active){_(i,["artist"],{limit:20});return}if(e.playlists.active){_(i,["playlist"],{limit:20});return}},_=(l,i,r,g)=>{g||(v=!0),o(),m.search(l,i,r).then(function(h){if(g)return y(h);v=!1,a=h,console.log(h),o()},function(h){console.error(h),v=!1})},y=l=>{if(l.playlists){let i=a.playlists.items.concat(l.playlists.items);a.playlists.items=i,b=!1,o()}if(l.tracks){let i=a.tracks.items.concat(l.tracks.items);a.tracks.items=i,b=!1,o()}if(l.albums){let i=a.albums.items.concat(l.albums.items);a.albums.items=i,b=!1,o()}if(l.artists){let i=a.artists.items.concat(l.artists.items);a.artists.items=i,b=!1,o()}};let b=!1;const w=l=>{if(b)return;b=!0,o();let i=a[l].items.length;console.log(i),_(u.query,[n[l]],{limit:20,offset:i},!0)};return function(l){l.$;var i=l.$h;return l.$root,l.$f7,l.$f7route,l.$f7router,l.$theme,l.$update,l.$store,i`
+`}}J.id="6ce7727cc0";function R(s,{$:c,$f7:d,$on:t,$update:o,$store:p}){let u;t("pageInit",()=>{u=d.searchbar.create({el:".searchbar",customSearch:!0,on:{search(l,i,r){i!=""&&k()},clear(){a={},o()}}}),d.swiper.create(".chip-swiper",{speed:400,spaceBetween:10,loop:!1,slidesPerView:"auto",observer:!0})});let a={},v=!1;const m=p.getters.spotifyApi.value;let n={tracks:"track",artists:"artist",albums:"album",playlists:"playlist"},e={all:{active:!0,name:"All"},artists:{active:!0,name:"Artists"},albums:{active:!0,name:"Albums"},tracks:{active:!0,name:"Songs"},playlists:{active:!0,name:"Playlists"}};const f=l=>{let i;l.path==null?i=l.srcElement.innerText:i=l.path[0].innerText;for(let r in e)e[r].active=!1;for(let r in e)i=="All"&&(e[r].active=!0),i==e[r].name&&(e[r].active=!0);u.query!=""&&k(),o()},k=l=>{let i=u.query;if(e.all.active){_(i,["album","artist","playlist","track"],{limit:3});return}if(e.tracks.active){_(i,["track"],{limit:20});return}if(e.albums.active){_(i,["album"],{limit:20});return}if(e.artists.active){_(i,["artist"],{limit:20});return}if(e.playlists.active){_(i,["playlist"],{limit:20});return}},_=(l,i,r,g)=>{g||(v=!0),o(),m.search(l,i,r).then(function(h){if(g)return y(h);v=!1,a=h,console.log(h),o()},function(h){console.error(h),v=!1})},y=l=>{if(l.playlists){let i=a.playlists.items.concat(l.playlists.items);a.playlists.items=i,b=!1,o()}if(l.tracks){let i=a.tracks.items.concat(l.tracks.items);a.tracks.items=i,b=!1,o()}if(l.albums){let i=a.albums.items.concat(l.albums.items);a.albums.items=i,b=!1,o()}if(l.artists){let i=a.artists.items.concat(l.artists.items);a.artists.items=i,b=!1,o()}};let b=!1;const w=l=>{if(b)return;b=!0,o();let i=a[l].items.length;console.log(i),_(u.query,[n[l]],{limit:20,offset:i},!0)};return function(l){l.$;var i=l.$h;return l.$root,l.$f7,l.$f7route,l.$f7router,l.$theme,l.$update,l.$store,i`
     <div class="page" data-name="catalog">
         <div class="navbar">
             <div class="navbar-bg"></div>
@@ -943,7 +943,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
 
         </div>
     </div>
-`}}R.id="cd99c95b4c";R.style=`
+`}}R.id="a0fd7b17ca";R.style=`
     .button-load-more {
         width: initial;
         display: inline-block;
@@ -1145,7 +1145,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
             </div>
         </div>
     </div>
-`}}C.id="3e63b7f1e7";C.style=`
+`}}C.id="28686b1be0";C.style=`
     .trackHeart {
         font-size: 15px;
         margin-right: -5px;
@@ -1250,7 +1250,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
       </div>
     </div>
   </div>
-`}}F.id="511501060b";F.style=`
+`}}F.id="7976079f41";F.style=`
   .imageBlur {
         -webkit-filter: blur(20px);
         -moz-filter: blur(20px);
@@ -1405,7 +1405,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
             </div>
         </div>
     </div>
-`}}Y.id="fd428587d8";function E(s,{$f7:c,$on:d,$onBeforeMount:t,$onMounted:o,$onBeforeUnmount:p,$onUnmounted:u}){let a="Jimmy",v=25,m=["Tennis","Chess","Football"];const n=()=>{c.dialog.alert("Hello World")};return t(()=>{console.log("onBeforeMount")}),o(()=>{console.log("onMounted")}),p(()=>{console.log("onBeforeUnmount")}),u(()=>{console.log("onUnmounted")}),d("pageMounted",(e,f)=>{console.log("pageMounted",f)}),d("pageInit",(e,f)=>{console.log("pageInit",f)}),d("pageBeforeIn",(e,f)=>{console.log("pageBeforeIn",f)}),d("pageAfterIn",(e,f)=>{console.log("pageAfterIn",f)}),d("pageBeforeOut",(e,f)=>{console.log("pageBeforeOut",f)}),d("pageAfterOut",(e,f)=>{console.log("pageAfterOut",f)}),d("pageBeforeRemove",(e,f)=>{console.log("pageBeforeRemove",f)}),function(e){e.$;var f=e.$h;e.$root,e.$f7;var k=e.$f7route;e.$f7router;var _=e.$theme;return e.$update,e.$store,f`
+`}}Y.id="e4751cd984";function E(s,{$f7:c,$on:d,$onBeforeMount:t,$onMounted:o,$onBeforeUnmount:p,$onUnmounted:u}){let a="Jimmy",v=25,m=["Tennis","Chess","Football"];const n=()=>{c.dialog.alert("Hello World")};return t(()=>{console.log("onBeforeMount")}),o(()=>{console.log("onMounted")}),p(()=>{console.log("onBeforeUnmount")}),u(()=>{console.log("onUnmounted")}),d("pageMounted",(e,f)=>{console.log("pageMounted",f)}),d("pageInit",(e,f)=>{console.log("pageInit",f)}),d("pageBeforeIn",(e,f)=>{console.log("pageBeforeIn",f)}),d("pageAfterIn",(e,f)=>{console.log("pageAfterIn",f)}),d("pageBeforeOut",(e,f)=>{console.log("pageBeforeOut",f)}),d("pageAfterOut",(e,f)=>{console.log("pageAfterOut",f)}),d("pageBeforeRemove",(e,f)=>{console.log("pageBeforeRemove",f)}),function(e){e.$;var f=e.$h;e.$root,e.$f7;var k=e.$f7route;e.$f7router;var _=e.$theme;return e.$update,e.$store,f`
   <div class="page">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -1461,7 +1461,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
       </div>
     </div>
   </div>
-`}}E.id="3e7b8575cd";E.style=`
+`}}E.id="c91963ab58";E.style=`
   p {
     margin: 10px 0;
   }
@@ -1486,7 +1486,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
     </div>
   </div>
 </div>
-`}}G.id="c15f3c8fe9";function N(s,{$:c,$f7:d,$update:t,$on:o,$store:p,$f7router:u}){const a=p.getters.spotifyApi.value;let v=!1;var m=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;let n=m.exec(navigator.language)[5];console.log(n);const e=s.track,f=e.album;let k,_="play_arrow",y={trackIsSavedLoading:!0};console.log(e),o("pageInit",(g,h)=>{const $=S=>{var T=Math.floor(S/1e3%60),I=Math.floor(S/(1e3*60)),I=I<10?"0"+I:I;return T=T<10?"0"+T:T,I+":"+T};y.duration=$(e.duration_ms),t()}),a.containsMySavedTracks([e.id]).then(function(g){y.trackIsSavedLoading=!1,y.trackIsSaved=g[0],t()}),a.getAudioFeaturesForTrack(e.id).then(function(g){y.songAnalytics=g,console.log(g),t()});const b=()=>{u.navigate("/add/playlist/",{props:{items:[e]}})},w=()=>{y.trackIsSavedLoading=!0,t();let g;y.trackIsSaved?g=a.removeFromMySavedTracks:g=a.addToMySavedTracks,g([e.id]).then(function(h){y.trackIsSavedLoading=!1,y.trackIsSaved=!y.trackIsSaved,console.log(y),t()},function(h){console.log(h),y.trackIsSavedLoading=!1,t()})},l=()=>{k=new Audio(e.preview_url),k.addEventListener("loadstart",function(){v=!0,t()}),k.addEventListener("canplaythrough",function(){v=!1,k.play(),t()}),k.addEventListener("ended",function(){_="play_arrow",y.showProgressbar=!1,t()}),k.addEventListener("timeupdate",function(){let g=k.currentTime/k.duration*100;d.progressbar.set(".progressbar",g),t()})},i=()=>{const g=e.available_markets.map(D),h=e.available_markets;let $="",S="";h.includes(n)&&(S=`<div class="block block-strong"><div class="block-inner"></div><p class="no-margin-top">This track is avaible in your region "${n}". \u{1F601}</p></div>`);for(let I=0;I<h.length;I++)$=`${$}<div class="col"><div class="marketItem">${g[I]} ${h[I]}</div></div>`;var T=d.sheet.create({content:`
+`}}G.id="4e9664cdbf";function N(s,{$:c,$f7:d,$update:t,$on:o,$store:p,$f7router:u}){const a=p.getters.spotifyApi.value;let v=!1;var m=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;let n=m.exec(navigator.language)[5];console.log(n);const e=s.track,f=e.album;let k,_="play_arrow",y={trackIsSavedLoading:!0};console.log(e),o("pageInit",(g,h)=>{const $=S=>{var T=Math.floor(S/1e3%60),I=Math.floor(S/(1e3*60)),I=I<10?"0"+I:I;return T=T<10?"0"+T:T,I+":"+T};y.duration=$(e.duration_ms),t()}),a.containsMySavedTracks([e.id]).then(function(g){y.trackIsSavedLoading=!1,y.trackIsSaved=g[0],t()}),a.getAudioFeaturesForTrack(e.id).then(function(g){y.songAnalytics=g,console.log(g),t()});const b=()=>{u.navigate("/add/playlist/",{props:{items:[e]}})},w=()=>{y.trackIsSavedLoading=!0,t();let g;y.trackIsSaved?g=a.removeFromMySavedTracks:g=a.addToMySavedTracks,g([e.id]).then(function(h){y.trackIsSavedLoading=!1,y.trackIsSaved=!y.trackIsSaved,console.log(y),t()},function(h){console.log(h),y.trackIsSavedLoading=!1,t()})},l=()=>{k=new Audio(e.preview_url),k.addEventListener("loadstart",function(){v=!0,t()}),k.addEventListener("canplaythrough",function(){v=!1,k.play(),t()}),k.addEventListener("ended",function(){_="play_arrow",y.showProgressbar=!1,t()}),k.addEventListener("timeupdate",function(){let g=k.currentTime/k.duration*100;d.progressbar.set(".progressbar",g),t()})},i=()=>{const g=e.available_markets.map(D),h=e.available_markets;let $="",S="";h.includes(n)&&(S=`<div class="block block-strong"><div class="block-inner"></div><p class="no-margin-top">This track is avaible in your region "${n}". \u{1F601}</p></div>`);for(let I=0;I<h.length;I++)$=`${$}<div class="col"><div class="marketItem">${g[I]} ${h[I]}</div></div>`;var T=d.sheet.create({content:`
           <div class="sheet-modal">
             <div class="toolbar">
               <div class="toolbar-inner">
@@ -1711,7 +1711,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
             </div>
         </div>
     </div>
-`}}N.id="e94f5ca86b";N.style=`
+`}}N.id="376eba772d";N.style=`
     .optionsBlock {
         display: flex;
     }
@@ -1938,7 +1938,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
     </div>
 
   </div>
-`}}M.id="b2221c061a";function x(s,{$:c,$el:d,$on:t,$f7:o,$update:p,$store:u}){let a=[];t("pageInit",(e,f)=>{});let v=0;o.request({url:"./assets/data/login_faq.json",async:!0,error:function(e){console.log(e),v=v+1,v<5?request(this):m()},success:function(e){try{a=JSON.parse(e)}catch(f){console.log(f),v=v+1,v<5?request(this):m();return}p(),o.swiper.create(".swiper-container",{speed:400,spaceBetween:10,loop:!0,loopedSlides:a.length,observer:!0})}});const m=()=>{console.log(c(".faq-loading").html()),c(".faq-loading").html(`
+`}}M.id="677f4d0df5";function x(s,{$:c,$el:d,$on:t,$f7:o,$update:p,$store:u}){let a=[];t("pageInit",(e,f)=>{});let v=0;o.request({url:"./assets/data/login_faq.json",async:!0,error:function(e){console.log(e),v=v+1,v<5?request(this):m()},success:function(e){try{a=JSON.parse(e)}catch(f){console.log(f),v=v+1,v<5?request(this):m();return}p(),o.swiper.create(".swiper-container",{speed:400,spaceBetween:10,loop:!0,loopedSlides:a.length,observer:!0})}});const m=()=>{console.log(c(".faq-loading").html()),c(".faq-loading").html(`
                 <div class="card-content card-content-padding">Loading failed \u{1F614}</div>
             `),c(".faq-loading").removeClass("skeleton-text"),c(".faq-loading").removeClass("skeleton-effect-wave")},n=()=>{u.getters.loginMethode};return function(e){e.$;var f=e.$h;return e.$root,e.$f7,e.$f7route,e.$f7router,e.$theme,e.$update,e.$store,f`
     <div class="view view-main view-init">
@@ -1988,7 +1988,7 @@ var W=Object.defineProperty;var X=(s,c,d)=>c in s?W(s,c,{enumerable:!0,configura
             </div>
         </div>
     </div>
-`}}x.id="1a1fbb2e53";x.style=`
+`}}x.id="7a40d7a4aa";x.style=`
     .spotify-icon {
         height: 20px;
         width: 20px;
