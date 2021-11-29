@@ -69,12 +69,6 @@ var app = new Framework7({
   component: App,
   tokenMap: tokenMap,
   store: store,
-  view: {
-    browserHistory: true,
-    browserHistoryAnimateOnLoad: true,
-    browserHistoryRoot: window.location.origin,
-    browserHistorySeparator: ""
-  },
   routes: routes,
   on: {
     pageInit: function () {}
