@@ -14,6 +14,9 @@
                     <a href="#" class="link icon-only" @click="${showAvaibleMarkets}">
                         <i class="icon material-icons">language</i>
                     </a>
+                    <a href="#" class="link icon-only" @click="${share}">
+                        <i class="icon material-icons">share</i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -97,29 +100,23 @@
                 <div class="block-title">Song analytics</div>
                 <div class="block block-strong no-margin-bottom">
                     <div class="row">
-                      <div class="col text-align-center">
-                        <div class="gauge gauge-init"
-                          data-type="semicircle"
-                          data-value="${viewData.songAnalytics.danceability}"
-                          data-value-text="${(viewData.songAnalytics.danceability * 100).toFixed(0)}%"
-                          data-value-text-color="#f44336"
-                          data-border-color="#f44336"
-                          data-label-text="Danceability score"
-                        ></div>
-                      </div>
-                      <div class="col text-align-center">
-                        <div class="gauge gauge-init"
-                          data-type="semicircle"
-                          data-value="${viewData.songAnalytics.valence}"
-                          data-value-text="${(viewData.songAnalytics.valence * 100).toFixed(0)}%"
-                          data-value-text-color="#e91e63"
-                          data-border-color="#e91e63"
-                          data-label-text="Happy Song"
-                        ></div>
-                      </div>
+                        <div class="col text-align-center">
+                            <div class="gauge gauge-init" data-type="semicircle"
+                                data-value="${viewData.songAnalytics.danceability}"
+                                data-value-text="${(viewData.songAnalytics.danceability * 100).toFixed(0)}%"
+                                data-value-text-color="#f44336" data-border-color="#f44336"
+                                data-label-text="Danceability score"></div>
+                        </div>
+                        <div class="col text-align-center">
+                            <div class="gauge gauge-init" data-type="semicircle"
+                                data-value="${viewData.songAnalytics.valence}"
+                                data-value-text="${(viewData.songAnalytics.valence * 100).toFixed(0)}%"
+                                data-value-text-color="#e91e63" data-border-color="#e91e63"
+                                data-label-text="Happy Song"></div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="list media-list no-margin-top no-hairlines">
+                </div>
+                <div class="list media-list no-margin-top no-hairlines">
                     <ul>
                         <li>
                             <a href="/artist/" class="item-link item-content">
@@ -310,6 +307,20 @@
         };
         console.log(track);
 
+        const share = () => {
+            const shareData = {
+                title: `Statify - ${track.name}`,
+                text: 'Look at this track i found!',
+                url: window.location.href
+            }
+
+            try {
+                navigator.share(shareData)
+            } catch (err) {
+                console.log('share error', err);
+            }
+        }
+
         $on('pageInit', (e, page) => {
             const msToTime = (duration) => {
                 var milliseconds = parseInt((duration % 1000) / 100),
@@ -388,6 +399,7 @@
 
         const createPlayer = () => {
             player = new Audio(track.preview_url);
+            console.log(track)
             player.addEventListener('loadstart', function () {
                 previewLoading = true;
                 $update();

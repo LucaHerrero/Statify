@@ -9,8 +9,8 @@ class Authorization {
     login = () => {
         const apiUrl = 'https://accounts.spotify.com/authorize';
         const clientID = 'c34980adc6984ebd9418e19f418f10dd';
-        const {host, protocol, pathname} = window.location;
-        const redirectUri = `${protocol}//${host}${pathname}`;
+        const {host, origin} = window.location;
+        const redirectUri = `${protocol}//${host}${origin}/`;
         const scope = [
             'playlist-read-private',
             'playlist-read-collaborative',

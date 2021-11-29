@@ -14,6 +14,9 @@
                     <a href="#" class="link icon-only" @click="${showAvaibleMarkets}">
                         <i class="icon material-icons">language</i>
                     </a>
+                    <a href="#" class="link icon-only" @click="${share}">
+                        <i class="icon material-icons">share</i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -236,6 +239,19 @@
                     items: [item]
                 }
             })
+        }
+        const share = () => {
+            const shareData = {
+                title: `Statify - ${album.name}`,
+                text: 'Look at this album i found!',
+                url: window.location.href
+            }
+
+            try {
+                navigator.share(shareData)
+            } catch (err) {
+                console.log('share error', err);
+            }
         }
         const checkTracksSaved = () => {
             viewData.trackIsSavedLoading = true
