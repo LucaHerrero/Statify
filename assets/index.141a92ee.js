@@ -122,7 +122,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
 
         </div>
     </div>
-`}}R.id="b65119aebb";R.style=`
+`}}R.id="742e8b09b2";R.style=`
     .swiper-container>div>div.swiper-slide {
         width: 150px;
     }
@@ -189,7 +189,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
     </div>
   </div>
 </div>
-`}}U.id="6345269fda";function H(){return function(a){a.$;var r=a.$h;return a.$root,a.$f7,a.$f7route,a.$f7router,a.$theme,a.$update,a.$store,r`
+`}}U.id="33ba8080f8";function H(){return function(a){a.$;var r=a.$h;return a.$root,a.$f7,a.$f7route,a.$f7router,a.$theme,a.$update,a.$store,r`
 <div class="page" data-name="form">
   <div class="navbar">
     <div class="navbar-bg"></div>
@@ -448,7 +448,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
     </div>
   </div>
 </div>
-`}}H.id="89ac4a947f";function V(a,{$store:r}){const c=r.getters.products,l=()=>{r.dispatch("addProduct",{id:"4",title:"Apple iPhone 12",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis."})};return function(n){n.$;var u=n.$h;return n.$root,n.$f7,n.$f7route,n.$f7router,n.$theme,n.$update,n.$store,u`
+`}}H.id="a6a681bcd4";function V(a,{$store:r}){const c=r.getters.products,l=()=>{r.dispatch("addProduct",{id:"4",title:"Apple iPhone 12",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis."})};return function(n){n.$;var u=n.$h;return n.$root,n.$f7,n.$f7route,n.$f7router,n.$theme,n.$update,n.$store,u`
   <div class="page" data-name="catalog">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -471,7 +471,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
       `}
     </div>
   </div>
-`}}V.id="34a557335b";function J(a,{$f7route:r,$store:c}){const l=c.getters.products,n=r.params.id;let u;return l.value.forEach(v=>{v.id===n&&(u=v)}),function(v){v.$;var t=v.$h;return v.$root,v.$f7,v.$f7route,v.$f7router,v.$theme,v.$update,v.$store,t`
+`}}V.id="9ddb4be425";function J(a,{$f7route:r,$store:c}){const l=c.getters.products,n=r.params.id;let u;return l.value.forEach(v=>{v.id===n&&(u=v)}),function(v){v.$;var t=v.$h;return v.$root,v.$f7,v.$f7route,v.$f7router,v.$theme,v.$update,v.$store,t`
   <div class="page" data-name="product">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -492,7 +492,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
       </div>
     </div>
   </div>
-`}}J.id="451aa72aa7";function Y(a,{$:r,$f7:c}){const l=()=>{c.dialog.confirm("Do you really want to log out?","Logout",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})},n=()=>{r("body").addClass("theme-dark")};return function(u){u.$;var v=u.$h;return u.$root,u.$f7,u.$f7route,u.$f7router,u.$theme,u.$update,u.$store,v`
+`}}J.id="fc68e3a647";function Y(a,{$:r,$f7:c}){const l=()=>{c.dialog.confirm("Do you really want to log out?","Logout",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})},n=()=>{r("body").addClass("theme-dark")};return function(u){u.$;var v=u.$h;return u.$root,u.$f7,u.$f7route,u.$f7router,u.$theme,u.$update,u.$store,v`
   <div class="page" data-name="settings">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -749,16 +749,12 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
         </ul>
       </div>
       <div class="block">
-<<<<<<< HEAD
         <button class="button button-round color-blue" @click="${n}">Turn on darkmode</button>
-=======
-        <button class="button button-round color-purple" @click="${l}">Logout</button>
->>>>>>> 441ca799166110db9f8e90f20fc3c52baa250a35
         <button class="button button-round color-red" @click="${l}">Logout</button>
       </div>
     </div>
   </div>
-`}}Y.id="21567bfe10";function C(a,{$:r,$f7:c,$on:l,$update:n,$store:u}){let v;l("pageInit",()=>{v=c.searchbar.create({el:".searchbar",customSearch:!0,on:{search(p,i,s){i!=""&&w()},clear(){t={},n()}}}),c.swiper.create(".chip-swiper",{speed:400,spaceBetween:10,loop:!1,slidesPerView:"auto",observer:!0})});let t={},d=!1;const m=u.getters.spotifyApi.value;let o={tracks:"track",artists:"artist",albums:"album",playlists:"playlist"},e={all:{active:!0,name:"All"},artists:{active:!0,name:"Artists"},albums:{active:!0,name:"Albums"},tracks:{active:!0,name:"Songs"},playlists:{active:!0,name:"Playlists"}};const f=p=>{let i;p.path==null?i=p.srcElement.innerText:i=p.path[0].innerText;for(let s in e)e[s].active=!1;for(let s in e)i=="All"&&(e[s].active=!0),i==e[s].name&&(e[s].active=!0);v.query!=""&&w(),n()},w=p=>{let i=v.query;if(e.all.active){S(i,["album","artist","playlist","track"],{limit:3});return}if(e.tracks.active){S(i,["track"],{limit:20});return}if(e.albums.active){S(i,["album"],{limit:20});return}if(e.artists.active){S(i,["artist"],{limit:20});return}if(e.playlists.active){S(i,["playlist"],{limit:20});return}},S=(p,i,s,k)=>{k||(d=!0),n(),m.search(p,i,s).then(function(b){if(k)return y(b);d=!1,t=b,console.log(b),n()},function(b){console.error(b),d=!1})},y=p=>{if(p.playlists){let i=t.playlists.items.concat(p.playlists.items);t.playlists.items=i,g=!1,n()}if(p.tracks){let i=t.tracks.items.concat(p.tracks.items);t.tracks.items=i,g=!1,n()}if(p.albums){let i=t.albums.items.concat(p.albums.items);t.albums.items=i,g=!1,n()}if(p.artists){let i=t.artists.items.concat(p.artists.items);t.artists.items=i,g=!1,n()}};let g=!1;const h=p=>{if(g)return;g=!0,n();let i=t[p].items.length;console.log(i),S(v.query,[o[p]],{limit:20,offset:i},!0)};return function(p){p.$;var i=p.$h;return p.$root,p.$f7,p.$f7route,p.$f7router,p.$theme,p.$update,p.$store,i`
+`}}Y.id="18f0fc92cc";function C(a,{$:r,$f7:c,$on:l,$update:n,$store:u}){let v;l("pageInit",()=>{v=c.searchbar.create({el:".searchbar",customSearch:!0,on:{search(p,i,s){i!=""&&w()},clear(){t={},n()}}}),c.swiper.create(".chip-swiper",{speed:400,spaceBetween:10,loop:!1,slidesPerView:"auto",observer:!0})});let t={},d=!1;const m=u.getters.spotifyApi.value;let o={tracks:"track",artists:"artist",albums:"album",playlists:"playlist"},e={all:{active:!0,name:"All"},artists:{active:!0,name:"Artists"},albums:{active:!0,name:"Albums"},tracks:{active:!0,name:"Songs"},playlists:{active:!0,name:"Playlists"}};const f=p=>{let i;p.path==null?i=p.srcElement.innerText:i=p.path[0].innerText;for(let s in e)e[s].active=!1;for(let s in e)i=="All"&&(e[s].active=!0),i==e[s].name&&(e[s].active=!0);v.query!=""&&w(),n()},w=p=>{let i=v.query;if(e.all.active){S(i,["album","artist","playlist","track"],{limit:3});return}if(e.tracks.active){S(i,["track"],{limit:20});return}if(e.albums.active){S(i,["album"],{limit:20});return}if(e.artists.active){S(i,["artist"],{limit:20});return}if(e.playlists.active){S(i,["playlist"],{limit:20});return}},S=(p,i,s,k)=>{k||(d=!0),n(),m.search(p,i,s).then(function(b){if(k)return y(b);d=!1,t=b,console.log(b),n()},function(b){console.error(b),d=!1})},y=p=>{if(p.playlists){let i=t.playlists.items.concat(p.playlists.items);t.playlists.items=i,g=!1,n()}if(p.tracks){let i=t.tracks.items.concat(p.tracks.items);t.tracks.items=i,g=!1,n()}if(p.albums){let i=t.albums.items.concat(p.albums.items);t.albums.items=i,g=!1,n()}if(p.artists){let i=t.artists.items.concat(p.artists.items);t.artists.items=i,g=!1,n()}};let g=!1;const h=p=>{if(g)return;g=!0,n();let i=t[p].items.length;console.log(i),S(v.query,[o[p]],{limit:20,offset:i},!0)};return function(p){p.$;var i=p.$h;return p.$root,p.$f7,p.$f7route,p.$f7router,p.$theme,p.$update,p.$store,i`
     <div class="page" data-name="catalog">
         <div class="navbar">
             <div class="navbar-bg"></div>
@@ -948,7 +944,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
 
         </div>
     </div>
-`}}C.id="c2a66839e9";C.style=`
+`}}C.id="35c5cb3123";C.style=`
     .button-load-more {
         width: initial;
         display: inline-block;
@@ -1153,7 +1149,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
             </div>
         </div>
     </div>
-`}}F.id="c259ea37b2";F.style=`
+`}}F.id="3e54285f92";F.style=`
     .trackHeart {
         font-size: 15px;
         margin-right: -5px;
@@ -1258,7 +1254,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
       </div>
     </div>
   </div>
-`}}D.id="93f40a176a";D.style=`
+`}}D.id="3ef656b125";D.style=`
   .imageBlur {
         -webkit-filter: blur(20px);
         -moz-filter: blur(20px);
@@ -1413,7 +1409,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
             </div>
         </div>
     </div>
-`}}G.id="51034f1b90";function E(a,{$f7:r,$on:c,$onBeforeMount:l,$onMounted:n,$onBeforeUnmount:u,$onUnmounted:v}){let t="Jimmy",d=25,m=["Tennis","Chess","Football"];const o=()=>{r.dialog.alert("Hello World")};return l(()=>{console.log("onBeforeMount")}),n(()=>{console.log("onMounted")}),u(()=>{console.log("onBeforeUnmount")}),v(()=>{console.log("onUnmounted")}),c("pageMounted",(e,f)=>{console.log("pageMounted",f)}),c("pageInit",(e,f)=>{console.log("pageInit",f)}),c("pageBeforeIn",(e,f)=>{console.log("pageBeforeIn",f)}),c("pageAfterIn",(e,f)=>{console.log("pageAfterIn",f)}),c("pageBeforeOut",(e,f)=>{console.log("pageBeforeOut",f)}),c("pageAfterOut",(e,f)=>{console.log("pageAfterOut",f)}),c("pageBeforeRemove",(e,f)=>{console.log("pageBeforeRemove",f)}),function(e){e.$;var f=e.$h;e.$root,e.$f7;var w=e.$f7route;e.$f7router;var S=e.$theme;return e.$update,e.$store,f`
+`}}G.id="a2375db191";function E(a,{$f7:r,$on:c,$onBeforeMount:l,$onMounted:n,$onBeforeUnmount:u,$onUnmounted:v}){let t="Jimmy",d=25,m=["Tennis","Chess","Football"];const o=()=>{r.dialog.alert("Hello World")};return l(()=>{console.log("onBeforeMount")}),n(()=>{console.log("onMounted")}),u(()=>{console.log("onBeforeUnmount")}),v(()=>{console.log("onUnmounted")}),c("pageMounted",(e,f)=>{console.log("pageMounted",f)}),c("pageInit",(e,f)=>{console.log("pageInit",f)}),c("pageBeforeIn",(e,f)=>{console.log("pageBeforeIn",f)}),c("pageAfterIn",(e,f)=>{console.log("pageAfterIn",f)}),c("pageBeforeOut",(e,f)=>{console.log("pageBeforeOut",f)}),c("pageAfterOut",(e,f)=>{console.log("pageAfterOut",f)}),c("pageBeforeRemove",(e,f)=>{console.log("pageBeforeRemove",f)}),function(e){e.$;var f=e.$h;e.$root,e.$f7;var w=e.$f7route;e.$f7router;var S=e.$theme;return e.$update,e.$store,f`
   <div class="page">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -1469,7 +1465,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
       </div>
     </div>
   </div>
-`}}E.id="84ed4d329a";E.style=`
+`}}E.id="48e0a4b426";E.style=`
   p {
     margin: 10px 0;
   }
@@ -1494,7 +1490,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
     </div>
   </div>
 </div>
-`}}Q.id="f2ad6b26a3";function N(a,{$:r,$f7:c,$update:l,$on:n,$store:u,$f7router:v}){const t=u.getters.spotifyApi.value;let d=!1;var m=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;let o=m.exec(navigator.language)[5];console.log(o);const e=a.track,f=e.album;let w,S="play_arrow",y={trackIsSavedLoading:!0};console.log(e);const g=()=>{const b={title:`Statify - ${e.name}`,text:"Look at this track i found!",url:e.external_urls.spotify};try{navigator.share(b)}catch($){console.log("share error",$)}};n("pageInit",(b,$)=>{const _=I=>{var A=Math.floor(I/1e3%60),T=Math.floor(I/(1e3*60)),T=T<10?"0"+T:T;return A=A<10?"0"+A:A,T+":"+A};y.duration=_(e.duration_ms),l()}),t.containsMySavedTracks([e.id]).then(function(b){y.trackIsSavedLoading=!1,y.trackIsSaved=b[0],l()}),t.getAudioFeaturesForTrack(e.id).then(function(b){y.songAnalytics=b,console.log(b),l()});const h=()=>{v.navigate("/add/playlist/",{props:{items:[e]}})},p=()=>{y.trackIsSavedLoading=!0,l();let b;y.trackIsSaved?b=t.removeFromMySavedTracks:b=t.addToMySavedTracks,b([e.id]).then(function($){y.trackIsSavedLoading=!1,y.trackIsSaved=!y.trackIsSaved,console.log(y),l()},function($){console.log($),y.trackIsSavedLoading=!1,l()})},i=()=>{w=new Audio(e.preview_url),console.log(e),w.addEventListener("loadstart",function(){d=!0,l()}),w.addEventListener("canplaythrough",function(){d=!1,w.play(),l()}),w.addEventListener("ended",function(){S="play_arrow",y.showProgressbar=!1,l()}),w.addEventListener("timeupdate",function(){let b=w.currentTime/w.duration*100;c.progressbar.set(".progressbar",b),l()})},s=()=>{const b=e.available_markets.map(j),$=e.available_markets;let _="",I="";$.includes(o)&&(I=`<div class="block block-strong"><div class="block-inner"></div><p class="no-margin-top">This track is avaible in your region "${o}". \u{1F601}</p></div>`);for(let T=0;T<$.length;T++)_=`${_}<div class="col"><div class="marketItem">${b[T]} ${$[T]}</div></div>`;var A=c.sheet.create({content:`
+`}}Q.id="5fd851c447";function N(a,{$:r,$f7:c,$update:l,$on:n,$store:u,$f7router:v}){const t=u.getters.spotifyApi.value;let d=!1;var m=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;let o=m.exec(navigator.language)[5];console.log(o);const e=a.track,f=e.album;let w,S="play_arrow",y={trackIsSavedLoading:!0};console.log(e);const g=()=>{const b={title:`Statify - ${e.name}`,text:"Look at this track i found!",url:e.external_urls.spotify};try{navigator.share(b)}catch($){console.log("share error",$)}};n("pageInit",(b,$)=>{const _=I=>{var A=Math.floor(I/1e3%60),T=Math.floor(I/(1e3*60)),T=T<10?"0"+T:T;return A=A<10?"0"+A:A,T+":"+A};y.duration=_(e.duration_ms),l()}),t.containsMySavedTracks([e.id]).then(function(b){y.trackIsSavedLoading=!1,y.trackIsSaved=b[0],l()}),t.getAudioFeaturesForTrack(e.id).then(function(b){y.songAnalytics=b,console.log(b),l()});const h=()=>{v.navigate("/add/playlist/",{props:{items:[e]}})},p=()=>{y.trackIsSavedLoading=!0,l();let b;y.trackIsSaved?b=t.removeFromMySavedTracks:b=t.addToMySavedTracks,b([e.id]).then(function($){y.trackIsSavedLoading=!1,y.trackIsSaved=!y.trackIsSaved,console.log(y),l()},function($){console.log($),y.trackIsSavedLoading=!1,l()})},i=()=>{w=new Audio(e.preview_url),console.log(e),w.addEventListener("loadstart",function(){d=!0,l()}),w.addEventListener("canplaythrough",function(){d=!1,w.play(),l()}),w.addEventListener("ended",function(){S="play_arrow",y.showProgressbar=!1,l()}),w.addEventListener("timeupdate",function(){let b=w.currentTime/w.duration*100;c.progressbar.set(".progressbar",b),l()})},s=()=>{const b=e.available_markets.map(j),$=e.available_markets;let _="",I="";$.includes(o)&&(I=`<div class="block block-strong"><div class="block-inner"></div><p class="no-margin-top">This track is avaible in your region "${o}". \u{1F601}</p></div>`);for(let T=0;T<$.length;T++)_=`${_}<div class="col"><div class="marketItem">${b[T]} ${$[T]}</div></div>`;var A=c.sheet.create({content:`
           <div class="sheet-modal">
             <div class="toolbar">
               <div class="toolbar-inner">
@@ -1716,7 +1712,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
             </div>
         </div>
     </div>
-`}}N.id="d4f20e9eb7";N.style=`
+`}}N.id="cf931e7799";N.style=`
     .optionsBlock {
         display: flex;
     }
@@ -1943,7 +1939,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
     </div>
 
   </div>
-`}}z.id="f07e37f94c";function L(a,{$:r,$el:c,$on:l,$f7:n,$update:u,$store:v}){let t=[];l("pageInit",(e,f)=>{});let d=0;n.request({url:"./assets/data/login_faq.json",async:!0,error:function(e){console.log(e),d=d+1,d<5?request(this):m()},success:function(e){try{t=JSON.parse(e)}catch(f){console.log(f),d=d+1,d<5?request(this):m();return}u(),n.swiper.create(".swiper-container",{speed:400,spaceBetween:10,loop:!0,loopedSlides:t.length,observer:!0})}});const m=()=>{console.log(r(".faq-loading").html()),r(".faq-loading").html(`
+`}}z.id="b4c1354694";function L(a,{$:r,$el:c,$on:l,$f7:n,$update:u,$store:v}){let t=[];l("pageInit",(e,f)=>{});let d=0;n.request({url:"./assets/data/login_faq.json",async:!0,error:function(e){console.log(e),d=d+1,d<5?request(this):m()},success:function(e){try{t=JSON.parse(e)}catch(f){console.log(f),d=d+1,d<5?request(this):m();return}u(),n.swiper.create(".swiper-container",{speed:400,spaceBetween:10,loop:!0,loopedSlides:t.length,observer:!0})}});const m=()=>{console.log(r(".faq-loading").html()),r(".faq-loading").html(`
                 <div class="card-content card-content-padding">Loading failed \u{1F614}</div>
             `),r(".faq-loading").removeClass("skeleton-text"),r(".faq-loading").removeClass("skeleton-effect-wave")},o=()=>{v.getters.loginMethode};return function(e){e.$;var f=e.$h;return e.$root,e.$f7,e.$f7route,e.$f7router,e.$theme,e.$update,e.$store,f`
     <div class="view view-main view-init">
@@ -1993,7 +1989,7 @@ var X=Object.defineProperty;var K=(a,r,c)=>r in a?X(a,r,{enumerable:!0,configura
             </div>
         </div>
     </div>
-`}}L.id="35a2d362b7";L.style=`
+`}}L.id="a4c95a03a3";L.style=`
     .spotify-icon {
         height: 20px;
         width: 20px;
