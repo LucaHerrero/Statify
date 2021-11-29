@@ -255,11 +255,7 @@
         </ul>
       </div>
       <div class="block">
-<<<<<<< HEAD
         <button class="button button-round color-blue" @click="${darkMode}">Turn on darkmode</button>
-=======
-        <button class="button button-round color-purple" @click="${logoutFunc}">Logout</button>
->>>>>>> 441ca799166110db9f8e90f20fc3c52baa250a35
         <button class="button button-round color-red" @click="${logoutFunc}">Logout</button>
       </div>
     </div>
