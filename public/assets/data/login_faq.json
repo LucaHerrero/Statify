@@ -2,6 +2,17 @@
     {
         "title": "Will my data be shared?",
         "body": "No, the data is not shared, the entire project is open source"
+    },
+    {
+        "title": "Do I need an Account?",
+        "body": "Yes an Account is required."
+    },
+    {
+        "title": "Do I have to be connected to the internet?",
+        "body": "Yes is required."
+    },
+    {
+        "title": "Can I create an Account with Facebook?",
+        "body": "Yes"
     }
-
 ]
