@@ -15,64 +15,143 @@
     <div class="page-content">
       ${artist.images.length > 1 ? $h`
       <div class="previewImageBlock">
-        <img src="${artist.images[1].url}" width="200px" class="imageBlur" />
-        <img src="${artist.images[1].url}" width="200px" class="imageNoBlur" />
+        <img src="${artist.images[1].url}" width="200px" height="200px" class="imageBlur" />
+        <img src="${artist.images[1].url}" width="200px" height="200px" class="imageNoBlur" />
       </div>
       ` : $h`
       `}
       <div class="contentBlock">
+
+
+        <div class="block block-strong no-margin-top optionsBlock">
+          <div style="margin-left: auto; display: flex;">
+            <a class=" button button-large button-round optionsButtons">
+              <span class="material-icons-round optionButtonIcon">
+                playlist_add
+              </span>
+            </a>
+            <button
+              class=" button button-large button-round optionsButtons button-preloader ${viewData.albumIsSavedLoading ? 'button-loading' : ''}">
+              <span class="preloader"></span>
+              <span></span>
+              <span class="material-icons-round optionButtonIcon">
+                ${viewData.albumIsSaved ? 'favorite' : 'favorite_border'}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        ${viewData.topTracks != undefined && viewData.topTracks.tracks.length > 0 && $h`
+        <div class="block-title">Artist top Tracks</div>
+        <div class="block block-strong no-padding-horizontal">
+          <div data-space-between="15" data-slides-per-view="auto" data-free-mode="true" data-looped-slides="true"
+            data-mousewheel="true" class="swiper-container swiper-init topTracks">
+            <div class="swiper-wrapper">
+              ${viewData.topTracks.tracks.map((item) => $h`
+              <div class="swiper-slide">
+                <a href="/track/${item.id}/">
+                  ${item.album.images.length > 1 ? $h`
+                  <img class="elevation-3" src="${item.album.images[1].url}" />
+                  ` : $h`
+                  <img class="elevation-3" src="./assets/icons/audiotrack_black_48dp.svg" width="100" />
+                  `}
+                  <div class="title">${item.name}</div>
+                  <div class="artist">${item.artists.map((item) => $h`${item.name} `)}</div>
+                </a>
+              </div>
+              `)}
+            </div>
+          </div>
+        </div>
+        `}
+
+
+
+
 
       </div>
     </div>
   </div>
 </template>
 <style scoped>
+  .optionsBlock {
+    display: flex;
+  }
+
+  .optionsButtons {
+    width: fit-content !important;
+  }
+
+  .optionButtonIcon {
+    margin-left: 0 !important;
+    margin-right: 4px;
+  }
+
   .imageBlur {
-        -webkit-filter: blur(20px);
-        -moz-filter: blur(20px);
-        -o-filter: blur(20px);
-        -ms-filter: blur(20px);
-        filter: blur(20px);
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 30px;
-    }
+    -webkit-filter: blur(20px);
+    -moz-filter: blur(20px);
+    -o-filter: blur(20px);
+    -ms-filter: blur(20px);
+    filter: blur(20px);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 30px;
+  }
 
-    .imageNoBlur {
-        padding: 30px;
-        position: inherit;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  .imageNoBlur {
+    padding: 30px;
+    position: inherit;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .contentBlock {
-        background: var(--f7-page-bg-color);
-        position: relative;
-        z-index: 1;
-        height: 1000px;
-        margin-top: 0;
-    }
+  .contentBlock {
+    background: var(--f7-page-bg-color);
+    position: relative;
+    z-index: 1;
+    height: 1000px;
+    margin-top: 0;
+  }
 
-    .previewImageBlock {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 0;
-        z-index: 0;
-    }
+  .previewImageBlock {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 0;
+  }
 
-    .previewImageBlock>img {
-        display: block;
-        object-fit: cover;
-        object-position: center;
-    }
+  .previewImageBlock>img {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
 </style>
 <script>
-  export default (props) => {
+  export default (props, {
+    $store,
+    $update
+  }) => {
     console.log('artistView', props)
 
     const artist = props.artist;
+    const spotify = $store.getters.spotifyApi.value;
+    let viewData = {}
 
+    const regExRegion =
+      /^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;
+    let region = regExRegion.exec(navigator.language)[5];
+    if (viewData.topTracks == undefined) {
+      spotify
+        .getArtistTopTracks(artist.id, region)
+        .then(
+          function (data) {
+            console.log('topTracks', data)
+            viewData.topTracks = data;
+            $update();
+          }
+        );
+    }
     return $render;
   };
 </script>

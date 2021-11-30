@@ -244,7 +244,7 @@
             const shareData = {
                 title: `Statify - ${album.name}`,
                 text: 'Look at this album i found!',
-                url: album.external_urls.spotify
+                url: window.location.origin + $f7router.url
             }
 
             try {

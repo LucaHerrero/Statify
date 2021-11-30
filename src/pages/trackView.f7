@@ -136,7 +136,47 @@
 
 
 
-
+                ${viewData.songAnalytics != undefined && $h`
+                <div class="block-title">Audio analytics</div>
+                <div class="block block-strong no-margin-bottom">
+                    <div class="row">
+                        ${viewData.songAnalytics.key >= 0 && $h`
+                        <div class="col text-align-center">
+                            <div class="card card-outline">
+                                <div class="card-content">
+                                    <h1 class="margin-bottom-half" style="color: var(--f7-navbar-link-color);">${keyMap[viewData.songAnalytics.key]}</h1>
+                                    <p class="no-margin-top">Key</p>
+                                </div>
+                            </div>
+                        </div>
+                        `}
+                        <div class="col text-align-center">
+                            <div class="card card-outline">
+                                <div class="card-content">
+                                    <h1 class="margin-bottom-half" style="color: var(--f7-navbar-link-color);">${viewData.songAnalytics.tempo}</h1>
+                                    <p class="no-margin-top">BPM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list media-list no-margin-top no-hairlines">
+                    <ul>
+                        <li>
+                            <a href="/artist/" class="item-link item-content">
+                                <div class="item-media">
+                                    <i class="icon material-icons-round">bar_chart</i>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">More analytics</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                `}
 
 
 
@@ -278,12 +318,50 @@
         margin-left: auto;
         margin-right: auto;
     }
+
+    .swiper-container>div>div.swiper-slide {
+        width: 150px;
+    }
+
+    .swiper-container>div>div.swiper-slide:first-child {
+        margin-left: 15px;
+    }
+
+    .swiper-container>div>div.swiper-slide:last-child {
+        margin-right: 15px;
+    }
+
+    .swiper-container>div>div.swiper-slide>a>img {
+        width: 150px;
+        height: 150px;
+        border-radius: 5%;
+        object-fit: cover;
+
+    }
+
+    .swiper-container>div>div.swiper-slide>a {
+        width: 150px;
+        text-overflow: ellipsis;
+        overflow-y: hidden;
+    }
+
+    .swiper-container>div>div.swiper-slide>a>div.title {
+        color: var(--f7-block-title-large-text-color);
+        font-weight: 500;
+    }
+
+    .swiper-container>div>div.swiper-slide>a>div.artist {
+        color: var(--f7-block-title-large-text-color);
+        opacity: 0.5;
+    }
 </style>
 <script>
     import {
         countryCodeEmoji
     } from 'country-code-emoji';
-
+    const keyMap = {
+        0: 'C', 1: 'C#', 2: 'D', 3: 'D#', 4: 'E', 5: 'F', 6: 'F#', 7: 'G', 8: 'G#', 9: 'A', 10: 'A#', 11: 'B'
+    }
     export default (props, {
         $,
         $f7,
@@ -311,7 +389,7 @@
             const shareData = {
                 title: `Statify - ${track.name}`,
                 text: 'Look at this track i found!',
-                url: track.external_urls.spotify
+                url: window.location.origin + $f7router.url
             }
 
             try {
