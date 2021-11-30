@@ -254,8 +254,18 @@
           </li>
         </ul>
       </div>
+      <div class="list simple-list">
+        <ul>
+          <li>
+            <span>Darkmode</span>
+            <label class="toggle toggle-init" @click="${darkMode}">
+              <input type="checkbox" checked />
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+        </ul>
+      </div>
       <div class="block">
-        <button class="button button-round color-blue" @click="${darkMode}">Turn on darkmode</button>
         <button class="button button-round color-red" @click="${logoutFunc}">Logout</button>
       </div>
     </div>
