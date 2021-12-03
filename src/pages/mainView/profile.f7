@@ -254,7 +254,7 @@
           </li>
         </ul>
       </div>
-      <div class="block-title">Mixed and nested</div>
+      <div class="block-title">Style</div>
       <div class="list">
         <ul>
           <li>
@@ -263,7 +263,7 @@
                 <i class="material-icons-round">dark_mode</i>
               </div>
               <div class="item-inner">
-                <div class="item-title">With toggle</div>
+                <div class="item-title">Darkmode</div>
                 <div class="item-after">
                   <label class="toggle darkModeToggle">
                     <input type="checkbox" />
@@ -292,6 +292,7 @@
     let viewData = {};
 
     $on('pageInit', (e, page) => {
+      //Init toggle
       $store.dispatch("getSetting", "darkMode").then(function (result) {
         var toggle = $f7.toggle.create({
           el: '.darkModeToggle',
@@ -308,18 +309,6 @@
       });
     });
 
-
-
-    const logoutFunc = () => {
-      $f7.dialog.confirm('Do you really want to log out?', 'Logout', function () {
-        localStorage.removeItem('tokenMap')
-        window.location.href = window.location.origin + window.location.pathname;
-      });
-
-    }
-
-
-
     const changeDarkMode = () => {
       var toggle = $f7.toggle.get('.darkModeToggle');
 
@@ -332,8 +321,14 @@
       toggle.checked ?
         el.addClass("theme-dark") :
         el.removeClass("theme-dark");
+    }
 
-      $update();
+    //Logout function
+    const logoutFunc = () => {
+      $f7.dialog.confirm('Do you really want to log out?', 'Logout', function () {
+        localStorage.removeItem('tokenMap')
+        window.location.href = window.location.origin + window.location.pathname;
+      });
     }
 
     return $render;
