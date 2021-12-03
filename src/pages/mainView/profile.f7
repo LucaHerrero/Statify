@@ -254,14 +254,24 @@
           </li>
         </ul>
       </div>
-      <div class="list simple-list">
+      <div class="block-title">Mixed and nested</div>
+      <div class="list">
         <ul>
           <li>
-            <span>Darkmode</span>
-            <label class="toggle toggle-init" @click="${darkMode}">
-              <input type="checkbox" checked />
-              <span class="toggle-icon"></span>
-            </label>
+            <div class="item-content">
+              <div class="item-media">
+                <i class="material-icons-round">dark_mode</i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">With toggle</div>
+                <div class="item-after">
+                  <label class="toggle darkModeToggle">
+                    <input type="checkbox" />
+                    <span class="toggle-icon"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -272,7 +282,35 @@
   </div>
 </template>
 <script>
-  export default (props, { $, $f7 }) => {
+  export default (props, {
+    $,
+    $on,
+    $f7,
+    $store,
+    $update
+  }) => {
+    let viewData = {};
+
+    $on('pageInit', (e, page) => {
+      $store.dispatch("getSetting", "darkMode").then(function (result) {
+        viewData.darkMode = result;
+
+        var toggle = $f7.toggle.create({
+          el: '.darkModeToggle',
+          on: {
+            change: function () {
+              changeDarkMode();
+            }
+          }
+        });
+
+        if (toggle.checked != result) {
+          toggle.toggle();
+        }
+      });
+    });
+
+
 
     const logoutFunc = () => {
       $f7.dialog.confirm('Do you really want to log out?', 'Logout', function () {
@@ -282,8 +320,27 @@
 
     }
 
-    const darkMode = () => {
-      $('body').addClass('theme-dark')
+
+
+    const changeDarkMode = () => {
+      let newSetting = !(viewData.darkMode);
+
+      $store.dispatch("changeSetting", {
+        key: 'darkMode',
+        value: newSetting
+      });
+      viewData.darkMode = newSetting;
+      var toggle = $f7.toggle.get('.darkModeToggle');
+
+      if (toggle.checked != newSetting)
+        toggle.toggle();
+
+      const el = $("html");
+      toggle.checked ?
+        el.addClass("theme-dark") :
+        el.removeClass("theme-dark");
+
+      $update();
     }
 
     return $render;

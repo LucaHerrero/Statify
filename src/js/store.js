@@ -1,6 +1,22 @@
 
 import { createStore } from 'framework7';
 
+let stdSettings = {
+  darkMode: false,
+}
+
+const isJson = (json) => {
+  try {
+    JSON.parse(json);
+  } catch (e) {
+    console.log(e)
+    return false;
+  }
+  return true;
+}
+
+const settingsName = 'settings';
+
 const store = createStore({
   state: {
     products: [
@@ -50,6 +66,25 @@ const store = createStore({
 
     addSpotifyApi({state}, obj) {
       state.spotifyapi = obj
+    },
+    changeSetting({state}, keyValueMap) {
+      let key = keyValueMap['key'];
+      let value = keyValueMap['value'];
+      console.log(key, value)
+      stdSettings[key] = value;
+      let settingsJson = JSON.stringify(stdSettings);
+      localStorage.setItem(settingsName, settingsJson);
+    },
+    getSetting({state}, key) {
+      let savedData = localStorage.getItem(settingsName);
+
+      if (isJson(savedData) && savedData != null) {
+        let settingsObj = JSON.parse(savedData);
+        if (settingsObj.hasOwnProperty(key)) {
+          return settingsObj[key];
+        }
+      }
+      return stdSettings[key];
     }
   },
 });
