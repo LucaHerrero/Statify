@@ -70,7 +70,7 @@ const store = createStore({
     changeSetting({state}, keyValueMap) {
       let key = keyValueMap['key'];
       let value = keyValueMap['value'];
-      console.log(key, value)
+
       stdSettings[key] = value;
       let settingsJson = JSON.stringify(stdSettings);
       localStorage.setItem(settingsName, settingsJson);

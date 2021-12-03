@@ -293,13 +293,11 @@
 
     $on('pageInit', (e, page) => {
       $store.dispatch("getSetting", "darkMode").then(function (result) {
-        viewData.darkMode = result;
-
         var toggle = $f7.toggle.create({
           el: '.darkModeToggle',
           on: {
             change: function () {
-              changeDarkMode();
+              changeDarkMode()
             }
           }
         });
@@ -323,17 +321,12 @@
 
 
     const changeDarkMode = () => {
-      let newSetting = !(viewData.darkMode);
+      var toggle = $f7.toggle.get('.darkModeToggle');
 
       $store.dispatch("changeSetting", {
         key: 'darkMode',
-        value: newSetting
+        value: toggle.checked
       });
-      viewData.darkMode = newSetting;
-      var toggle = $f7.toggle.get('.darkModeToggle');
-
-      if (toggle.checked != newSetting)
-        toggle.toggle();
 
       const el = $("html");
       toggle.checked ?
