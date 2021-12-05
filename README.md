@@ -1,4 +1,4 @@
-# Stativ
+# Statify
 
 ## Framework7 CLI Options
 
@@ -10,7 +10,7 @@ Framework7 app created with following options:
   "type": [
     "web"
   ],
-  "name": "Stativ",
+  "name": "Statify",
   "framework": "core",
   "template": "tabs",
   "bundler": "vite",

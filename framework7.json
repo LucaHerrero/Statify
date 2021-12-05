@@ -3,7 +3,7 @@
   "type": [
     "web"
   ],
-  "name": "Stativ",
+  "name": "Statify",
   "framework": "core",
   "template": "tabs",
   "bundler": "vite",

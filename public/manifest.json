@@ -1,7 +1,7 @@
 {
     "background_color": "#ffffff",
     "display": "standalone",
-    "name": "Stativ - Statistic your Spotify",
+    "name": "Statify - Statistic your Spotify",
     "orientation": "portrait",
     "scope": "/",
     "short_name": "Statify",
