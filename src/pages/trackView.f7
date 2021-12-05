@@ -296,7 +296,6 @@
         background: var(--f7-page-bg-color);
         position: relative;
         z-index: 1;
-        height: 1000px;
         margin-top: 0;
     }
 
