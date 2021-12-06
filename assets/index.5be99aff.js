@@ -1,4 +1,4 @@
-var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configurable:!0,writable:!0,value:d}):o[c]=d;var z=(o,c,d)=>(ii(o,typeof c!="symbol"?c+"":c,d),d);import{c as U,a as ei,S as ai,F as ti}from"./vendor.4b7dcee7.js";const si=function(){const c=document.createElement("link").relList;if(c&&c.supports&&c.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))t(r);new MutationObserver(r=>{for(const p of r)if(p.type==="childList")for(const v of p.addedNodes)v.tagName==="LINK"&&v.rel==="modulepreload"&&t(v)}).observe(document,{childList:!0,subtree:!0});function d(r){const p={};return r.integrity&&(p.integrity=r.integrity),r.referrerpolicy&&(p.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?p.credentials="include":r.crossorigin==="anonymous"?p.credentials="omit":p.credentials="same-origin",p}function t(r){if(r.ep)return;r.ep=!0;const p=d(r);fetch(r.href,p)}};si();function P(o,{$on:c,$f7:d,$update:t,$store:r}){let p={};const v=r.getters.spotifyApi.value;let l={};return v.getMe().then(function(s){p=s,r.dispatch("setUserId",s.id),t()},function(s){console.error(s),d.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),v.getMyTopArtists().then(function(s){l.myTopArtists==null&&(l.myTopArtists=s,console.log("myTopArtists",s),t())},function(s){console.error(s),d.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),v.getMyTopTracks().then(function(s){l.myTopTracks==null&&(l.myTopTracks=s,console.log("myTopTracks",s),t())},function(s){console.error(s),d.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),v.getMyRecentlyPlayedTracks().then(function(s){l.myRecentTracks==null&&(l.myRecentTracks=s,console.log("myTopTracks",s),t())},function(s){console.error(s),d.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),function(s){s.$;var m=s.$h;return s.$root,s.$f7,s.$f7route,s.$f7router,s.$theme,s.$update,s.$store,m`
+var Z=Object.defineProperty;var ii=(s,n,d)=>n in s?Z(s,n,{enumerable:!0,configurable:!0,writable:!0,value:d}):s[n]=d;var z=(s,n,d)=>(ii(s,typeof n!="symbol"?n+"":n,d),d);import{c as H,a as ei,S as ai,F as ti}from"./vendor.4b7dcee7.js";const si=function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const c of document.querySelectorAll('link[rel="modulepreload"]'))t(c);new MutationObserver(c=>{for(const u of c)if(u.type==="childList")for(const v of u.addedNodes)v.tagName==="LINK"&&v.rel==="modulepreload"&&t(v)}).observe(document,{childList:!0,subtree:!0});function d(c){const u={};return c.integrity&&(u.integrity=c.integrity),c.referrerpolicy&&(u.referrerPolicy=c.referrerpolicy),c.crossorigin==="use-credentials"?u.credentials="include":c.crossorigin==="anonymous"?u.credentials="omit":u.credentials="same-origin",u}function t(c){if(c.ep)return;c.ep=!0;const u=d(c);fetch(c.href,u)}};si();function C(s,{$on:n,$f7:d,$update:t,$store:c}){let u={};const v=c.getters.spotifyApi.value;let l={};return v.getMe().then(function(r){u=r,console.log(r),c.dispatch("setUser",r),t()},function(r){console.error(r),d.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),v.getMyTopArtists().then(function(r){l.myTopArtists==null&&(l.myTopArtists=r,console.log("myTopArtists",r),t())},function(r){console.error(r),d.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),v.getMyTopTracks().then(function(r){l.myTopTracks==null&&(l.myTopTracks=r,console.log("myTopTracks",r),t())},function(r){console.error(r),d.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),v.getMyRecentlyPlayedTracks().then(function(r){l.myRecentTracks==null&&(l.myRecentTracks=r,console.log("myTopTracks",r),t())},function(r){console.error(r),d.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),function(r){r.$;var m=r.$h;return r.$root,r.$f7,r.$f7route,r.$f7router,r.$theme,r.$update,r.$store,m`
     <div class="page" data-name="home">
         <!-- Top Navbar -->
         <div class="navbar navbar-large">
@@ -18,7 +18,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                     </a>
                 </div>
                 <div class="title-large">
-                    <div class="title-large-text">Hello ${p.display_name}</div>
+                    <div class="title-large-text">Hello ${u.display_name}</div>
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
 
         </div>
     </div>
-`}}P.id="0faa2c7a6d";P.style=`
+`}}C.id="29aa40a642";C.style=`
     .swiper-container>div>div.swiper-slide {
         width: 150px;
     }
@@ -162,7 +162,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
     .round {
         border-radius: 50% !important;
     }
-`;function H(){return function(o){o.$;var c=o.$h;return o.$root,o.$f7,o.$f7route,o.$f7router,o.$theme,o.$update,o.$store,c`
+`;function G(){return function(s){s.$;var n=s.$h;return s.$root,s.$f7,s.$f7route,s.$f7router,s.$theme,s.$update,s.$store,n`
 <div class="page" data-name="about">
   <div class="navbar">
     <div class="navbar-bg"></div>
@@ -189,7 +189,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
     </div>
   </div>
 </div>
-`}}H.id="e2b48f4f58";function J(){return function(o){o.$;var c=o.$h;return o.$root,o.$f7,o.$f7route,o.$f7router,o.$theme,o.$update,o.$store,c`
+`}}G.id="14e26e6217";function J(){return function(s){s.$;var n=s.$h;return s.$root,s.$f7,s.$f7route,s.$f7router,s.$theme,s.$update,s.$store,n`
 <div class="page" data-name="form">
   <div class="navbar">
     <div class="navbar-bg"></div>
@@ -448,7 +448,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
     </div>
   </div>
 </div>
-`}}J.id="30f7a3a0f2";function V(o,{$store:c}){const d=c.getters.products,t=()=>{c.dispatch("addProduct",{id:"4",title:"Apple iPhone 12",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis."})};return function(r){r.$;var p=r.$h;return r.$root,r.$f7,r.$f7route,r.$f7router,r.$theme,r.$update,r.$store,p`
+`}}J.id="5ed199e4cf";function V(s,{$store:n}){const d=n.getters.products,t=()=>{n.dispatch("addProduct",{id:"4",title:"Apple iPhone 12",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis."})};return function(c){c.$;var u=c.$h;return c.$root,c.$f7,c.$f7route,c.$f7router,c.$theme,c.$update,c.$store,u`
   <div class="page" data-name="catalog">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -459,19 +459,19 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
     <div class="page-content">
       <div class="list links-list">
         <ul>
-          ${d.value.map(v=>p`
+          ${d.value.map(v=>u`
             <li><a href="/product/${v.id}/">${v.title}</a></li>
           `)}
         </ul>
       </div>
-      ${d.value.length===3&&p`
+      ${d.value.length===3&&u`
         <div class="block">
           <button class="button button-fill" @click=${t}>Add Product</Button>
         </div>
       `}
     </div>
   </div>
-`}}V.id="7c2df0cfa1";function G(o,{$f7route:c,$store:d}){const t=d.getters.products,r=c.params.id;let p;return t.value.forEach(v=>{v.id===r&&(p=v)}),function(v){v.$;var l=v.$h;return v.$root,v.$f7,v.$f7route,v.$f7router,v.$theme,v.$update,v.$store,l`
+`}}V.id="39049212c9";function Q(s,{$f7route:n,$store:d}){const t=d.getters.products,c=n.params.id;let u;return t.value.forEach(v=>{v.id===c&&(u=v)}),function(v){v.$;var l=v.$h;return v.$root,v.$f7,v.$f7route,v.$f7router,v.$theme,v.$update,v.$store,l`
   <div class="page" data-name="product">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -482,17 +482,17 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             <span class="if-not-md">Back</span>
           </a>
         </div>
-        <div class="title">${p.title}</div>
+        <div class="title">${u.title}</div>
       </div>
     </div>
     <div class="page-content">
-      <div class="block-title">About ${p.title}</div>
+      <div class="block-title">About ${u.title}</div>
       <div class="block block-strong">
-        ${p.description}
+        ${u.description}
       </div>
     </div>
   </div>
-`}}G.id="37e2d0196f";function Y(o,{$:c,$on:d,$f7:t,$store:r,$update:p}){d("pageInit",(s,m)=>{r.dispatch("getSetting","darkMode").then(function(i){var e=t.toggle.create({el:".darkModeToggle",on:{change:function(){v()}}});e.checked!=i&&e.toggle()})});const v=()=>{var s=t.toggle.get(".darkModeToggle");r.dispatch("changeSetting",{key:"darkMode",value:s.checked});const m=c("html");s.checked?m.addClass("theme-dark"):m.removeClass("theme-dark")},l=()=>{t.dialog.confirm("Do you really want to log out?","Logout",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})};return function(s){s.$;var m=s.$h;return s.$root,s.$f7,s.$f7route,s.$f7router,s.$theme,s.$update,s.$store,m`
+`}}Q.id="cf97147130";function R(s,{$:n,$on:d,$f7:t,$store:c,$update:u}){let v={};const l=c.getters.spotifyApi.value;d("pageInit",(i,e)=>{c.dispatch("getSetting","darkMode").then(function(b){var k=t.toggle.create({el:"#darkModeToggle",on:{change:function(){r()}}});k.checked!=b&&k.toggle()})});const r=()=>{var i=t.toggle.get("#darkModeToggle");c.dispatch("changeSetting",{key:"darkMode",value:i.checked});const e=n("html");i.checked?e.addClass("theme-dark"):e.removeClass("theme-dark")},m=()=>{t.dialog.confirm("Do you really want to log out?","Logout",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})};return l.getMe().then(function(i){v.user=i,u()},function(i){console.error(i),t.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),function(i){i.$;var e=i.$h;return i.$root,i.$f7,i.$f7route,i.$f7router,i.$theme,i.$update,i.$store,e`
   <div class="page" data-name="settings">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -506,6 +506,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
       </div>
     </div>
     <div class="page-content">
+
       <div class="block-title">Style</div>
       <div class="list">
         <ul>
@@ -517,7 +518,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
               <div class="item-inner">
                 <div class="item-title">Darkmode</div>
                 <div class="item-after">
-                  <label class="toggle darkModeToggle">
+                  <label class="toggle" id="darkModeToggle">
                     <input type="checkbox" />
                     <span class="toggle-icon"></span>
                   </label>
@@ -527,12 +528,55 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
           </li>
         </ul>
       </div>
+
+
+      ${v.user!=null&&e`
+
+      <div class="block userdatablock1">
+        <div class="imageBlock">
+          ${v.user.images.length>0?e`
+          <img src="${v.user.images[0].url}" width="100" height="100" />
+          `:e`
+          <img src="./assets/icons/face_black_48dp.svg" width="100" height="100" />
+          `}
+        </div>
+
+
+        <div class="infoBlock">
+          <h1>${v.user.display_name}</h1>
+          <div class="chip">
+            <div class="chip-label">${v.user.product=="premium"?"Premium":"Freemium"}</div>
+          </div>
+        </div>
+      </div>
+
+      `}
       <div class="block">
-        <button class="button button-round color-red" @click="${l}">Logout</button>
+        <button class="button button-round color-red" @click="${m}">Logout</button>
       </div>
     </div>
   </div>
-`}}Y.id="437f815e5a";function R(o,{$:c,$f7:d,$on:t,$update:r,$store:p}){let v;t("pageInit",()=>{v=d.searchbar.create({el:".searchbar",customSearch:!0,on:{search(u,a,n){a!=""&&$()},clear(){l={},r()}}}),d.swiper.create(".chip-swiper",{speed:400,spaceBetween:10,loop:!1,slidesPerView:"auto",observer:!0})});let l={},s=!1;const m=p.getters.spotifyApi.value;let i={tracks:"track",artists:"artist",albums:"album",playlists:"playlist"},e={all:{active:!0,name:"All"},artists:{active:!0,name:"Artists"},albums:{active:!0,name:"Albums"},tracks:{active:!0,name:"Songs"},playlists:{active:!0,name:"Playlists"}};const f=u=>{let a;u.path==null?a=u.srcElement.innerText:a=u.path[0].innerText;for(let n in e)e[n].active=!1;for(let n in e)a=="All"&&(e[n].active=!0),a==e[n].name&&(e[n].active=!0);v.query!=""&&$(),r()},$=u=>{let a=v.query;if(e.all.active){S(a,["album","artist","playlist","track"],{limit:3});return}if(e.tracks.active){S(a,["track"],{limit:20});return}if(e.albums.active){S(a,["album"],{limit:20});return}if(e.artists.active){S(a,["artist"],{limit:20});return}if(e.playlists.active){S(a,["playlist"],{limit:20});return}},S=(u,a,n,y)=>{y||(s=!0),r(),m.search(u,a,n).then(function(g){if(y)return h(g);s=!1,l=g,console.log(g),r()},function(g){console.error(g),s=!1})},h=u=>{if(u.playlists){let a=l.playlists.items.concat(u.playlists.items);l.playlists.items=a,b=!1,r()}if(u.tracks){let a=l.tracks.items.concat(u.tracks.items);l.tracks.items=a,b=!1,r()}if(u.albums){let a=l.albums.items.concat(u.albums.items);l.albums.items=a,b=!1,r()}if(u.artists){let a=l.artists.items.concat(u.artists.items);l.artists.items=a,b=!1,r()}};let b=!1;const k=u=>{if(b)return;b=!0,r();let a=l[u].items.length;console.log(a),S(v.query,[i[u]],{limit:20,offset:a},!0)};return function(u){u.$;var a=u.$h;return u.$root,u.$f7,u.$f7route,u.$f7router,u.$theme,u.$update,u.$store,a`
+`}}R.id="0595095100";R.style=`
+  .userdatablock1 {
+    display: flex;
+  }
+
+  .userdatablock1>div.imageBlock>img {
+    border-radius: 50%;
+  }
+
+  .userdatablock1>div.infoBlock {
+    padding-left: 10px;
+    max-height: 100px;
+  }
+
+  .userdatablock1>div.infoBlock>h1 {
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+`;function D(s,{$:n,$f7:d,$on:t,$update:c,$store:u}){let v;t("pageInit",()=>{v=d.searchbar.create({el:".searchbar",customSearch:!0,on:{search(p,a,o){a!=""&&k()},clear(){l={},c()}}}),d.swiper.create(".chip-swiper",{speed:400,spaceBetween:10,loop:!1,slidesPerView:"auto",observer:!0})});let l={},r=!1;const m=u.getters.spotifyApi.value;let i={tracks:"track",artists:"artist",albums:"album",playlists:"playlist"},e={all:{active:!0,name:"All"},artists:{active:!0,name:"Artists"},albums:{active:!0,name:"Albums"},tracks:{active:!0,name:"Songs"},playlists:{active:!0,name:"Playlists"}};const b=p=>{let a;p.path==null?a=p.srcElement.innerText:a=p.path[0].innerText;for(let o in e)e[o].active=!1;for(let o in e)a=="All"&&(e[o].active=!0),a==e[o].name&&(e[o].active=!0);v.query!=""&&k(),c()},k=p=>{let a=v.query;if(e.all.active){_(a,["album","artist","playlist","track"],{limit:3});return}if(e.tracks.active){_(a,["track"],{limit:20});return}if(e.albums.active){_(a,["album"],{limit:20});return}if(e.artists.active){_(a,["artist"],{limit:20});return}if(e.playlists.active){_(a,["playlist"],{limit:20});return}},_=(p,a,o,$)=>{$||(r=!0),c(),m.search(p,a,o).then(function(g){if($)return h(g);r=!1,l=g,console.log(g),c()},function(g){console.error(g),r=!1})},h=p=>{if(p.playlists){let a=l.playlists.items.concat(p.playlists.items);l.playlists.items=a,f=!1,c()}if(p.tracks){let a=l.tracks.items.concat(p.tracks.items);l.tracks.items=a,f=!1,c()}if(p.albums){let a=l.albums.items.concat(p.albums.items);l.albums.items=a,f=!1,c()}if(p.artists){let a=l.artists.items.concat(p.artists.items);l.artists.items=a,f=!1,c()}};let f=!1;const w=p=>{if(f)return;f=!0,c();let a=l[p].items.length;console.log(a),_(v.query,[i[p]],{limit:20,offset:a},!0)};return function(p){p.$;var a=p.$h;return p.$root,p.$f7,p.$f7route,p.$f7router,p.$theme,p.$update,p.$store,a`
     <div class="page" data-name="catalog">
         <div class="navbar">
             <div class="navbar-bg"></div>
@@ -555,18 +599,18 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             <div class="block chip-block">
                 <div data-space-between="10" data-slides-per-view="auto" class="swiper-container swiper-init">
                     <div class="swiper-wrapper">
-                        ${Object.keys(e).map(n=>a`
+                        ${Object.keys(e).map(o=>a`
                         <div class="swiper-slide chip-slide">
                             <button
-                                class="button button-round ${e[n].active?"button-fill":"button-outline"}"
-                                @click="${f}">${e[n].name}</button>
+                                class="button button-round ${e[o].active?"button-fill":"button-outline"}"
+                                @click="${b}">${e[o].name}</button>
                         </div>
                         `)}
                     </div>
                 </div>
             </div>
 
-            ${s==!0?a`
+            ${r==!0?a`
             <div class="block text-align-center">
                 <div class="preloader color-multi"></div>
             </div>
@@ -576,21 +620,21 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             <div class="block-title">Songs</div>
             <div class="list media-list margin-bottom-half">
                 <ul>
-                    ${l.tracks.items.map(n=>a`
+                    ${l.tracks.items.map(o=>a`
                     <li>
-                        <a href="/track/${n.id}/" class="item-link item-content">
+                        <a href="/track/${o.id}/" class="item-link item-content">
                             <div class="item-media">
-                                ${n.album.images.length>0?a`
-                                <img src="${n.album.images[n.album.images.length-1].url}" class="track-cover" />
+                                ${o.album.images.length>0?a`
+                                <img src="${o.album.images[o.album.images.length-1].url}" class="track-cover" />
                                 `:a`
                                 <img src="./assets/icons/audiotrack_black_48dp.svg" width="45" />
                                 `}
                             </div>
                             <div class="item-inner">
                                 <div class="item-title-row">
-                                    <div class="item-title">${n.name}</div>
+                                    <div class="item-title">${o.name}</div>
                                 </div>
-                                <div class="item-subtitle">${n.artists.map(y=>a`${y.name} `)}</div>
+                                <div class="item-subtitle">${o.artists.map($=>a`${$.name} `)}</div>
                             </div>
                         </a>
                     </li>
@@ -600,8 +644,8 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             ${l.tracks.items.length>2?a`
             <div class="block no-margin-top text-align-center">
                 <button
-                    class="button button-small button-outline button-round button-preloader button-load-more ${b?"button-loading":""}"
-                    @click=${()=>k("tracks")}>
+                    class="button button-small button-outline button-round button-preloader button-load-more ${f?"button-loading":""}"
+                    @click=${()=>w("tracks")}>
                     <span class="preloader"></span>
                     <span>Load more</span>
                 </button>
@@ -613,21 +657,21 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             <div class="block-title">Albums</div>
             <div class="list media-list margin-bottom-half">
                 <ul>
-                    ${l.albums.items.map(n=>a`
+                    ${l.albums.items.map(o=>a`
                     <li>
-                        <a href="/album/${n.id}/" class="item-link item-content">
+                        <a href="/album/${o.id}/" class="item-link item-content">
                             <div class="item-media">
-                                ${n.images.length>0?a`
-                                <img src="${n.images[n.images.length-1].url}" class="album-cover" />
+                                ${o.images.length>0?a`
+                                <img src="${o.images[o.images.length-1].url}" class="album-cover" />
                                 `:a`
                                 <img src="./assets/icons/library_music_black_48dp.svg" width="45" />
                                 `}
                             </div>
                             <div class="item-inner">
                                 <div class="item-title-row">
-                                    <div class="item-title">${n.name}</div>
+                                    <div class="item-title">${o.name}</div>
                                 </div>
-                                <div class="item-subtitle">${n.artists.map(y=>a`${y.name} `)}</div>
+                                <div class="item-subtitle">${o.artists.map($=>a`${$.name} `)}</div>
                             </div>
                         </a>
                     </li>
@@ -637,8 +681,8 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             ${l.albums.items.length>2?a`
                 <div class="block no-margin-top text-align-center">
                     <button
-                        class="button button-small button-outline button-round button-preloader button-load-more ${b?"button-loading":""}"
-                        @click=${()=>k("albums")}>
+                        class="button button-small button-outline button-round button-preloader button-load-more ${f?"button-loading":""}"
+                        @click=${()=>w("albums")}>
                         <span class="preloader"></span>
                         <span>Load more</span>
                     </button>
@@ -650,19 +694,19 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             <div class="block-title">Artists</div>
             <div class="list media-list margin-bottom-half">
                 <ul>
-                    ${l.artists.items.map(n=>a`
+                    ${l.artists.items.map(o=>a`
                     <li>
-                        <a href="/artist/${n.id}/" class="item-link item-content">
+                        <a href="/artist/${o.id}/" class="item-link item-content">
                             <div class="item-media">
-                                ${n.images.length>0?a`
-                                <img src="${n.images[n.images.length-1].url}" class="artist-cover" />
+                                ${o.images.length>0?a`
+                                <img src="${o.images[o.images.length-1].url}" class="artist-cover" />
                                 `:a`
                                 <img src="./assets/icons/face_black_48dp.svg" width="45" />
                                 `}
                             </div>
                             <div class="item-inner">
                                 <div class="item-title-row">
-                                    <div class="item-title">${n.name}</div>
+                                    <div class="item-title">${o.name}</div>
                                 </div>
                             </div>
                         </a>
@@ -673,8 +717,8 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             ${l.artists.items.length>2?a`
                 <div class="block no-margin-top text-align-center">
                     <button
-                        class="button button-small button-outline button-round button-preloader button-load-more ${b?"button-loading":""}"
-                        @click=${()=>k("artists")}>
+                        class="button button-small button-outline button-round button-preloader button-load-more ${f?"button-loading":""}"
+                        @click=${()=>w("artists")}>
                         <span class="preloader"></span>
                         <span>Load more</span>
                     </button>
@@ -686,21 +730,21 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             <div class="block-title">Playlists</div>
             <div class="list media-list margin-bottom-half">
                 <ul>
-                    ${l.playlists.items.map(n=>a`
+                    ${l.playlists.items.map(o=>a`
                     <li>
                         <a href="#" class="item-link item-content">
                             <div class="item-media">
-                                ${n.images.length>0?a`
-                                <img src="${n.images[n.images.length-1].url}" class="playlist-cover" />
+                                ${o.images.length>0?a`
+                                <img src="${o.images[o.images.length-1].url}" class="playlist-cover" />
                                 `:a`
                                 <img src="./assets/icons/queue_music_black_48dp.svg" width="45" />
                                 `}
                             </div>
                             <div class="item-inner">
                                 <div class="item-title-row">
-                                    <div class="item-title">${n.name}</div>
+                                    <div class="item-title">${o.name}</div>
                                 </div>
-                                <div class="item-subtitle">${n.owner.display_name}</div>
+                                <div class="item-subtitle">${o.owner.display_name}</div>
 
                             </div>
                         </a>
@@ -711,8 +755,8 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             ${l.playlists.items.length>2&&a`
                 <div class="block no-margin-top text-align-center">
                     <button
-                        class="button button-small button-outline button-round button-preloader button-load-more ${b?"button-loading":""}"
-                        @click=${()=>k("playlists")}>
+                        class="button button-small button-outline button-round button-preloader button-load-more ${f?"button-loading":""}"
+                        @click=${()=>w("playlists")}>
                         <span class="preloader"></span>
                         <span>Load more</span>
                     </button>
@@ -722,7 +766,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
 
         </div>
     </div>
-`}}R.id="0274069499";R.style=`
+`}}D.id="58ff93c59c";D.style=`
     .button-load-more {
         width: initial;
         display: inline-block;
@@ -771,7 +815,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
         height: 45px;
         object-fit: cover;
     }
-`;function D(o,{$:c,$f7:d,$update:t,$on:r,$store:p,$f7router:v}){const l=p.getters.spotifyApi.value;var s=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;let m=s.exec(navigator.language)[5];console.log(m);let i=o.album;console.log(i);let e={albumIsSavedLoading:!0,trackIsSavedLoading:!0};const f=a=>{v.navigate("/add/playlist/",{props:{items:[a]}})},$=()=>{const a={title:`Statify - ${i.name}`,text:"Look at this album i found!",url:window.location.origin+v.url};try{navigator.share(a)}catch(n){console.log("share error",n)}},S=()=>{e.trackIsSavedLoading=!0;let a=[];for(let n=0;n<i.tracks.items.length;n++){let y=i.tracks.items[n];a.push(y.id)}e.albumIsSavedLoading=!0,l.containsMySavedAlbums([i.id]).then(function(n){e.albumIsSavedLoading=!1,i.isSaved=n[0],console.log(i),t()}),l.containsMySavedTracks(a).then(function(n){e.trackIsSavedLoading=!1;for(let y=0;y<i.tracks.items.length;y++){let g=i.tracks.items[y];g.isSaved=n[y]}console.log(i.tracks),t()})};S(),r("pageInit",(a,n)=>{const y=w=>{var _=Math.floor(w/1e3%60),I=Math.floor(w/(1e3*60)),I=I<10?"0"+I:I;return _=_<10?"0"+_:_,I+":"+_};let g=0;for(let w=0;w<i.tracks.items.length;w++){let I=i.tracks.items[w].duration_ms;g=g+I}e.duration=y(g),t()}),l.containsMySavedAlbums([i.id]).then(function(a){e.albumIsSavedLoading=!1,e.albumIsSaved=a[0],t()});const h=()=>{v.navigate("/add/playlist/",{props:{items:i.tracks.items}})},b=()=>{e.albumIsSavedLoading=!0,t();let a;a=l.addToMySavedAlbums,a([i.id]).then(function(n){e.albumIsSavedLoading=!1,e.albumIsSaved=!e.albumIsSaved,t()},function(n){console.log(n),e.trackIsSavedLoading=!1,t()})},k=a=>{e.trackIsSavedLoading=!0,t();let n;e.albumIsSaved?n=l.removeFromMySavedTracks:n=l.addToMySavedTracks,n([a.id]).then(function(y){e.albumIsSavedLoading=!1,S(),t()},function(y){console.log(y),e.albumIsSavedLoading=!1,S(),t()})},u=()=>{const a=track.available_markets.map(U),n=track.available_markets;let y="",g="";n.includes(m)&&(g=`<div class="block block-strong"><div class="block-inner"></div><p class="no-margin-top">This track is avaible in your region "${m}". \u{1F601}</p></div>`);for(let _=0;_<n.length;_++)y=`${y}<div class="col"><div class="marketItem">${a[_]} ${n[_]}</div></div>`;d.sheet.create({content:`
+`;function E(s,{$:n,$f7:d,$update:t,$on:c,$store:u,$f7router:v}){const l=u.getters.spotifyApi.value;var r=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;let m=r.exec(navigator.language)[5];console.log(m);let i=s.album;console.log(i);let e={albumIsSavedLoading:!0,trackIsSavedLoading:!0};const b=a=>{v.navigate("/add/playlist/",{props:{items:[a]}})},k=()=>{const a={title:`Statify - ${i.name}`,text:"Look at this album i found!",url:window.location.origin+v.url};try{navigator.share(a)}catch(o){console.log("share error",o)}},_=()=>{e.trackIsSavedLoading=!0;let a=[];for(let o=0;o<i.tracks.items.length;o++){let $=i.tracks.items[o];a.push($.id)}e.albumIsSavedLoading=!0,l.containsMySavedAlbums([i.id]).then(function(o){e.albumIsSavedLoading=!1,i.isSaved=o[0],console.log(i),t()}),l.containsMySavedTracks(a).then(function(o){e.trackIsSavedLoading=!1;for(let $=0;$<i.tracks.items.length;$++){let g=i.tracks.items[$];g.isSaved=o[$]}console.log(i.tracks),t()})};_(),c("pageInit",(a,o)=>{const $=y=>{var S=Math.floor(y/1e3%60),I=Math.floor(y/(1e3*60)),I=I<10?"0"+I:I;return S=S<10?"0"+S:S,I+":"+S};let g=0;for(let y=0;y<i.tracks.items.length;y++){let I=i.tracks.items[y].duration_ms;g=g+I}e.duration=$(g),t()}),l.containsMySavedAlbums([i.id]).then(function(a){e.albumIsSavedLoading=!1,e.albumIsSaved=a[0],t()});const h=()=>{v.navigate("/add/playlist/",{props:{items:i.tracks.items}})},f=()=>{e.albumIsSavedLoading=!0,t();let a;a=l.addToMySavedAlbums,a([i.id]).then(function(o){e.albumIsSavedLoading=!1,e.albumIsSaved=!e.albumIsSaved,t()},function(o){console.log(o),e.trackIsSavedLoading=!1,t()})},w=a=>{e.trackIsSavedLoading=!0,t();let o;e.albumIsSaved?o=l.removeFromMySavedTracks:o=l.addToMySavedTracks,o([a.id]).then(function($){e.albumIsSavedLoading=!1,_(),t()},function($){console.log($),e.albumIsSavedLoading=!1,_(),t()})},p=()=>{const a=track.available_markets.map(H),o=track.available_markets;let $="",g="";o.includes(m)&&(g=`<div class="block block-strong"><div class="block-inner"></div><p class="no-margin-top">This track is avaible in your region "${m}". \u{1F601}</p></div>`);for(let S=0;S<o.length;S++)$=`${$}<div class="col"><div class="marketItem">${a[S]} ${o[S]}</div></div>`;d.sheet.create({content:`
           <div class="sheet-modal">
             <div class="toolbar">
               <div class="toolbar-inner">
@@ -786,13 +830,13 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
               <div class="block">
                 <div class="row marketRow">
                     
-          ${y}
+          ${$}
 
         </div>
               </div>
             </div>
           </div>
-        `}).open()};return r("pageBeforeOut",(a,n)=>{}),function(a){a.$;var n=a.$h;return a.$root,a.$f7,a.$f7route,a.$f7router,a.$theme,a.$update,a.$store,n`
+        `}).open()};return c("pageBeforeOut",(a,o)=>{}),function(a){a.$;var o=a.$h;return a.$root,a.$f7,a.$f7route,a.$f7router,a.$theme,a.$update,a.$store,o`
     <div class="page">
         <div class="navbar">
             <div class="navbar-bg"></div>
@@ -805,22 +849,22 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                 </div>
                 <div class="title">${i.name}</div>
                 <div class="right">
-                    <a href="#" class="link icon-only" @click="${u}">
+                    <a href="#" class="link icon-only" @click="${p}">
                         <i class="icon material-icons">language</i>
                     </a>
-                    <a href="#" class="link icon-only" @click="${$}">
+                    <a href="#" class="link icon-only" @click="${k}">
                         <i class="icon material-icons">share</i>
                     </a>
                 </div>
             </div>
         </div>
         <div class="page-content">
-            ${i.images.length>1?n`
+            ${i.images.length>1?o`
             <div class="previewImageBlock">
                 <img src="${i.images[1].url}" width="200px" class="imageBlur"/>
                 <img src="${i.images[1].url}" width="200px" class="imageNoBlur"/>
             </div>
-            `:n`
+            `:o`
             `}
             <div class="contentBlock">
                 ${e.showProgressbar}
@@ -835,7 +879,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                         </a>
                         <button
                                 class=" button button-large button-round optionsButtons button-preloader ${e.albumIsSavedLoading?"button-loading":""}"
-                                @click=${b}>
+                                @click=${f}>
                             <span class="preloader"></span>
                             <span></span>
                             <span class="material-icons-round optionButtonIcon">
@@ -846,42 +890,42 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                 </div>
                 <!-- Beginn Pagecontent -->
 
-                ${i.tracks!=null?n`
+                ${i.tracks!=null?o`
                 <div class="block-title">Songs</div>
                 <div class="list media-list">
                     <ul>
-                        ${i.tracks.items.map(y=>n`
+                        ${i.tracks.items.map($=>o`
                         <li class="swipeout">
                             <div class="swipeout-content">
-                                <a href="/track/${y.id}/" class="item-link item-content">
+                                <a href="/track/${$.id}/" class="item-link item-content">
                                     <div class="item-media">
-                                        ${i.images.length>0?n`
+                                        ${i.images.length>0?o`
                                         <img src="${i.images[i.images.length-1].url}" class="track-cover"/>
-                                        `:n`
+                                        `:o`
                                         <img src="./assets/icons/audiotrack_black_48dp.svg" width="45"/>
                                         `}
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
-                                            <div class="item-title">${y.name}</div>
+                                            <div class="item-title">${$.name}</div>
                                             <div class="item-after">
 
-                                                ${y.isSaved?n`<span class="material-icons-round trackHeart">favorite</span>`:n``}
+                                                ${$.isSaved?o`<span class="material-icons-round trackHeart">favorite</span>`:o``}
                                             </div>
                                         </div>
-                                        <div class="item-subtitle">${y.artists.map(g=>n`${g.name} `)}
+                                        <div class="item-subtitle">${$.artists.map(g=>o`${g.name} `)}
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="swipeout-actions-left">
-                                <a href="#" class="swipeout-overswipe" @click="${()=>k(y)}">
+                                <a href="#" class="swipeout-overswipe" @click="${()=>w($)}">
                                     <span class="material-icons-round optionButtonIcon">
-                                ${y.isSaved?"favorite":"favorite_border"}
+                                ${$.isSaved?"favorite":"favorite_border"}
                             </span></a>
                             </div>
                             <div class="swipeout-actions-right">
-                                <a href="#" class="swipeout-overswipe" @click="${()=>f(y)}"><span
+                                <a href="#" class="swipeout-overswipe" @click="${()=>b($)}"><span
                                         class="material-icons-round optionButtonIcon">
                                 playlist_add
                             </span></a>
@@ -891,7 +935,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                         `)}
                     </ul>
                 </div>
-                `:n``}
+                `:o``}
 
 
                 <div class="block-title">Infos</div>
@@ -927,7 +971,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             </div>
         </div>
     </div>
-`}}D.id="4165858067";D.style=`
+`}}E.id="5989a47be3";E.style=`
     .trackHeart {
         font-size: 15px;
         margin-right: -5px;
@@ -1005,7 +1049,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
         margin-left: auto;
         margin-right: auto;
     }
-`;function N(o,{$store:c,$update:d}){console.log("artistView",o);const t=o.artist,r=c.getters.spotifyApi.value;let p={},l=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i.exec(navigator.language)[5];return p.topTracks==null&&r.getArtistTopTracks(t.id,l).then(function(s){console.log("topTracks",s),p.topTracks=s,d()}),function(s){s.$;var m=s.$h;return s.$root,s.$f7,s.$f7route,s.$f7router,s.$theme,s.$update,s.$store,m`
+`;function N(s,{$store:n,$update:d}){console.log("artistView",s);const t=s.artist,c=n.getters.spotifyApi.value;let u={},l=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i.exec(navigator.language)[5];return u.topTracks==null&&c.getArtistTopTracks(t.id,l).then(function(r){console.log("topTracks",r),u.topTracks=r,d()}),function(r){r.$;var m=r.$h;return r.$root,r.$f7,r.$f7route,r.$f7router,r.$theme,r.$update,r.$store,m`
   <div class="page">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -1068,13 +1112,13 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
 
 
 
-        ${p.topTracks!=null&&p.topTracks.tracks.length>0&&m`
+        ${u.topTracks!=null&&u.topTracks.tracks.length>0&&m`
         <div class="block-title">Artist top Tracks</div>
         <div class="block block-strong no-padding-horizontal">
           <div data-space-between="15" data-slides-per-view="auto" data-free-mode="true" data-looped-slides="true"
             data-mousewheel="true" class="swiper-container swiper-init topTracks">
             <div class="swiper-wrapper">
-              ${p.topTracks.tracks.map(i=>m`
+              ${u.topTracks.tracks.map(i=>m`
               <div class="swiper-slide">
                 <a href="/track/${i.id}/">
                   ${i.album.images.length>1?m`
@@ -1099,7 +1143,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
       </div>
     </div>
   </div>
-`}}N.id="7c4f0e37de";N.style=`
+`}}N.id="ca9a5f4f25";N.style=`
   .optionsBlock {
     display: flex;
   }
@@ -1152,7 +1196,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
     object-fit: cover;
     object-position: center;
   }
-`;function Q(o,{$:c,$f7router:d,$f7:t,$store:r,$on:p,$update:v}){const l=r.getters.spotifyApi.value;let s=o.items;const m=r.getters.userId.value;let i={playlistsLoading:!0,playlists:[],saveLoading:!1,saveCount:0,select:!0};console.log(o.items),(!o.items||o.items.length<1)&&t.dialog.alert("An error is happend, 0 tracks found to add to your playlist.","Sorry \u{1F614}",function(){d.back()});const e=b=>{for(var k=0;k<s.length;k++)s[k]===b&&(s.splice(k,1),k--);s.length==0&&d.back(),v()},f=()=>{let b=c('[name="playlistSelection"]');for(let k=0;k<b.length;k++){const u=b[k];c(u).prop("checked",i.select)}i.select=!i.select,v()},$=()=>{i.playlists=[],v(),l.getUserPlaylists().then(function(b){console.log(b),i.playlists=h(b,m),console.log(i.playlists),v()},function(b){console.error(b),t.dialog.alert("An error occurred when loading the data, you go back to the previous page.","Sorry \u{1F614}",function(){d.back()})})};p("pageInit",(b,k)=>{$()});const S=()=>{i.saveLoading=!0;let b=c('[name="playlistSelection"]:checked'),k=[];b.length==0&&t.toast.create({text:"No items selected \u{1F928}.",closeTimeout:3e3}).open();for(let u=0;u<s.length;u++)k.push(s[u].uri);for(let u=0;u<b.length;u++){const a=b[u].value;l.addTracksToPlaylist(a,k).then(function(n){i.saveCount=i.saveCount+1,i.saveCount==b.length&&(i.saveLoading=!1,i.select=!0,i.saveCount=0,$()),v()},function(n){console.error(n),t.dialog.alert("An error occurred when loading the data, you go back to the previous page.","Sorry \u{1F614}",function(){d.back()})})}},h=(b,k)=>{let u=b.items,a=[];for(let n=0;n<u.length;n++){if(u[n].collaborative){a.push(u[n]);continue}if(u[n].owner.id==k){a.push(u[n]);continue}}return a};return function(b){b.$;var k=b.$h;return b.$root,b.$f7,b.$f7route,b.$f7router,b.$theme,b.$update,b.$store,k`
+`;function W(s,{$:n,$f7router:d,$f7:t,$store:c,$on:u,$update:v}){const l=c.getters.spotifyApi.value;let r=s.items;const m=c.getters.user.value.id;console.log(m);let i={playlistsLoading:!0,playlists:[],saveLoading:!1,saveCount:0,select:!0};console.log(s.items),(!s.items||s.items.length<1)&&t.dialog.alert("An error is happend, 0 tracks found to add to your playlist.","Sorry \u{1F614}",function(){d.back()});const e=f=>{for(var w=0;w<r.length;w++)r[w]===f&&(r.splice(w,1),w--);r.length==0&&d.back(),v()},b=()=>{let f=n('[name="playlistSelection"]');for(let w=0;w<f.length;w++){const p=f[w];n(p).prop("checked",i.select)}i.select=!i.select,v()},k=()=>{i.playlists=[],v(),l.getUserPlaylists().then(function(f){console.log(f),i.playlists=h(f,m),console.log(i.playlists),v()},function(f){console.error(f),t.dialog.alert("An error occurred when loading the data, you go back to the previous page.","Sorry \u{1F614}",function(){d.back()})})};u("pageInit",(f,w)=>{k()});const _=()=>{i.saveLoading=!0;let f=n('[name="playlistSelection"]:checked'),w=[];f.length==0&&t.toast.create({text:"No items selected \u{1F928}.",closeTimeout:3e3}).open();for(let p=0;p<r.length;p++)w.push(r[p].uri);for(let p=0;p<f.length;p++){const a=f[p].value;l.addTracksToPlaylist(a,w).then(function(o){i.saveCount=i.saveCount+1,i.saveCount==f.length&&(i.saveLoading=!1,i.select=!0,i.saveCount=0,k()),v()},function(o){console.error(o),t.dialog.alert("An error occurred when loading the data, you go back to the previous page.","Sorry \u{1F614}",function(){d.back()})})}},h=(f,w)=>{let p=f.items,a=[];for(let o=0;o<p.length;o++){if(p[o].collaborative){a.push(p[o]);continue}if(p[o].owner.id==w){a.push(p[o]);continue}}return a};return function(f){f.$;var w=f.$h;return f.$root,f.$f7,f.$f7route,f.$f7router,f.$theme,f.$update,f.$store,w`
     <div class="page" data-name="about">
         <div class="navbar">
             <div class="navbar-bg"></div>
@@ -1163,10 +1207,10 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                         <span class="if-not-md">Back</span>
                     </a>
                 </div>
-                <div class="title">Add ${s.length} ${s.length>1?"tracks":"track"} to playlist
+                <div class="title">Add ${r.length} ${r.length>1?"tracks":"track"} to playlist
                 </div>
                 <div class="right">
-                    <a href="#" class="link icon-only" @click="${f}">
+                    <a href="#" class="link icon-only" @click="${b}">
                       <i class="icon material-icons-round">${i.select?"select_all":"deselect"}</i>
                     </a>
                   </div>
@@ -1174,13 +1218,13 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
         </div>
         <div class="fab-backdrop"></div>
         <div class="fab fab-right-bottom">
-            <a href="#" @click="${S}">
-                ${i.saveLoading?k`
+            <a href="#" @click="${_}">
+                ${i.saveLoading?w`
                 <div class="text-align-center">
                     <div class="preloader"></div>
                 </div>
 
-                `:k`
+                `:w`
 
                 <i class="icon material-icons-round">done</i>
                 `}
@@ -1202,7 +1246,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
 
                             <div class="list media-list margin-top-half">
                                 <ul class="no-padding-left">
-                                    ${s.map(u=>k`
+                                    ${r.map(p=>w`
                                     <li>
                                         <div class="item-content">
                                             <div class="item-media">
@@ -1212,10 +1256,10 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                                             </div>
                                             <div class="item-inner">
                                                 <div class="item-title-row">
-                                                    <div class="item-title">${u.name}</div>
-                                                    <div class="item-after"><i class="icon material-icons-round" @click="${()=>e(u)}">cancel</i></div>
+                                                    <div class="item-title">${p.name}</div>
+                                                    <div class="item-after"><i class="icon material-icons-round" @click="${()=>e(p)}">cancel</i></div>
                                                 </div>
-                                                <div class="item-subtitle">${u.artists.map(a=>k`${a.name} `)}</div>
+                                                <div class="item-subtitle">${p.artists.map(a=>w`${a.name} `)}</div>
                                             </div>
                                         </div>
                                     </li>
@@ -1233,21 +1277,21 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             <div class="block-title">${i.playlists.length>1?"Playlists":"Playlist"}</div>
             <div class="list media-list">
                 <ul>
-                    ${i.playlists!=null?k`
+                    ${i.playlists!=null?w`
                     <div class="list media-list margin-top-half">
                         <ul class="no-padding-left">
-                            ${i.playlists.map(u=>k`
+                            ${i.playlists.map(p=>w`
                             <li>
                                 <label class="item-checkbox item-content">
-                                    <input type="checkbox" name="playlistSelection" value="${u.id}" />
+                                    <input type="checkbox" name="playlistSelection" value="${p.id}" />
                                     <i class="icon icon-checkbox"></i>
                                     <div class="item-inner">
                                         <div class="item-title-row">
-                                            <div class="item-title">${u.name}</div>
-                                            <div class="item-after">${u.tracks.total} Tracks</div>
+                                            <div class="item-title">${p.name}</div>
+                                            <div class="item-after">${p.tracks.total} Tracks</div>
                                         </div>
-                                        <div class="item-subtitle">${u.owner.display_name}</div>
-                                        <div class="item-text">${u.description}</div>
+                                        <div class="item-subtitle">${p.owner.display_name}</div>
+                                        <div class="item-text">${p.description}</div>
                                     </div>
                                 </label>
                             </li>
@@ -1255,7 +1299,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                         </ul>
                     </div>
 
-                    `:k`
+                    `:w`
                     <div class="block block-strong">
                         <div class="block-inner text-align-center">
                             <div class="preloader"></div>
@@ -1267,7 +1311,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             </div>
         </div>
     </div>
-`}}Q.id="6902c46a7a";function E(o,{$f7:c,$on:d,$onBeforeMount:t,$onMounted:r,$onBeforeUnmount:p,$onUnmounted:v}){let l="Jimmy",s=25,m=["Tennis","Chess","Football"];const i=()=>{c.dialog.alert("Hello World")};return t(()=>{console.log("onBeforeMount")}),r(()=>{console.log("onMounted")}),p(()=>{console.log("onBeforeUnmount")}),v(()=>{console.log("onUnmounted")}),d("pageMounted",(e,f)=>{console.log("pageMounted",f)}),d("pageInit",(e,f)=>{console.log("pageInit",f)}),d("pageBeforeIn",(e,f)=>{console.log("pageBeforeIn",f)}),d("pageAfterIn",(e,f)=>{console.log("pageAfterIn",f)}),d("pageBeforeOut",(e,f)=>{console.log("pageBeforeOut",f)}),d("pageAfterOut",(e,f)=>{console.log("pageAfterOut",f)}),d("pageBeforeRemove",(e,f)=>{console.log("pageBeforeRemove",f)}),function(e){e.$;var f=e.$h;e.$root,e.$f7;var $=e.$f7route;e.$f7router;var S=e.$theme;return e.$update,e.$store,f`
+`}}W.id="28b2f59cde";function F(s,{$f7:n,$on:d,$onBeforeMount:t,$onMounted:c,$onBeforeUnmount:u,$onUnmounted:v}){let l="Jimmy",r=25,m=["Tennis","Chess","Football"];const i=()=>{n.dialog.alert("Hello World")};return t(()=>{console.log("onBeforeMount")}),c(()=>{console.log("onMounted")}),u(()=>{console.log("onBeforeUnmount")}),v(()=>{console.log("onUnmounted")}),d("pageMounted",(e,b)=>{console.log("pageMounted",b)}),d("pageInit",(e,b)=>{console.log("pageInit",b)}),d("pageBeforeIn",(e,b)=>{console.log("pageBeforeIn",b)}),d("pageAfterIn",(e,b)=>{console.log("pageAfterIn",b)}),d("pageBeforeOut",(e,b)=>{console.log("pageBeforeOut",b)}),d("pageAfterOut",(e,b)=>{console.log("pageAfterOut",b)}),d("pageBeforeRemove",(e,b)=>{console.log("pageBeforeRemove",b)}),function(e){e.$;var b=e.$h;e.$root,e.$f7;var k=e.$f7route;e.$f7router;var _=e.$theme;return e.$update,e.$store,b`
   <div class="page">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -1292,10 +1336,10 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
       </div>
       <div class="block-title">Page Component Data</div>
       <div class="block block-strong">
-        <p>Hello! My name is ${l}. I am ${s} years old.</p>
+        <p>Hello! My name is ${l}. I am ${r} years old.</p>
         <p>I like to play:</p>
         <ul>
-          ${m.map(h=>f`
+          ${m.map(h=>b`
           <li>${h}</li>
           `)}
         </ul>
@@ -1306,28 +1350,28 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
         <h4>$f7route</h4>
         <p>Contains properties of the current route:</p>
         <ul style="padding-left:25px">
-          <li><b>$f7route.url</b>: ${$.url}</li>
-          <li><b>$f7route.path</b>: ${$.path}</li>
-          <li><b>$f7route.params</b>: ${JSON.stringify($.params)}</li>
-          <li><b>$f7route.hash</b>: ${$.hash}</li>
-          <li><b>$f7route.query</b>: ${JSON.stringify($.query)}</li>
+          <li><b>$f7route.url</b>: ${k.url}</li>
+          <li><b>$f7route.path</b>: ${k.path}</li>
+          <li><b>$f7route.params</b>: ${JSON.stringify(k.params)}</li>
+          <li><b>$f7route.hash</b>: ${k.hash}</li>
+          <li><b>$f7route.query</b>: ${JSON.stringify(k.query)}</li>
         </ul>
 
         <h4>$theme</h4>
         <p>Currently active theme:</p>
         <ul style="padding-left:25px">
-          <li><b>$theme.ios</b>: ${S.ios}</li>
-          <li><b>$theme.md</b>: ${S.md}</li>
-          <li><b>$theme.aurora</b>: ${S.aurora}</li>
+          <li><b>$theme.ios</b>: ${_.ios}</li>
+          <li><b>$theme.md</b>: ${_.md}</li>
+          <li><b>$theme.aurora</b>: ${_.aurora}</li>
         </ul>
       </div>
     </div>
   </div>
-`}}E.id="c5b276e6b0";E.style=`
+`}}F.id="4385f6ddc9";F.style=`
   p {
     margin: 10px 0;
   }
-`;function W(){return function(o){o.$;var c=o.$h;return o.$root,o.$f7,o.$f7route,o.$f7router,o.$theme,o.$update,o.$store,c`
+`;function Y(){return function(s){s.$;var n=s.$h;return s.$root,s.$f7,s.$f7route,s.$f7router,s.$theme,s.$update,s.$store,n`
 <div class="page">
   <div class="navbar">
     <div class="navbar-bg"></div>
@@ -1348,7 +1392,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
     </div>
   </div>
 </div>
-`}}W.id="a801fa6dd8";const li={0:"C",1:"C#",2:"D",3:"D#",4:"E",5:"F",6:"F#",7:"G",8:"G#",9:"A",10:"A#",11:"B"};function O(o,{$:c,$f7:d,$update:t,$on:r,$store:p,$f7router:v}){const l=p.getters.spotifyApi.value;let s=!1;var m=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;let i=m.exec(navigator.language)[5];console.log(i);const e=o.track,f=e.album;let $,S="play_arrow",h={trackIsSavedLoading:!0};console.log(e);const b=()=>{const g={title:`Statify - ${e.name}`,text:"Look at this track i found!",url:window.location.origin+v.url};try{navigator.share(g)}catch(w){console.log("share error",w)}};r("pageInit",(g,w)=>{const _=I=>{var B=Math.floor(I/1e3%60),T=Math.floor(I/(1e3*60)),T=T<10?"0"+T:T;return B=B<10?"0"+B:B,T+":"+B};h.duration=_(e.duration_ms),t()}),l.containsMySavedTracks([e.id]).then(function(g){h.trackIsSavedLoading=!1,h.trackIsSaved=g[0],t()}),l.getAudioFeaturesForTrack(e.id).then(function(g){h.songAnalytics=g,console.log(g),t()});const k=()=>{v.navigate("/add/playlist/",{props:{items:[e]}})},u=()=>{h.trackIsSavedLoading=!0,t();let g;h.trackIsSaved?g=l.removeFromMySavedTracks:g=l.addToMySavedTracks,g([e.id]).then(function(w){h.trackIsSavedLoading=!1,h.trackIsSaved=!h.trackIsSaved,console.log(h),t()},function(w){console.log(w),h.trackIsSavedLoading=!1,t()})},a=()=>{$=new Audio(e.preview_url),console.log(e),$.addEventListener("loadstart",function(){s=!0,t()}),$.addEventListener("canplaythrough",function(){s=!1,$.play(),t()}),$.addEventListener("ended",function(){S="play_arrow",h.showProgressbar=!1,t()}),$.addEventListener("timeupdate",function(){let g=$.currentTime/$.duration*100;d.progressbar.set(".progressbar",g),t()})},n=()=>{const g=e.available_markets.map(U),w=e.available_markets;let _="",I="";w.includes(i)&&(I=`<div class="block block-strong"><div class="block-inner"></div><p class="no-margin-top">This track is avaible in your region "${i}". \u{1F601}</p></div>`);for(let T=0;T<w.length;T++)_=`${_}<div class="col"><div class="marketItem">${g[T]} ${w[T]}</div></div>`;var B=d.sheet.create({content:`
+`}}Y.id="a0e7cb346b";const li={0:"C",1:"C#",2:"D",3:"D#",4:"E",5:"F",6:"F#",7:"G",8:"G#",9:"A",10:"A#",11:"B"};function O(s,{$:n,$f7:d,$update:t,$on:c,$store:u,$f7router:v}){const l=u.getters.spotifyApi.value;let r=!1;var m=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;let i=m.exec(navigator.language)[5];console.log(i);const e=s.track,b=e.album;let k,_="play_arrow",h={trackIsSavedLoading:!0};console.log(e);const f=()=>{const g={title:`Statify - ${e.name}`,text:"Look at this track i found!",url:window.location.origin+v.url};try{navigator.share(g)}catch(y){console.log("share error",y)}};c("pageInit",(g,y)=>{const S=I=>{var A=Math.floor(I/1e3%60),B=Math.floor(I/(1e3*60)),B=B<10?"0"+B:B;return A=A<10?"0"+A:A,B+":"+A};h.duration=S(e.duration_ms),t()}),l.containsMySavedTracks([e.id]).then(function(g){h.trackIsSavedLoading=!1,h.trackIsSaved=g[0],t()}),l.getAudioFeaturesForTrack(e.id).then(function(g){h.songAnalytics=g,console.log(g),t()});const w=()=>{v.navigate("/add/playlist/",{props:{items:[e]}})},p=()=>{h.trackIsSavedLoading=!0,t();let g;h.trackIsSaved?g=l.removeFromMySavedTracks:g=l.addToMySavedTracks,g([e.id]).then(function(y){h.trackIsSavedLoading=!1,h.trackIsSaved=!h.trackIsSaved,console.log(h),t()},function(y){console.log(y),h.trackIsSavedLoading=!1,t()})},a=()=>{k=new Audio(e.preview_url),console.log(e),k.addEventListener("loadstart",function(){r=!0,t()}),k.addEventListener("canplaythrough",function(){r=!1,k.play(),t()}),k.addEventListener("ended",function(){_="play_arrow",h.showProgressbar=!1,t()}),k.addEventListener("timeupdate",function(){let g=k.currentTime/k.duration*100;d.progressbar.set(".progressbar",g),t()})},o=()=>{const g=e.available_markets.map(H),y=e.available_markets;let S="",I="";y.includes(i)&&(I=`<div class="block block-strong"><div class="block-inner"></div><p class="no-margin-top">This track is avaible in your region "${i}". \u{1F601}</p></div>`);for(let B=0;B<y.length;B++)S=`${S}<div class="col"><div class="marketItem">${g[B]} ${y[B]}</div></div>`;var A=d.sheet.create({content:`
           <div class="sheet-modal">
             <div class="toolbar">
               <div class="toolbar-inner">
@@ -1363,13 +1407,13 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
               <div class="block">
                 <div class="row marketRow">
                     
-          ${_}
+          ${S}
 
         </div>
               </div>
             </div>
           </div>
-        `});B.open()},y=()=>{$||a(),s||($.paused?(S="pause",h.showProgressbar=!0,t(),$.play()):(S="play_arrow",h.showProgressbar=!1,t(),$.pause()))};return r("pageBeforeOut",(g,w)=>{$&&$.pause()}),function(g){g.$;var w=g.$h;return g.$root,g.$f7,g.$f7route,g.$f7router,g.$theme,g.$update,g.$store,w`
+        `});A.open()},$=()=>{k||a(),r||(k.paused?(_="pause",h.showProgressbar=!0,t(),k.play()):(_="play_arrow",h.showProgressbar=!1,t(),k.pause()))};return c("pageBeforeOut",(g,y)=>{k&&k.pause()}),function(g){g.$;var y=g.$h;return g.$root,g.$f7,g.$f7route,g.$f7router,g.$theme,g.$update,g.$store,y`
     <div class="page">
         <div class="navbar">
             <div class="navbar-bg"></div>
@@ -1382,49 +1426,49 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                 </div>
                 <div class="title">${e.name}</div>
                 <div class="right">
-                    <a href="#" class="link icon-only" @click="${n}">
+                    <a href="#" class="link icon-only" @click="${o}">
                         <i class="icon material-icons">language</i>
                     </a>
-                    <a href="#" class="link icon-only" @click="${b}">
+                    <a href="#" class="link icon-only" @click="${f}">
                         <i class="icon material-icons">share</i>
                     </a>
                 </div>
             </div>
         </div>
         <div class="page-content">
-            ${f.images.length>1?w`
+            ${b.images.length>1?y`
             <div class="previewImageBlock">
-                <img src="${f.images[1].url}" width="200px" class="imageBlur" />
-                <img src="${f.images[1].url}" width="200px" class="imageNoBlur" />
+                <img src="${b.images[1].url}" width="200px" class="imageBlur" />
+                <img src="${b.images[1].url}" width="200px" class="imageNoBlur" />
             </div>
-            `:w`
+            `:y`
             `}
             <div class="contentBlock">
-                ${h.showProgressbar&&w`
+                ${h.showProgressbar&&y`
                 <span class="progressbar" id="trackprogressbar"></span>`}
 
 
                 <div class="block block-strong no-margin-top optionsBlock">
-                    ${e.preview_url&&w`
+                    ${e.preview_url&&y`
                     <button
-                        class=" button button-large button-fill button-round button-preloader optionsButtons ${s?"button-loading":""}"
-                        @click=${y}>
+                        class=" button button-large button-fill button-round button-preloader optionsButtons ${r?"button-loading":""}"
+                        @click=${$}>
                         <span class="preloader"></span>
                         <span></span>
                         <span class="material-icons-round optionButtonIcon">
-                            ${S}
+                            ${_}
                         </span>
                     </button>
                     `}
                     <div style="margin-left: auto; display: flex;">
-                        <a class=" button button-large button-round optionsButtons" @click="${k}">
+                        <a class=" button button-large button-round optionsButtons" @click="${w}">
                             <span class="material-icons-round optionButtonIcon">
                                 playlist_add
                             </span>
                         </a>
                         <button
                             class=" button button-large button-round optionsButtons button-preloader ${h.trackIsSavedLoading?"button-loading":""}"
-                            @click=${u}>
+                            @click=${p}>
                             <span class="preloader"></span>
                             <span></span>
                             <span class="material-icons-round optionButtonIcon">
@@ -1441,23 +1485,23 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                 <div class="list media-list">
                     <ul>
                         <li>
-                            <a href="/album/${f.id}/" class="item-link item-content">
+                            <a href="/album/${b.id}/" class="item-link item-content">
                                 <div class="item-media">
-                                    ${f.images.length>1?w`
-                                    <img src="${f.images[1].url}" width="70" />
-                                    `:w`
+                                    ${b.images.length>1?y`
+                                    <img src="${b.images[1].url}" width="70" />
+                                    `:y`
                                     <img src="./assets/icons/library_music_black_48dp.svg" width="70" />
                                     `}
                                 </div>
                                 <div class="item-inner">
                                     <div class="item-title-row">
-                                        <div class="item-title">${f.name}</div>
+                                        <div class="item-title">${b.name}</div>
                                     </div>
                                     <div class="item-subtitle">
-                                        ${f.artists.map(_=>w`
-                                        ${_.name} `)}
+                                        ${b.artists.map(S=>y`
+                                        ${S.name} `)}
                                     </div>
-                                    <div class="item-text">${f.release_date.substring(0,4)} · ${f.total_tracks}
+                                    <div class="item-text">${b.release_date.substring(0,4)} · ${b.total_tracks}
                                         Tracks</div>
                                 </div>
                             </a>
@@ -1467,7 +1511,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                     </ul>
                 </div>
 
-                ${h.songAnalytics!=null&&w`
+                ${h.songAnalytics!=null&&y`
                 <div class="block-title">Song analytics</div>
                 <div class="block block-strong no-margin-bottom">
                     <div class="row">
@@ -1507,11 +1551,11 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
 
 
 
-                ${h.songAnalytics!=null&&w`
+                ${h.songAnalytics!=null&&y`
                 <div class="block-title">Audio analytics</div>
                 <div class="block block-strong no-margin-bottom">
                     <div class="row">
-                        ${h.songAnalytics.key>=0&&w`
+                        ${h.songAnalytics.key>=0&&y`
                         <div class="col text-align-center">
                             <div class="card card-outline">
                                 <div class="card-content">
@@ -1554,19 +1598,19 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
 
 
 
-                ${e.artists!=null?w`
+                ${e.artists!=null?y`
                 <div class="block-title">Artists</div>
                 <div class="list media-list margin-bottom-half">
                     <ul>
-                        ${e.artists.map(_=>w`
+                        ${e.artists.map(S=>y`
                         <li>
-                            <a href="/artist/${_.id}/" class="item-link item-content">
+                            <a href="/artist/${S.id}/" class="item-link item-content">
                                 <div class="item-media">
                                     <i class="icon material-icons-round">face</i>
                                 </div>
                                 <div class="item-inner">
                                     <div class="item-title-row">
-                                        <div class="item-title">${_.name}</div>
+                                        <div class="item-title">${S.name}</div>
                                     </div>
                                 </div>
                             </a>
@@ -1575,7 +1619,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                     </ul>
                 </div>
 
-                `:w``}
+                `:y``}
 
 
                 <div class="block-title">Infos</div>
@@ -1610,7 +1654,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             </div>
         </div>
     </div>
-`}}O.id="e623cae008";O.style=`
+`}}O.id="e2a244a13d";O.style=`
     .optionsBlock {
         display: flex;
     }
@@ -1723,7 +1767,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
         color: var(--f7-block-title-large-text-color);
         opacity: 0.5;
     }
-`;var oi=[{path:"/",component:P},{path:"/track/:trackId/",async:function({router:o,to:c,resolve:d}){var t=o.app,r=t.store,p=c.params.trackId,v=r.getters.spotifyApi.value;t.preloader.show(),v.getTrack(p).then(function(l){t.preloader.hide(),d({component:O},{props:{track:l}})},function(l){console.log(l),t.preloader.hide(),t.dialog.alert("An error occurred when loading the data.","Sorry \u{1F614}",function(){o.back()})})}},{path:"/album/:albumId/",async:function({router:o,to:c,resolve:d}){var t=o.app,r=t.store,p=c.params.albumId,v=r.getters.spotifyApi.value;t.preloader.show(),v.getAlbum(p).then(function(l){t.preloader.hide(),d({component:D},{props:{album:l}})},function(l){console.log(l),t.preloader.hide(),t.dialog.alert("An error occurred when loading the data.","Sorry \u{1F614}",function(){o.back()})})}},{path:"/artist/:artistId/",async:function({router:o,to:c,resolve:d}){var t=o.app,r=t.store,p=c.params.artistId,v=r.getters.spotifyApi.value;t.preloader.show(),v.getArtist(p).then(function(l){t.preloader.hide(),console.log(l),d({component:N},{props:{artist:l}})},function(l){console.log(l),t.preloader.hide(),t.dialog.alert("An error occurred when loading the data.","Sorry \u{1F614}",function(){o.back()})})}},{path:"/about/",component:H},{path:"/add/playlist",component:Q},{path:"/form/",component:J},{path:"/search/",component:R},{path:"/catalog/",component:V},{path:"/product/:id/",component:G},{path:"/profile/",component:Y},{path:"/dynamic-route/blog/:blogId/post/:postId/",component:E},{path:"(.*)",component:W}];let F={darkMode:!1};const ni=o=>{try{JSON.parse(o)}catch(c){return console.log(c),!1}return!0},X="settings",j=ei({state:{products:[{id:"1",title:"Apple iPhone 8",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis."},{id:"2",title:"Apple iPhone 8 Plus",description:"Velit odit autem modi saepe ratione totam minus, aperiam, labore quia provident temporibus quasi est ut aliquid blanditiis beatae suscipit odio vel! Nostrum porro sunt sint eveniet maiores, dolorem itaque!"},{id:"3",title:"Apple iPhone X",description:"Expedita sequi perferendis quod illum pariatur aliquam, alias laboriosam! Vero blanditiis placeat, mollitia necessitatibus reprehenderit. Labore dolores amet quos, accusamus earum asperiores officiis assumenda optio architecto quia neque, quae eum."}]},getters:{products({state:o}){return o.products},loginMethode({state:o}){o.loginMethode()},spotifyApi({state:o}){return o.spotifyapi},userId({state:o}){return o.userId}},actions:{addProduct({state:o},c){o.products=[...o.products,c]},setUserId({state:o},c){o.userId=c},addLoginMethod({state:o},c){o.loginMethode=c},addSpotifyApi({state:o},c){o.spotifyapi=c},changeSetting({state:o},c){let d=c.key,t=c.value;F[d]=t;let r=JSON.stringify(F);localStorage.setItem(X,r)},getSetting({state:o},c){let d=localStorage.getItem(X);if(ni(d)&&d!=null){let t=JSON.parse(d);if(t.hasOwnProperty(c))return t[c]}return F[c]}}});function M(o,{$f7:c,$update:d,$f7router:t}){let r="",p="";const v=i=>{r=i.target.value,d()},l=i=>{p=i.target.value,d()},s=i=>{console.log(i)},m=()=>{c.dialog.alert("Username: "+r+"<br/>Password: "+p,()=>{c.loginScreen.close()})};return function(i){i.$;var e=i.$h;return i.$root,i.$f7,i.$f7route,i.$f7router,i.$theme,i.$update,i.$store,e`
+`;var oi=[{path:"/",component:C},{path:"/track/:trackId/",async:function({router:s,to:n,resolve:d}){var t=s.app,c=t.store,u=n.params.trackId,v=c.getters.spotifyApi.value;t.preloader.show(),v.getTrack(u).then(function(l){t.preloader.hide(),d({component:O},{props:{track:l}})},function(l){console.log(l),t.preloader.hide(),t.dialog.alert("An error occurred when loading the data.","Sorry \u{1F614}",function(){s.back()})})}},{path:"/album/:albumId/",async:function({router:s,to:n,resolve:d}){var t=s.app,c=t.store,u=n.params.albumId,v=c.getters.spotifyApi.value;t.preloader.show(),v.getAlbum(u).then(function(l){t.preloader.hide(),d({component:E},{props:{album:l}})},function(l){console.log(l),t.preloader.hide(),t.dialog.alert("An error occurred when loading the data.","Sorry \u{1F614}",function(){s.back()})})}},{path:"/artist/:artistId/",async:function({router:s,to:n,resolve:d}){var t=s.app,c=t.store,u=n.params.artistId,v=c.getters.spotifyApi.value;t.preloader.show(),v.getArtist(u).then(function(l){t.preloader.hide(),console.log(l),d({component:N},{props:{artist:l}})},function(l){console.log(l),t.preloader.hide(),t.dialog.alert("An error occurred when loading the data.","Sorry \u{1F614}",function(){s.back()})})}},{path:"/about/",component:G},{path:"/add/playlist",component:W},{path:"/form/",component:J},{path:"/search/",component:D},{path:"/catalog/",component:V},{path:"/product/:id/",component:Q},{path:"/profile/",component:R},{path:"/dynamic-route/blog/:blogId/post/:postId/",component:F},{path:"(.*)",component:Y}];let j={darkMode:!1};const ni=s=>{try{JSON.parse(s)}catch(n){return console.log(n),!1}return!0},K="settings",U=ei({state:{products:[{id:"1",title:"Apple iPhone 8",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis."},{id:"2",title:"Apple iPhone 8 Plus",description:"Velit odit autem modi saepe ratione totam minus, aperiam, labore quia provident temporibus quasi est ut aliquid blanditiis beatae suscipit odio vel! Nostrum porro sunt sint eveniet maiores, dolorem itaque!"},{id:"3",title:"Apple iPhone X",description:"Expedita sequi perferendis quod illum pariatur aliquam, alias laboriosam! Vero blanditiis placeat, mollitia necessitatibus reprehenderit. Labore dolores amet quos, accusamus earum asperiores officiis assumenda optio architecto quia neque, quae eum."}]},getters:{products({state:s}){return s.products},loginMethode({state:s}){s.loginMethode()},spotifyApi({state:s}){return s.spotifyapi},user({state:s}){return s.user}},actions:{addProduct({state:s},n){s.products=[...s.products,n]},setUser({state:s},n){s.user=n},addLoginMethod({state:s},n){s.loginMethode=n},addSpotifyApi({state:s},n){s.spotifyapi=n},changeSetting({state:s},n){let d=n.key,t=n.value;j[d]=t;let c=JSON.stringify(j);localStorage.setItem(K,c)},getSetting({state:s},n){let d=localStorage.getItem(K);if(ni(d)&&d!=null){let t=JSON.parse(d);if(t.hasOwnProperty(n))return t[n]}return j[n]}}});function M(s,{$f7:n,$update:d,$f7router:t}){let c="",u="";const v=i=>{c=i.target.value,d()},l=i=>{u=i.target.value,d()},r=i=>{console.log(i)},m=()=>{n.dialog.alert("Username: "+c+"<br/>Password: "+u,()=>{n.loginScreen.close()})};return function(i){i.$;var e=i.$h;return i.$root,i.$f7,i.$f7route,i.$f7router,i.$theme,i.$update,i.$store,e`
   <div id="app">
 
     <!-- Left panel with cover effect-->
@@ -1769,7 +1813,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             <i class="icon material-icons if-md">home</i>
             <span class="tabbar-label">Home</span>
           </a>
-          <a href="#view-catalog" class="tab-link" @click="${s}">
+          <a href="#view-catalog" class="tab-link" @click="${r}">
             <i class="icon f7-icons if-not-md">square_list_fill</i>
             <i class="icon material-icons if-md">view_list</i>
             <span class="tabbar-label">Catalog</span>
@@ -1841,7 +1885,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                   <div class="item-inner">
                     <div class="item-title item-label">Username</div>
                     <div class="item-input-wrap">
-                      <input type="text" name="username" placeholder="Your username" value="${r}" @input="${v}"/>
+                      <input type="text" name="username" placeholder="Your username" value="${c}" @input="${v}"/>
 
                     </div>
                   </div>
@@ -1850,7 +1894,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                   <div class="item-inner">
                     <div class="item-title item-label">Password</div>
                     <div class="item-input-wrap">
-                      <input type="password" name="password" placeholder="Your password" value="${p}" @input="${l}"/>
+                      <input type="password" name="password" placeholder="Your password" value="${u}" @input="${l}"/>
 
                     </div>
                   </div>
@@ -1872,9 +1916,9 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
     </div>
 
   </div>
-`}}M.id="c653cf2188";function q(o,{$:c,$el:d,$on:t,$f7:r,$update:p,$store:v}){let l=[];t("pageInit",(e,f)=>{});let s=0;r.request({url:"./assets/data/login_faq.json",async:!0,error:function(e){console.log(e),s=s+1,s<5?request(this):m()},success:function(e){try{l=JSON.parse(e)}catch(f){console.log(f),s=s+1,s<5?request(this):m();return}p(),r.swiper.create(".swiper-container",{speed:400,spaceBetween:10,loop:!0,loopedSlides:l.length,observer:!0})}});const m=()=>{console.log(c(".faq-loading").html()),c(".faq-loading").html(`
+`}}M.id="f17d82884d";function L(s,{$:n,$el:d,$on:t,$f7:c,$update:u,$store:v}){let l=[];t("pageInit",(e,b)=>{});let r=0;c.request({url:"./assets/data/login_faq.json",async:!0,error:function(e){console.log(e),r=r+1,r<5?request(this):m()},success:function(e){try{l=JSON.parse(e)}catch(b){console.log(b),r=r+1,r<5?request(this):m();return}u(),c.swiper.create(".swiper-container",{speed:400,spaceBetween:10,loop:!0,loopedSlides:l.length,observer:!0})}});const m=()=>{console.log(n(".faq-loading").html()),n(".faq-loading").html(`
                 <div class="card-content card-content-padding">Loading failed \u{1F614}</div>
-            `),c(".faq-loading").removeClass("skeleton-text"),c(".faq-loading").removeClass("skeleton-effect-wave")},i=()=>{v.getters.loginMethode};return function(e){e.$;var f=e.$h;return e.$root,e.$f7,e.$f7route,e.$f7router,e.$theme,e.$update,e.$store,f`
+            `),n(".faq-loading").removeClass("skeleton-text"),n(".faq-loading").removeClass("skeleton-effect-wave")},i=()=>{v.getters.loginMethode};return function(e){e.$;var b=e.$h;return e.$root,e.$f7,e.$f7route,e.$f7router,e.$theme,e.$update,e.$store,b`
     <div class="view view-main view-init">
         <div class="page" data-name="about">
             <div class="navbar">
@@ -1901,18 +1945,18 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
                 <div class="block-title faq_title">FAQ</div>
                 <div data-space-between="50" class="swiper-container">
                     <div class="swiper-wrapper">
-                        ${l.map($=>f`
+                        ${l.map(k=>b`
                         <div class="swiper-slide">
                             <div class="card card-outline">
-                                <div class="card-header">${$.title}</div>
-                                <div class="card-content card-content-padding">${$.body}</div>
+                                <div class="card-header">${k.title}</div>
+                                <div class="card-content card-content-padding">${k.body}</div>
 
                             </div>
                         </div>
                         `)}
                     </div>
                 </div>
-                ${l.length==0&&f`
+                ${l.length==0&&b`
                 <div class="card card-outline skeleton-text skeleton-effect-wave faq-loading">
                     <div class="card-header">_________________</div>
                     <div class="card-content card-content-padding">__________________________________________</div>
@@ -1922,7 +1966,7 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
             </div>
         </div>
     </div>
-`}}q.id="9f3eb7158e";q.style=`
+`}}L.id="a6e31e0529";L.style=`
     .spotify-icon {
         height: 20px;
         width: 20px;
@@ -1933,4 +1977,4 @@ var Z=Object.defineProperty;var ii=(o,c,d)=>c in o?Z(o,c,{enumerable:!0,configur
         margin-bottom: 0;
     }
 
-`;class ri{constructor(c,d){z(this,"login",()=>{const c="https://accounts.spotify.com/authorize",d="c34980adc6984ebd9418e19f418f10dd",{origin:t}=window.location,r=`${t}/`,p=["playlist-read-private","playlist-read-collaborative","playlist-modify-public","playlist-modify-private","user-library-read","user-library-modify","user-follow-read","user-follow-modify","user-top-read","user-read-recently-played"].toString().replace(",","%20"),v="token";window.location=`${c}?client_id=${d}&redirect_uri=${r}&scope=${p}&response_type=${v}`});z(this,"parseUrlHash",()=>{let d=window.location.hash.substr(1).split("&");const t={};d.forEach(p=>{let v=p.split("="),l=v[0],s=v[1];t[l]=s});let r=t.expires_in;if(r!=null&&!isNaN(r)){let p=parseInt(r),v=new Date;v.setSeconds(p),t.expireOnDate=v.toJSON()}else return null;return t});z(this,"isTokenValid",c=>{try{let d=c.expireOnDate,t=Date.parse(d);return new Date().getTime()<t}catch{return!1}});this.app=c,this.width=d}}let A,C=new ri(ci),x,L=!1;localStorage.getItem("tokenMap")!=null&&localStorage.getItem("tokenMap")!="null"?(A=JSON.parse(localStorage.getItem("tokenMap")),C.isTokenValid(A)?(x=M,L=!0,window.location.hash&&(window.location.href=window.location.origin+window.location.pathname)):window.location.hash==null||window.location.hash==""?x=q:(A=C.parseUrlHash(),localStorage.setItem("tokenMap",JSON.stringify(A)),x=M,L=!0)):window.location.hash==null||window.location.hash==""?x=q:(A=C.parseUrlHash(),A!=null?(localStorage.setItem("tokenMap",JSON.stringify(A)),x=M,L=!0,window.location.hash&&(window.location.href=window.location.origin+window.location.pathname)):(x=q,L=!1));let K=new ai;L&&K.setAccessToken(A.access_token);j.dispatch("addSpotifyApi",K);j.dispatch("addLoginMethod",C.login);var ci=new ti({name:"Statify",theme:"md",el:"#app",component:x,tokenMap:A,store:j,routes:oi,on:{pageInit:function(){}}});function di(){console.log(window.innerHeight),console.log(window.innerWidth)}window.onresize=di;const vi=()=>{const o=window.navigator.userAgent.toLowerCase();return/iphone|ipad|ipod/.test(o)},ui=()=>"standalone"in window.navigator&&window.navigator.standalone;vi()&&!ui()&&(console.log(12),globalThis.setState({showInstallMessage:!0}));
+`;class ri{constructor(n,d){z(this,"login",()=>{const n="https://accounts.spotify.com/authorize",d="c34980adc6984ebd9418e19f418f10dd",{origin:t}=window.location,c=`${t}/`,u=["playlist-read-private","playlist-read-collaborative","playlist-modify-public","playlist-modify-private","user-library-read","user-library-modify","user-follow-read","user-follow-modify","user-top-read","user-read-recently-played","user-read-private"].toString().replace(",","%20"),v="token";window.location=`${n}?client_id=${d}&redirect_uri=${c}&scope=${u}&response_type=${v}`});z(this,"parseUrlHash",()=>{let d=window.location.hash.substr(1).split("&");const t={};d.forEach(u=>{let v=u.split("="),l=v[0],r=v[1];t[l]=r});let c=t.expires_in;if(c!=null&&!isNaN(c)){let u=parseInt(c),v=new Date;v.setSeconds(u),t.expireOnDate=v.toJSON()}else return null;return t});z(this,"isTokenValid",n=>{try{let d=n.expireOnDate,t=Date.parse(d);return new Date().getTime()<t}catch{return!1}});this.app=n,this.width=d}}let T,P=new ri(ci),x,q=!1;localStorage.getItem("tokenMap")!=null&&localStorage.getItem("tokenMap")!="null"?(T=JSON.parse(localStorage.getItem("tokenMap")),P.isTokenValid(T)?(x=M,q=!0,window.location.hash&&(window.location.href=window.location.origin+window.location.pathname)):window.location.hash==null||window.location.hash==""?x=L:(T=P.parseUrlHash(),localStorage.setItem("tokenMap",JSON.stringify(T)),x=M,q=!0)):window.location.hash==null||window.location.hash==""?x=L:(T=P.parseUrlHash(),T!=null?(localStorage.setItem("tokenMap",JSON.stringify(T)),x=M,q=!0,window.location.hash&&(window.location.href=window.location.origin+window.location.pathname)):(x=L,q=!1));let X=new ai;q&&X.setAccessToken(T.access_token);U.dispatch("addSpotifyApi",X);U.dispatch("addLoginMethod",P.login);var ci=new ti({name:"Statify",theme:"md",el:"#app",component:x,tokenMap:T,store:U,routes:oi,on:{pageInit:function(){}}});function di(){console.log(window.innerHeight),console.log(window.innerWidth)}window.onresize=di;const vi=()=>{const s=window.navigator.userAgent.toLowerCase();return/iphone|ipad|ipod/.test(s)},ui=()=>"standalone"in window.navigator&&window.navigator.standalone;vi()&&!ui()&&(console.log(12),globalThis.setState({showInstallMessage:!0}));window.onSpotifyWebPlaybackSDKReady=()=>{const s="BQBZ8b9plWq3pGSSTCDNyWvotQpISVUZ7dPoA0wBGPYUZiSIJzW2dSKozBjBEy1oo9aUYqaGbRq-zSLjyjHtJ-bcks6QG4fx41pai5fiPMRIyw1AD16ehxGJnwsf61GFuRrunoLuQPpncI5YGvZA3RNlmMfEKdy9h4t1Mam3EWrE9GyKQmXqiKw",n=new Spotify.Player({name:"Web Playback SDK Quick Start Player",getOAuthToken:d=>{d(s)},volume:.5});n.addListener("ready",({device_id:d})=>{console.log("Ready with Device ID",d)}),n.addListener("not_ready",({device_id:d})=>{console.log("Device ID has gone offline",d)}),n.addListener("initialization_error",({message:d})=>{console.error(d)}),n.addListener("authentication_error",({message:d})=>{console.error(d)}),n.addListener("account_error",({message:d})=>{console.error(d)}),document.getElementById("togglePlay").onclick=function(){n.togglePlay()},n.connect()};
