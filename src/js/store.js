@@ -47,8 +47,8 @@ const store = createStore({
     spotifyApi({state}) {
       return state.spotifyapi;
     },
-    userId({state}) {
-      return state.userId;
+    user({state}) {
+      return state.user;
     }
   },
   actions: {
@@ -56,8 +56,8 @@ const store = createStore({
       state.products = [...state.products, product];
     },
 
-    setUserId({ state }, userId) {
-      state.userId = userId;
+    setUser({ state }, user) {
+      state.user = user;
     },
 
     addLoginMethod({state}, method) {

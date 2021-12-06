@@ -21,7 +21,8 @@ class Authorization {
             'user-follow-read',
             'user-follow-modify',
             'user-top-read',
-            'user-read-recently-played'
+            'user-read-recently-played',
+            'user-read-private'
         ]
             .toString()
             .replace(',', '%20');

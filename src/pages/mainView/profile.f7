@@ -12,6 +12,7 @@
       </div>
     </div>
     <div class="page-content">
+
       <div class="block-title">Style</div>
       <div class="list">
         <ul>
@@ -23,7 +24,7 @@
               <div class="item-inner">
                 <div class="item-title">Darkmode</div>
                 <div class="item-after">
-                  <label class="toggle darkModeToggle">
+                  <label class="toggle" id="darkModeToggle">
                     <input type="checkbox" />
                     <span class="toggle-icon"></span>
                   </label>
@@ -33,12 +34,56 @@
           </li>
         </ul>
       </div>
+
+
+      ${viewData.user != undefined && $h`
+
+      <div class="block userdatablock1">
+        <div class="imageBlock">
+          ${viewData.user.images.length > 0 ? $h`
+          <img src="${viewData.user.images[0].url}" width="100" height="100" />
+          ` : $h`
+          <img src="./assets/icons/face_black_48dp.svg" width="100" height="100" />
+          `}
+        </div>
+
+
+        <div class="infoBlock">
+          <h1>${viewData.user.display_name}</h1>
+          <div class="chip">
+            <div class="chip-label">${viewData.user.product == 'premium' ? 'Premium' : 'Freemium'}</div>
+          </div>
+        </div>
+      </div>
+
+      `}
       <div class="block">
         <button class="button button-round color-red" @click="${logoutFunc}">Logout</button>
       </div>
     </div>
   </div>
 </template>
+<style scoped>
+  .userdatablock1 {
+    display: flex;
+  }
+
+  .userdatablock1>div.imageBlock>img {
+    border-radius: 50%;
+  }
+
+  .userdatablock1>div.infoBlock {
+    padding-left: 10px;
+    max-height: 100px;
+  }
+
+  .userdatablock1>div.infoBlock>h1 {
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
 <script>
   export default (props, {
     $,
@@ -48,12 +93,13 @@
     $update
   }) => {
     let viewData = {};
+    const spotify = $store.getters.spotifyApi.value;
 
     $on('pageInit', (e, page) => {
       //Init toggle
       $store.dispatch("getSetting", "darkMode").then(function (result) {
         var toggle = $f7.toggle.create({
-          el: '.darkModeToggle',
+          el: '#darkModeToggle',
           on: {
             change: function () {
               changeDarkMode()
@@ -68,7 +114,7 @@
     });
 
     const changeDarkMode = () => {
-      var toggle = $f7.toggle.get('.darkModeToggle');
+      var toggle = $f7.toggle.get('#darkModeToggle');
 
       $store.dispatch("changeSetting", {
         key: 'darkMode',
@@ -88,6 +134,25 @@
         window.location.href = window.location.origin + window.location.pathname;
       });
     }
+
+    spotify
+      .getMe() // note that we don't pass a user id
+      .then(
+        function (data) {
+          viewData.user = data
+          $update();
+        },
+        function (err) {
+          console.error(err);
+          $f7.dialog.alert(
+            'An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.',
+            'Sorry 😔',
+            function () {
+              localStorage.removeItem('tokenMap')
+              window.location.href = window.location.origin + window.location.pathname;
+            });
+        }
+      );
 
     return $render;
   };

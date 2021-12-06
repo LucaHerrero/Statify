@@ -98,3 +98,40 @@ if (isIos() && !isInStandaloneMode()) {
     showInstallMessage: true
   });
 }
+
+window.onSpotifyWebPlaybackSDKReady = () => {
+  const token = 'BQBZ8b9plWq3pGSSTCDNyWvotQpISVUZ7dPoA0wBGPYUZiSIJzW2dSKozBjBEy1oo9aUYqaGbRq-zSLjyjHtJ-bcks6QG4fx41pai5fiPMRIyw1AD16ehxGJnwsf61GFuRrunoLuQPpncI5YGvZA3RNlmMfEKdy9h4t1Mam3EWrE9GyKQmXqiKw';
+  const player = new Spotify.Player({
+      name: 'Web Playback SDK Quick Start Player',
+      getOAuthToken: cb => { cb(token); },
+      volume: 0.5
+  });
+
+  // Ready
+  player.addListener('ready', ({ device_id }) => {
+      console.log('Ready with Device ID', device_id);
+  });
+
+  // Not Ready
+  player.addListener('not_ready', ({ device_id }) => {
+      console.log('Device ID has gone offline', device_id);
+  });
+
+  player.addListener('initialization_error', ({ message }) => {
+      console.error(message);
+  });
+
+  player.addListener('authentication_error', ({ message }) => {
+      console.error(message);
+  });
+
+  player.addListener('account_error', ({ message }) => {
+      console.error(message);
+  });
+
+  document.getElementById('togglePlay').onclick = function() {
+    player.togglePlay();
+  };
+
+  player.connect();
+}

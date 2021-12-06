@@ -183,7 +183,8 @@
                 function (data) {
                     userInformations = data;
                     skeletonClass = '';
-                    $store.dispatch("setUserId", data.id);
+                    console.log(data);
+                    $store.dispatch("setUser", data);
                     $update();
                 },
                 function (err) {

@@ -118,7 +118,8 @@
     export default (props, { $, $f7router, $f7, $store, $on, $update }) => {
         const spotify = $store.getters.spotifyApi.value;
         let trackArray = props.items;
-        const userId = $store.getters.userId.value
+        const userId = $store.getters.user.value.id;
+        console.log(userId);
         let viewData = {
             playlistsLoading: true,
             playlists: [],
