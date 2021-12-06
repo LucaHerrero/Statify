@@ -102,7 +102,7 @@ if (isIos() && !isInStandaloneMode()) {
 window.onSpotifyWebPlaybackSDKReady = () => {
   const token = 'BQBZ8b9plWq3pGSSTCDNyWvotQpISVUZ7dPoA0wBGPYUZiSIJzW2dSKozBjBEy1oo9aUYqaGbRq-zSLjyjHtJ-bcks6QG4fx41pai5fiPMRIyw1AD16ehxGJnwsf61GFuRrunoLuQPpncI5YGvZA3RNlmMfEKdy9h4t1Mam3EWrE9GyKQmXqiKw';
   const player = new Spotify.Player({
-      name: 'Web Playback SDK Quick Start Player',
+      name: 'Statify',
       getOAuthToken: cb => { cb(token); },
       volume: 0.5
   });
