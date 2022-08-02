@@ -43,7 +43,7 @@
           ${viewData.user.images.length > 0 ? $h`
           <img src="${viewData.user.images[0].url}" width="100" height="100" />
           ` : $h`
-          <img src="./assets/icons/face_black_48dp.svg" width="100" height="100" />
+          <img src="/assets/icons/face_black_48dp.svg" id="svgimage" width="100" height="100" />
           `}
         </div>
 

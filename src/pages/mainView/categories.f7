@@ -1,0 +1,137 @@
+<template>
+  <div class="page" data-name="categories">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        ${pageMode && $h`
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="if-not-md">Back</span>
+          </a>
+        </div>
+        `}
+        <div class="title">Categories</div>
+      </div>
+    </div>
+    <div class="page-content infinite-scroll-content" @infinite=${loadMore}>
+
+
+      <div class="categoriesContainer">
+        ${categoriesArray.map((category) => $h`
+        <a href="/category/${category.id}/" class="categoriesItem">
+          <img class="elevation-3" src="${getImageSrc(category)}" />
+
+          <div class=" title">${category.name}</div>
+        </a>
+        `)}
+      </div>
+      ${hasMoreItems && $h`
+      <div class="preloader infinite-scroll-preloader"></div>
+      `}
+    </div>
+  </div>
+</template>
+<style>
+  .categoriesContainer {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+
+  }
+
+  .categoriesItem {}
+
+  .categoriesItem {
+    max-width: 400px;
+    max-height: 400px;
+    margin: 10px;
+    flex-grow: 1;
+  }
+
+  .categoriesItem>img {
+    border-radius: 5%;
+    object-fit: cover;
+    width: 100%;
+
+  }
+
+  .categoriesItem {
+    width: 150px;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+  }
+
+  .categoriesItem>div.title {
+    color: var(--f7-block-title-large-text-color);
+    font-weight: 500;
+  }
+</style>
+<script>
+  export default (props, {
+    $,
+    $on,
+    $f7,
+    $store,
+    $update
+  }) => {
+    const arrayKey = props.arrayKey;
+    let categoriesArray = props[arrayKey][arrayKey].items;
+    const pageMode = props.pageMode;
+    const spotify = $store.getters.spotifyApi.value;
+
+    const getImageSrc = (category) => {
+      if (category.images)
+        if (category.images.length > 0)
+          return category.images[0].url;
+
+      if (category.icons)
+        if (category.icons.length > 0)
+          return category.icons[0].url;
+
+      return './assets/icons/audiotrack_black_48dp.svg';
+    }
+
+    const isMoreItems = (categories) => {
+      return (lastItem != categories[arrayKey].total)
+    }
+
+    let allowInfinite = true;
+    let hasMoreItems = true;
+    let lastItem = categoriesArray.length;
+
+    const loadMore = () => {
+      console.log('Loading more items...');
+      if (!allowInfinite) return;
+      allowInfinite = false;
+      spotify.getCategories({
+        offset: lastItem
+      }).then((categories) => {
+        if (!isMoreItems(categories)) {
+          hasMoreItems = false;
+          $update();
+          return;
+        }
+
+        let array = categories[arrayKey].items
+        categoriesArray = [...categoriesArray, ...array];
+        allowInfinite = true;
+        lastItem = categoriesArray.length;
+        $update();
+      });
+    }
+
+    return $render;
+  }
+</script>

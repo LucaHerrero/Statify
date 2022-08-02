@@ -101,15 +101,15 @@
                 </ul>
             </div>
             ${contentSpotify.albums.items.length > 2 ? $h`
-                <div class="block no-margin-top text-align-center">
-                    <button
-                        class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}"
-                        @click=${()=> loadMore('albums')}>
-                        <span class="preloader"></span>
-                        <span>Load more</span>
-                    </button>
-                </div>
-                ` : $h ` `}
+            <div class="block no-margin-top text-align-center">
+                <button
+                    class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}"
+                    @click=${()=> loadMore('albums')}>
+                    <span class="preloader"></span>
+                    <span>Load more</span>
+                </button>
+            </div>
+            ` : $h ` `}
             ` : $h ``}
 
             ${contentSpotify.artists != undefined ? $h`
@@ -137,15 +137,15 @@
                 </ul>
             </div>
             ${contentSpotify.artists.items.length > 2 ? $h`
-                <div class="block no-margin-top text-align-center">
-                    <button
-                        class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}"
-                        @click=${()=> loadMore('artists')}>
-                        <span class="preloader"></span>
-                        <span>Load more</span>
-                    </button>
-                </div>
-                ` : $h ` `}
+            <div class="block no-margin-top text-align-center">
+                <button
+                    class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}"
+                    @click=${()=> loadMore('artists')}>
+                    <span class="preloader"></span>
+                    <span>Load more</span>
+                </button>
+            </div>
+            ` : $h ` `}
             ` : $h ``}
 
             ${contentSpotify.playlists != undefined ? $h`
@@ -175,15 +175,15 @@
                 </ul>
             </div>
             ${contentSpotify.playlists.items.length > 2 && $h`
-                <div class="block no-margin-top text-align-center">
-                    <button
-                        class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}"
-                        @click=${()=> loadMore('playlists')}>
-                        <span class="preloader"></span>
-                        <span>Load more</span>
-                    </button>
-                </div>
-                `}
+            <div class="block no-margin-top text-align-center">
+                <button
+                    class="button button-small button-outline button-round button-preloader button-load-more ${loadMoreVar ? 'button-loading' : ''}"
+                    @click=${()=> loadMore('playlists')}>
+                    <span class="preloader"></span>
+                    <span>Load more</span>
+                </button>
+            </div>
+            `}
             ` : $h ``}
 
         </div>
@@ -240,7 +240,13 @@
     }
 </style>
 <script>
-    export default (props, { $, $f7, $on, $update, $store }) => {
+    export default (props, {
+        $,
+        $f7,
+        $on,
+        $update,
+        $store
+    }) => {
         let searchbar;
         $on('pageInit', () => {
             searchbar = $f7.searchbar.create({
@@ -332,27 +338,37 @@
             let searchQuery = searchbar.query;
 
             if (filter.all.active) {
-                getAllSearch(searchQuery, ["album", "artist", "playlist", "track"], { limit: 3 });
+                getAllSearch(searchQuery, ["album", "artist", "playlist", "track"], {
+                    limit: 3
+                });
                 return;
             }
 
             if (filter.tracks.active) {
-                getAllSearch(searchQuery, ["track"], { limit: 20 });
+                getAllSearch(searchQuery, ["track"], {
+                    limit: 20
+                });
                 return;
             }
 
             if (filter.albums.active) {
-                getAllSearch(searchQuery, ["album"], { limit: 20 });
+                getAllSearch(searchQuery, ["album"], {
+                    limit: 20
+                });
                 return;
             }
 
             if (filter.artists.active) {
-                getAllSearch(searchQuery, ["artist"], { limit: 20 });
+                getAllSearch(searchQuery, ["artist"], {
+                    limit: 20
+                });
                 return;
             }
 
             if (filter.playlists.active) {
-                getAllSearch(searchQuery, ["playlist"], { limit: 20 });
+                getAllSearch(searchQuery, ["playlist"], {
+                    limit: 20
+                });
                 return;
             }
         }
@@ -427,10 +443,12 @@
 
             let currentLoadedItemsCount = contentSpotify[group].items.length;
             console.log(currentLoadedItemsCount)
-            getAllSearch(searchbar.query, [spotifyApiCategories[group]], { limit: 20, offset: currentLoadedItemsCount }, true);
+            getAllSearch(searchbar.query, [spotifyApiCategories[group]], {
+                limit: 20,
+                offset: currentLoadedItemsCount
+            }, true);
         }
 
         return $render;
     }
-
 </script>
