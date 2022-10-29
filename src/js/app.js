@@ -14,7 +14,27 @@ import mainAppView from '../app.f7';
 import loginView from '../pages/login.f7';
 
 import Authorization from './Authorization';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDfmwSR-jHCyuzp5iacmdFpil1XGMXdg6o",
+  authDomain: "statify-648ab.firebaseapp.com",
+  projectId: "statify-648ab",
+  storageBucket: "statify-648ab.appspot.com",
+  messagingSenderId: "406057587813",
+  appId: "1:406057587813:web:4480c991b53940f788628c",
+  measurementId: "G-3J6GJC3TDN"
+};
+
+// Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+const analytics = getAnalytics(firebaseApp);
 let tokenMap;
 let authorization = new Authorization(app);
 let App;

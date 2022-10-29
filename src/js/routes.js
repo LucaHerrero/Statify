@@ -11,13 +11,15 @@ import ArtistPage from '../pages/artistView.f7';
 
 import CategoryPage from '../pages/categoryView.f7';
 
+import AnalyticsView from '../pages/analyticsView.f7';
+
 import addPlaylist from '../pages/add/playlist.f7'
 import DynamicRoutePage from '../pages/dynamic-route.f7';
 import NotFoundPage from '../pages/404.f7';
 
 import TrackPage from '../pages/trackView.f7';
 
-var routes = [{
+let routes = [{
     path: '/',
     component: HomePage,
   },
@@ -28,10 +30,10 @@ var routes = [{
       to,
       resolve
     }) {
-      var app = router.app;
-      var store = app.store;
-      var trackId = to.params.trackId;
-      var spotify = store.getters.spotifyApi.value;
+      let app = router.app;
+      let store = app.store;
+      let trackId = to.params.trackId;
+      let spotify = store.getters.spotifyApi.value;
 
       app.preloader.show();
 
@@ -67,10 +69,10 @@ var routes = [{
       to,
       resolve
     }) {
-      var app = router.app;
-      var store = app.store;
-      var categoryId = to.params.categoryId;
-      var spotify = store.getters.spotifyApi.value;
+      let app = router.app;
+      let store = app.store;
+      let categoryId = to.params.categoryId;
+      let spotify = store.getters.spotifyApi.value;
 
       app.preloader.show();
 
@@ -102,16 +104,55 @@ var routes = [{
     },
   },
   {
+    path: '/track/:trackId/analytics/',
+    async: function ({
+      router,
+      to,
+      resolve
+    }) {
+      let app = router.app;
+      let store = app.store;
+      let trackId = to.params.trackId;
+      let spotify = store.getters.spotifyApi.value;
+
+      app.preloader.show();
+
+      spotify
+        .getAudioFeaturesForTrack(trackId)
+        .then(
+          function (data) {
+            app.preloader.hide();
+
+            resolve({
+              component: AnalyticsView,
+            }, {
+              props: {
+                analytics: data,
+              }
+            });
+          },
+          function (err) {
+            console.log(err)
+            app.preloader.hide();
+
+            app.dialog.alert('An error occurred when loading the data.', 'Sorry 😔', function () {
+              router.back();
+            });
+          }
+        );
+    },
+  },
+  {
     path: '/album/:albumId/',
     async: function ({
       router,
       to,
       resolve
     }) {
-      var app = router.app;
-      var store = app.store;
-      var albumId = to.params.albumId;
-      var spotify = store.getters.spotifyApi.value;
+      let app = router.app;
+      let store = app.store;
+      let albumId = to.params.albumId;
+      let spotify = store.getters.spotifyApi.value;
 
       app.preloader.show();
 
@@ -147,10 +188,10 @@ var routes = [{
       to,
       resolve
     }) {
-      var app = router.app;
-      var store = app.store;
-      var artistId = to.params.artistId;
-      var spotify = store.getters.spotifyApi.value;
+      let app = router.app;
+      let store = app.store;
+      let artistId = to.params.artistId;
+      let spotify = store.getters.spotifyApi.value;
 
       app.preloader.show();
 
@@ -203,9 +244,9 @@ var routes = [{
       to,
       resolve
     }) {
-      var app = router.app;
-      var store = app.store;
-      var spotify = store.getters.spotifyApi.value;
+      let app = router.app;
+      let store = app.store;
+      let spotify = store.getters.spotifyApi.value;
 
       app.preloader.show();
 

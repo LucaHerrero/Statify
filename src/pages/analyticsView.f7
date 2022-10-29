@@ -1,0 +1,78 @@
+<template>
+    <div class="page" data-name="about">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">About</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block-title">About My App</div>
+            <div class="block">
+                <div class="row">
+                    ${values.map((item) => $h`
+
+                    <div class="col-50 text-align-center valueItem">
+                        <div class="gauge gauge-init"
+                             data-type="semicircle"
+                             data-value="${item.percent}"
+                             data-value-text="${item.percentString}"
+                             data-value-text-color="#e91e63"
+                             data-border-color="#e91e63"
+                             data-label-text="${item.name}"
+                        ></div>
+                    </div>
+                    `)}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<style>
+    .valueItem {
+        margin-bottom: 25px;
+    }
+</style>
+<script>
+    export default (props, {
+        $,
+        $f7,
+        $f7router,
+        $store,
+        $update
+
+    }) => {
+        const spotify = $store.getters.spotifyApi.value;
+        const analytics = props.analytics;
+
+
+        const values = [
+            {
+                percent: analytics.danceability,
+                percentString: Math.round(analytics.danceability * 100) + '%',
+                name: 'Danceability'
+            },
+            {
+                percent: analytics.energy,
+                percentString: Math.round(analytics.energy * 100) + '%',
+                name: 'Energy'
+            },
+            {
+                percent: analytics.speechiness,
+                percentString: Math.round(analytics.speechiness * 100) + '%',
+                name: 'Speechiness'
+            },
+        ];
+
+
+        console.error(props.analytics)
+
+        return $render;
+    };
+</script>
