@@ -122,7 +122,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
 
         </div>
     </div>
-`}}D.id="9ac0b5d604";D.style=`
+`}}D.id="e5cc9ebe47";D.style=`
     .swiper-container>div>div.swiper-slide {
         width: 150px;
     }
@@ -189,7 +189,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
     </div>
   </div>
 </div>
-`}}K.id="91025b471e";function Y(){return function(a){a.$;var r=a.$h;return a.$root,a.$f7,a.$f7route,a.$f7router,a.$theme,a.$update,a.$store,r`
+`}}K.id="b58beefe55";function Y(){return function(a){a.$;var r=a.$h;return a.$root,a.$f7,a.$f7route,a.$f7router,a.$theme,a.$update,a.$store,r`
 <div class="page" data-name="form">
   <div class="navbar">
     <div class="navbar-bg"></div>
@@ -448,7 +448,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
     </div>
   </div>
 </div>
-`}}Y.id="4ce53e337e";function C(a,{$:r,$on:d,$f7:i,$store:v,$update:u}){const n=a.arrayKey;let t=a[n][n].items;const l=a.pageMode,p=v.getters.spotifyApi.value,e=m=>m.images&&m.images.length>0?m.images[0].url:m.icons&&m.icons.length>0?m.icons[0].url:"./assets/icons/audiotrack_black_48dp.svg",s=m=>S!=m[n].total;let b=!0,h=!0,S=t.length;const k=()=>{console.log("Loading more items..."),!!b&&(b=!1,p.getCategories({offset:S}).then(m=>{if(!s(m)){h=!1,u();return}let f=m[n].items;t=[...t,...f],b=!0,S=t.length,u()}))};return function(m){m.$;var f=m.$h;return m.$root,m.$f7,m.$f7route,m.$f7router,m.$theme,m.$update,m.$store,f`
+`}}Y.id="9aff48ed76";function C(a,{$:r,$on:d,$f7:i,$store:v,$update:u}){const n=a.arrayKey;let t=a[n][n].items;const l=a.pageMode,p=v.getters.spotifyApi.value,e=m=>m.images&&m.images.length>0?m.images[0].url:m.icons&&m.icons.length>0?m.icons[0].url:"./assets/icons/audiotrack_black_48dp.svg",s=m=>S!=m[n].total;let b=!0,h=!0,S=t.length;const k=()=>{console.log("Loading more items..."),!!b&&(b=!1,p.getCategories({offset:S}).then(m=>{if(!s(m)){h=!1,u();return}let f=m[n].items;t=[...t,...f],b=!0,S=t.length,u()}))};return function(m){m.$;var f=m.$h;return m.$root,m.$f7,m.$f7route,m.$f7router,m.$theme,m.$update,m.$store,f`
   <div class="page" data-name="categories">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -481,7 +481,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
       `}
     </div>
   </div>
-`}}C.id="12e0692345";C.style=`
+`}}C.id="e3443ae6d2";C.style=`
   .categoriesContainer {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -547,7 +547,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
       </div>
     </div>
   </div>
-`}}Q.id="70bb8af815";function E(a,{$:r,$on:d,$f7:i,$store:v,$update:u}){let n={};const t=v.getters.spotifyApi.value;d("pageInit",(e,s)=>{v.dispatch("getSetting","darkMode").then(function(b){var h=i.toggle.create({el:"#darkModeToggle",on:{change:function(){l()}}});h.checked!=b&&h.toggle()})});const l=()=>{var e=i.toggle.get("#darkModeToggle");v.dispatch("changeSetting",{key:"darkMode",value:e.checked});const s=r("html");e.checked?s.addClass("theme-dark"):s.removeClass("theme-dark")},p=()=>{i.dialog.confirm("Do you really want to log out?","Logout",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})};return t.getMe().then(function(e){n.user=e,u()},function(e){console.error(e),i.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),function(e){e.$;var s=e.$h;return e.$root,e.$f7,e.$f7route,e.$f7router,e.$theme,e.$update,e.$store,s`
+`}}Q.id="268f964dd5";function E(a,{$:r,$on:d,$f7:i,$store:v,$update:u}){let n={};const t=v.getters.spotifyApi.value;d("pageInit",(e,s)=>{v.dispatch("getSetting","darkMode").then(function(b){var h=i.toggle.create({el:"#darkModeToggle",on:{change:function(){l()}}});h.checked!=b&&h.toggle()})});const l=()=>{var e=i.toggle.get("#darkModeToggle");v.dispatch("changeSetting",{key:"darkMode",value:e.checked});const s=r("html");e.checked?s.addClass("theme-dark"):s.removeClass("theme-dark")},p=()=>{i.dialog.confirm("Do you really want to log out?","Logout",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})};return t.getMe().then(function(e){n.user=e,u()},function(e){console.error(e),i.dialog.alert("An error occurred when loading the data, your saved token will be deleted and you will have to log in again after reloading the app.","Sorry \u{1F614}",function(){localStorage.removeItem("tokenMap"),window.location.href=window.location.origin+window.location.pathname})}),function(e){e.$;var s=e.$h;return e.$root,e.$f7,e.$f7route,e.$f7router,e.$theme,e.$update,e.$store,s`
   <div class="page" data-name="settings">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -611,7 +611,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
       </div>
     </div>
   </div>
-`}}E.id="60c9ce189c";E.style=`
+`}}E.id="37c4cddb32";E.style=`
   .userdatablock1 {
     display: flex;
   }
@@ -821,7 +821,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
 
         </div>
     </div>
-`}}N.id="2152ced8fb";N.style=`
+`}}N.id="e61615933f";N.style=`
     .button-load-more {
         width: initial;
         display: inline-block;
@@ -1026,7 +1026,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
             </div>
         </div>
     </div>
-`}}F.id="e972b0b178";F.style=`
+`}}F.id="34669e48c8";F.style=`
     .trackHeart {
         font-size: 15px;
         margin-right: -5px;
@@ -1198,7 +1198,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
       </div>
     </div>
   </div>
-`}}O.id="aa730a5986";O.style=`
+`}}O.id="d01dc146d9";O.style=`
   .optionsBlock {
     display: flex;
   }
@@ -1286,7 +1286,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
             </div>
         </div>
     </div>
-`}}j.id="486f64aa6d";j.style=`
+`}}j.id="d420a1ef97";j.style=`
     .valueItem {
         margin-bottom: 25px;
     }
@@ -1405,7 +1405,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
             </div>
         </div>
     </div>
-`}}W.id="22d2291ac7";function U(a,{$f7:r,$on:d,$onBeforeMount:i,$onMounted:v,$onBeforeUnmount:u,$onUnmounted:n}){let t="Jimmy",l=25,p=["Tennis","Chess","Football"];const e=()=>{r.dialog.alert("Hello World")};return i(()=>{console.log("onBeforeMount")}),v(()=>{console.log("onMounted")}),u(()=>{console.log("onBeforeUnmount")}),n(()=>{console.log("onUnmounted")}),d("pageMounted",(s,b)=>{console.log("pageMounted",b)}),d("pageInit",(s,b)=>{console.log("pageInit",b)}),d("pageBeforeIn",(s,b)=>{console.log("pageBeforeIn",b)}),d("pageAfterIn",(s,b)=>{console.log("pageAfterIn",b)}),d("pageBeforeOut",(s,b)=>{console.log("pageBeforeOut",b)}),d("pageAfterOut",(s,b)=>{console.log("pageAfterOut",b)}),d("pageBeforeRemove",(s,b)=>{console.log("pageBeforeRemove",b)}),function(s){s.$;var b=s.$h;s.$root,s.$f7;var h=s.$f7route;s.$f7router;var S=s.$theme;return s.$update,s.$store,b`
+`}}W.id="f56a4ee5da";function U(a,{$f7:r,$on:d,$onBeforeMount:i,$onMounted:v,$onBeforeUnmount:u,$onUnmounted:n}){let t="Jimmy",l=25,p=["Tennis","Chess","Football"];const e=()=>{r.dialog.alert("Hello World")};return i(()=>{console.log("onBeforeMount")}),v(()=>{console.log("onMounted")}),u(()=>{console.log("onBeforeUnmount")}),n(()=>{console.log("onUnmounted")}),d("pageMounted",(s,b)=>{console.log("pageMounted",b)}),d("pageInit",(s,b)=>{console.log("pageInit",b)}),d("pageBeforeIn",(s,b)=>{console.log("pageBeforeIn",b)}),d("pageAfterIn",(s,b)=>{console.log("pageAfterIn",b)}),d("pageBeforeOut",(s,b)=>{console.log("pageBeforeOut",b)}),d("pageAfterOut",(s,b)=>{console.log("pageAfterOut",b)}),d("pageBeforeRemove",(s,b)=>{console.log("pageBeforeRemove",b)}),function(s){s.$;var b=s.$h;s.$root,s.$f7;var h=s.$f7route;s.$f7router;var S=s.$theme;return s.$update,s.$store,b`
   <div class="page">
     <div class="navbar">
       <div class="navbar-bg"></div>
@@ -1461,7 +1461,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
       </div>
     </div>
   </div>
-`}}U.id="e6db3e27d5";U.style=`
+`}}U.id="0b8a00ac44";U.style=`
   p {
     margin: 10px 0;
   }
@@ -1486,7 +1486,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
     </div>
   </div>
 </div>
-`}}X.id="ca7d545d68";const ci={0:"C",1:"C#",2:"D",3:"D#",4:"E",5:"F",6:"F#",7:"G",8:"G#",9:"A",10:"A#",11:"B"};function G(a,{$:r,$f7:d,$update:i,$on:v,$store:u,$f7router:n}){const t=u.getters.spotifyApi.value;let l=!1;var p=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;let e=p.exec(navigator.language)[5];console.log(e);const s=a.track,b=s.album;let h,S="play_arrow",k={trackIsSavedLoading:!0};console.log(s);const m=()=>{const y={title:`Statify - ${s.name}`,text:"Look at this track i found!",url:window.location.origin+n.url};try{navigator.share(y)}catch(w){console.log("share error",w)}};v("pageInit",(y,w)=>{const I=M=>{var T=Math.floor(M/1e3%60),A=Math.floor(M/(1e3*60)),A=A<10?"0"+A:A;return T=T<10?"0"+T:T,A+":"+T};k.duration=I(s.duration_ms),i()}),t.containsMySavedTracks([s.id]).then(function(y){k.trackIsSavedLoading=!1,k.trackIsSaved=y[0],i()}),t.getAudioFeaturesForTrack(s.id).then(function(y){k.songAnalytics=y,console.log(y),i()});const f=()=>{n.navigate("/add/playlist/",{props:{items:[s]}})},g=()=>{k.trackIsSavedLoading=!0,i();let y;k.trackIsSaved?y=t.removeFromMySavedTracks:y=t.addToMySavedTracks,y([s.id]).then(function(w){k.trackIsSavedLoading=!1,k.trackIsSaved=!k.trackIsSaved,console.log(k),i()},function(w){console.log(w),k.trackIsSavedLoading=!1,i()})},o=()=>{h=new Audio(s.preview_url),console.log(s),h.addEventListener("loadstart",function(){l=!0,i()}),h.addEventListener("canplaythrough",function(){l=!1,h.play(),i()}),h.addEventListener("ended",function(){S="play_arrow",k.showProgressbar=!1,i()}),h.addEventListener("timeupdate",function(){let y=h.currentTime/h.duration*100;d.progressbar.set(".progressbar",y),i()})},c=()=>{const y=s.available_markets.map(V),w=s.available_markets;let I="",M="";w.includes(e)&&(M=`<div class="block block-strong"><div class="block-inner"></div><p class="no-margin-top">This track is avaible in your region "${e}". \u{1F601}</p></div>`);for(let A=0;A<w.length;A++)I=`${I}<div class="col"><div class="marketItem">${y[A]} ${w[A]}</div></div>`;var T=d.sheet.create({content:`
+`}}X.id="402c3a51e3";const ci={0:"C",1:"C#",2:"D",3:"D#",4:"E",5:"F",6:"F#",7:"G",8:"G#",9:"A",10:"A#",11:"B"};function G(a,{$:r,$f7:d,$update:i,$on:v,$store:u,$f7router:n}){const t=u.getters.spotifyApi.value;let l=!1;var p=/^(?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))$|^((?:[a-z]{2,3}(?:(?:-[a-z]{3}){1,3})?)|[a-z]{4}|[a-z]{5,8})(?:-([a-z]{4}))?(?:-([a-z]{2}|\d{3}))?((?:-(?:[\da-z]{5,8}|\d[\da-z]{3}))*)?((?:-[\da-wy-z](?:-[\da-z]{2,8})+)*)?(-x(?:-[\da-z]{1,8})+)?$|^(x(?:-[\da-z]{1,8})+)$/i;let e=p.exec(navigator.language)[5];console.log(e);const s=a.track,b=s.album;let h,S="play_arrow",k={trackIsSavedLoading:!0};console.log(s);const m=()=>{const y={title:`Statify - ${s.name}`,text:"Look at this track i found!",url:window.location.origin+n.url};try{navigator.share(y)}catch(w){console.log("share error",w)}};v("pageInit",(y,w)=>{const I=M=>{var T=Math.floor(M/1e3%60),A=Math.floor(M/(1e3*60)),A=A<10?"0"+A:A;return T=T<10?"0"+T:T,A+":"+T};k.duration=I(s.duration_ms),i()}),t.containsMySavedTracks([s.id]).then(function(y){k.trackIsSavedLoading=!1,k.trackIsSaved=y[0],i()}),t.getAudioFeaturesForTrack(s.id).then(function(y){k.songAnalytics=y,console.log(y),i()});const f=()=>{n.navigate("/add/playlist/",{props:{items:[s]}})},g=()=>{k.trackIsSavedLoading=!0,i();let y;k.trackIsSaved?y=t.removeFromMySavedTracks:y=t.addToMySavedTracks,y([s.id]).then(function(w){k.trackIsSavedLoading=!1,k.trackIsSaved=!k.trackIsSaved,console.log(k),i()},function(w){console.log(w),k.trackIsSavedLoading=!1,i()})},o=()=>{h=new Audio(s.preview_url),console.log(s),h.addEventListener("loadstart",function(){l=!0,i()}),h.addEventListener("canplaythrough",function(){l=!1,h.play(),i()}),h.addEventListener("ended",function(){S="play_arrow",k.showProgressbar=!1,i()}),h.addEventListener("timeupdate",function(){let y=h.currentTime/h.duration*100;d.progressbar.set(".progressbar",y),i()})},c=()=>{const y=s.available_markets.map(V),w=s.available_markets;let I="",M="";w.includes(e)&&(M=`<div class="block block-strong"><div class="block-inner"></div><p class="no-margin-top">This track is avaible in your region "${e}". \u{1F601}</p></div>`);for(let A=0;A<w.length;A++)I=`${I}<div class="col"><div class="marketItem">${y[A]} ${w[A]}</div></div>`;var T=d.sheet.create({content:`
           <div class="sheet-modal">
             <div class="toolbar">
               <div class="toolbar-inner">
@@ -1750,7 +1750,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
             </div>
         </div>
     </div>
-`}}G.id="7620f524cb";G.style=`
+`}}G.id="ed45c08933";G.style=`
     .optionsBlock {
         display: flex;
     }
@@ -2016,7 +2016,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
     </div>
 
   </div>
-`}}P.id="4ca6594e7b";function z(a,{$:r,$el:d,$on:i,$f7:v,$update:u,$store:n}){let t=[];i("pageInit",(s,b)=>{});let l=0;v.request({url:"./assets/data/login_faq.json",async:!0,error:function(s){console.log(s),l=l+1,l<5?request(this):p()},success:function(s){try{t=JSON.parse(s)}catch(b){console.log(b),l=l+1,l<5?request(this):p();return}u(),v.swiper.create(".swiper-container",{speed:400,spaceBetween:10,loop:!0,loopedSlides:t.length,observer:!0})}});const p=()=>{console.log(r(".faq-loading").html()),r(".faq-loading").html(`
+`}}P.id="e9f510fed7";function z(a,{$:r,$el:d,$on:i,$f7:v,$update:u,$store:n}){let t=[];i("pageInit",(s,b)=>{});let l=0;v.request({url:"./assets/data/login_faq.json",async:!0,error:function(s){console.log(s),l=l+1,l<5?request(this):p()},success:function(s){try{t=JSON.parse(s)}catch(b){console.log(b),l=l+1,l<5?request(this):p();return}u(),v.swiper.create(".swiper-container",{speed:400,spaceBetween:10,loop:!0,loopedSlides:t.length,observer:!0})}});const p=()=>{console.log(r(".faq-loading").html()),r(".faq-loading").html(`
                 <div class="card-content card-content-padding">Loading failed \u{1F614}</div>
             `),r(".faq-loading").removeClass("skeleton-text"),r(".faq-loading").removeClass("skeleton-effect-wave")},e=()=>{n.getters.loginMethode};return function(s){s.$;var b=s.$h;return s.$root,s.$f7,s.$f7route,s.$f7router,s.$theme,s.$update,s.$store,b`
     <div class="view view-main view-init">
@@ -2066,7 +2066,7 @@ var ei=Object.defineProperty;var ai=(a,r,d)=>r in a?ei(a,r,{enumerable:!0,config
             </div>
         </div>
     </div>
-`}}z.id="b4398ad060";z.style=`
+`}}z.id="00dfc3fee7";z.style=`
     .spotify-icon {
         height: 20px;
         width: 20px;
